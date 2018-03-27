@@ -1,8 +1,6 @@
 introduction:
   title: Préface
   content:
-    avant_propos.rst:
-      title: Avant-propos
     tools.rst:
       title: Outils
     introduction.rst:
