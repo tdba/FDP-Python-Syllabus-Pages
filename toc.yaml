@@ -1,0 +1,21 @@
+introduction:
+  title: Préface
+  content:
+    avant_propos:
+      title: Avant-propos
+    tools:
+      title: Outils
+    introduction:
+      title: Introduction
+control:
+  title: Structures de contrôle
+  content:
+    if:
+      title: La condition
+    loop:
+      title: Les boucles
+meth:
+  title: Les méthodes
+  content:
+    meth:
+      title: Créer des méthodes 
