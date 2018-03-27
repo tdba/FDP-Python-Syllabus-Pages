@@ -1,21 +1,21 @@
 introduction:
   title: Préface
   content:
-    avant_propos:
+    avant_propos.rst:
       title: Avant-propos
-    tools:
+    tools.rst:
       title: Outils
-    introduction:
+    introduction.rst:
       title: Introduction
 control:
   title: Structures de contrôle
   content:
-    if:
+    if.rst:
       title: La condition
-    loop:
+    loop.rst:
       title: Les boucles
 meth:
   title: Les méthodes
   content:
-    meth:
+    meth.rst:
       title: Créer des méthodes 
