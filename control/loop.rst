@@ -52,7 +52,7 @@ La syntaxe de *while* est :
 
 A présent voici un code servant à afficher les tables de multiplications. Dans l'exemple de base il s'agit de la table de 7 mais vous êtes libres de jouer avec.
 
-.. inginious-sandbox::
+.. inginious-sandbox:: DummyScript
 
     nb = 7 # On garde la variable contenant le nombre dont on veut la table de multiplication
     i = 0 # C'est notre variable compteur que nous allons incrémenter dans la boucle
