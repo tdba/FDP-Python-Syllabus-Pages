@@ -66,7 +66,7 @@ A présent voici un code servant à afficher les tables de multiplications. Dans
 Exercices:
 ==========
 
-.. inginious:: Average
-
 .. inginious:: GD
+
+.. inginious:: Average
     
