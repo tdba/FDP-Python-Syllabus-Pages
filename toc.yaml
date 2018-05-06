@@ -10,8 +10,13 @@ control:
   content:
     if.rst:
       title: La condition
-    loop.rst:
+    loop:
       title: Les boucles
+      content:
+        while.rst:
+          title: La boucle while
+        for.rst:
+          title: La boucle for
 meth:
   title: Les méthodes
   content:
