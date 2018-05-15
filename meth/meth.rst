@@ -50,7 +50,6 @@ chunk, of a number of smaller steps.  So let's write a function to capture the p
 of this "building block": 
 
     .. code-block:: python
-       :linenos:
         
         import turtle 
 
@@ -122,7 +121,6 @@ any of our turtles to draw a square.   In the next example, we've changed the ``
 function a little, and we get tess to draw 15 squares, with some variations.
 
     .. code-block:: python
-        :linenos:
 
         import turtle
 
@@ -160,7 +158,6 @@ square, we cannot repeat the same thing 4 times, because the four sides are not 
 So we eventually come up with this rather nice code that can draw a rectangle.
 
     .. code-block:: python
-        :linenos:
 
         def draw_rectangle(t, w, h):
             """Get turtle t to draw a rectangle of width w and height h."""
@@ -186,7 +183,6 @@ We already have a function that draws a rectangle, so we can use that to draw
 our square. 
 
     .. code-block:: python
-        :linenos:
 
         def draw_square(tx, sz):        # A new version of draw_square
             draw_rectangle(tx, sz, sz)
@@ -376,7 +372,6 @@ the standard formula for compound interest, which we'll now write as a fruitful 
 
 
     .. code-block:: python
-       :linenos: 
 
        def final_amt(p, r, n, t):
            """
@@ -421,7 +416,6 @@ These short variable names are getting quite tricky, so perhaps we'd prefer one 
 versions instead:       
 
     .. code-block:: python
-       :linenos:
      
        def final_amt_v2(principalAmount, nominalPercentageRate, 
                                            numTimesPerYear, years):
@@ -450,7 +444,6 @@ When we create a **local variable** inside a function, it only exists inside
 the function, and we cannot use it outside. For example, consider again this function:
 
     .. code-block:: python
-       :linenos: 
 
        def final_amt(p, r, n, t):
            a = p * (1 + r/n) ** (n*t)
@@ -487,8 +480,6 @@ to the caller.
 
 Glossary
 --------
-
-.. glossary::
 
     argument
         A value provided to a function when the function is called. This value
