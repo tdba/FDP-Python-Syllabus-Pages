@@ -1,9 +1,21 @@
-.. Cette page est publiée sous la license Creative Commons BY-SA (https://creativecommons.org/licenses/by-sa/3.0/fr/)
+..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
+    Permission is granted to copy, distribute and/or modify this document
+    under the terms of the GNU Free Documentation License, Version 1.3
+    or any later version published by the Free Software Foundation;
+    with Invariant Sections being Foreword, Preface, and Contributor List, no
+    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
+    included in the section entitled "GNU Free Documentation License".
 
+|
+     
 
-=================
-Créer une méthode
-=================
+Functions
+=========
+
+.. index::
+    single: function
+    single: function definition
+    single: definition; function
 
 Functions
 ---------
@@ -16,7 +28,7 @@ the problem.
  
 The syntax for a **function definition** is:
 
-    .. code-block:: python
+    .. sourcecode:: python3
         
         def NAME( PARAMETERS ):
             STATEMENTS
@@ -49,7 +61,8 @@ squares.   "Draw a square" is an *abstraction*, or a mental
 chunk, of a number of smaller steps.  So let's write a function to capture the pattern
 of this "building block": 
 
-    .. code-block:: python
+    .. sourcecode:: python3
+       :linenos:
         
         import turtle 
 
@@ -68,7 +81,8 @@ of this "building block":
         draw_square(alex, 50)       # Call the function to draw the square
         wn.mainloop()
 
-
+        
+    .. image:: illustrations/alex04.png 
 
         
 This function is named ``draw_square``.  It has two parameters: one to tell 
@@ -120,7 +134,8 @@ statements will be executed each time we call it.  And we could use it to get
 any of our turtles to draw a square.   In the next example, we've changed the ``draw_square``
 function a little, and we get tess to draw 15 squares, with some variations.
 
-    .. code-block:: python
+    .. sourcecode:: python3
+        :linenos:
 
         import turtle
 
@@ -146,7 +161,7 @@ function a little, and we get tess to draw 15 squares, with some variations.
 
         wn.mainloop()
 
-
+    .. image:: illustrations/tess05.png 
 
 Functions can call other functions
 ----------------------------------
@@ -157,7 +172,8 @@ square, we cannot repeat the same thing 4 times, because the four sides are not 
 
 So we eventually come up with this rather nice code that can draw a rectangle.
 
-    .. code-block:: python
+    .. sourcecode:: python3
+        :linenos:
 
         def draw_rectangle(t, w, h):
             """Get turtle t to draw a rectangle of width w and height h."""
@@ -182,7 +198,8 @@ But now we might spot that a square is a special kind of rectangle.
 We already have a function that draws a rectangle, so we can use that to draw
 our square. 
 
-    .. code-block:: python
+    .. sourcecode:: python3
+        :linenos:
 
         def draw_square(tx, sz):        # A new version of draw_square
             draw_rectangle(tx, sz, sz)
@@ -216,6 +233,7 @@ As we might expect, we have to create a function before we can execute it.
 In other words, the function definition has to be executed before the
 function is called.
 
+.. index:: flow of execution
 
 Flow of execution
 -----------------
@@ -250,6 +268,8 @@ called it. When it gets to the end of the program, it terminates.
 What's the moral of this sordid tale? When we read a program, don't read from
 top to bottom. Instead, follow the flow of execution.
 
+.. index:: PyScripter; single stepping
+
 .. admonition:: Watch the flow of execution in action
 
    In PyScripter, we can watch the flow of execution by "single-stepping" through
@@ -273,7 +293,7 @@ top to bottom. Instead, follow the flow of execution.
    much simpler, because it prevents stepping into the module containing 
    the turtle code.   
    
-       .. code-block:: python
+       .. sourcecode:: python3
 
            import turtle
            __import__("turtle").__traceable__ = False
@@ -283,7 +303,7 @@ top to bottom. Instead, follow the flow of execution.
    program up to, but not including, the line where we have the cursor.   Our program 
    will "break" now, and provide a highlight on the next line to be executed, something like this:
 
-
+   .. image:: illustrations/breakpoint.png
  
    At this point we can press the *F7* key (*step into*) repeatedly to single step through
    the code.  Observe as we execute lines 10, 11, 12, ... how the turtle window gets 
@@ -302,6 +322,15 @@ top to bottom. Instead, follow the flow of execution.
    There are some other options, including one that allow us to *resume* execution without further stepping.
    Find them under the *Run* menu of PyScripter.
 
+.. index::
+    single: parameter
+    single: function; parameter
+    single: argument
+    single: function; argument
+    single: import statement
+    single: statement; import
+    single: composition
+    single: function; composition
     
 Functions that require arguments
 --------------------------------
@@ -311,7 +340,7 @@ For example, if we want to find the absolute value of a number, we have
 to indicate what the number is. Python has a built-in function for 
 computing the absolute value:
 
-    .. code-block:: python
+    .. sourcecode:: python3
         
         >>> abs(5)
         5
@@ -324,7 +353,7 @@ Some functions take more than one argument. For example the built-in function
 ``pow`` takes two arguments, the base and the exponent. Inside the function,
 the values that are passed get assigned to variables called **parameters**.
 
-    .. code-block:: python
+    .. sourcecode:: python3
         
         >>> pow(2, 3)
         8
@@ -333,7 +362,7 @@ the values that are passed get assigned to variables called **parameters**.
 
 Another built-in function that takes more than one argument is ``max``.
 
-    .. code-block:: python
+    .. sourcecode:: python3
         
         >>> max(7, 11)
         11
@@ -370,8 +399,10 @@ doesn't arrange to return a value, Python will automatically return the value ``
 How do we write our own fruitful function?  In the exercises at the end of chapter 2 we saw
 the standard formula for compound interest, which we'll now write as a fruitful function:   
 
+    .. image:: illustrations/compoundInterest.png
 
-    .. code-block:: python
+    .. sourcecode:: python3
+       :linenos: 
 
        def final_amt(p, r, n, t):
            """
@@ -415,7 +446,8 @@ the caller, in ``final_amt`` its name is ``p``.
 These short variable names are getting quite tricky, so perhaps we'd prefer one of these
 versions instead:       
 
-    .. code-block:: python
+    .. sourcecode:: python3
+       :linenos:
      
        def final_amt_v2(principalAmount, nominalPercentageRate, 
                                            numTimesPerYear, years):
@@ -436,6 +468,12 @@ used longer variable names!  If you do prefer short names,
 make sure you also have some comments to enlighten the reader 
 about what the variables are used for.
   
+
+
+.. index::
+    single: local variable
+    single: variable; local
+    single: lifetime
     
 Variables and parameters are local
 ----------------------------------
@@ -443,7 +481,8 @@ Variables and parameters are local
 When we create a **local variable** inside a function, it only exists inside
 the function, and we cannot use it outside. For example, consider again this function:
 
-    .. code-block:: python
+    .. sourcecode:: python3
+       :linenos: 
 
        def final_amt(p, r, n, t):
            a = p * (1 + r/n) ** (n*t)
@@ -451,7 +490,7 @@ the function, and we cannot use it outside. For example, consider again this fun
  
 If we try to use ``a``, outside the function, we'll get an error:
 
-    .. code-block:: python
+    .. sourcecode:: python3
         
         >>> a
         NameError: name 'a' is not defined
@@ -475,11 +514,57 @@ time, recover the local variable.  Each call of the function creates
 new local variables, and their lifetimes expire when the function returns
 to the caller. 
     
-   
+.. index:: refactoring code, chunking    
 
+Turtles Revisited
+-----------------
+
+Now that we have fruitful functions, we can focus our attention on 
+reorganizing our code so that it fits more nicely into our mental chunks.  
+This process of rearrangement is called **refactoring** the code.  
+ 
+Two things we're always going to want to do when working with turtles
+is to create the window for the turtle, and to create one or more turtles.
+We could write some functions to make these tasks easier in future:
+
+    .. sourcecode:: python3
+       :linenos: 
+
+       def make_window(colr, ttle):   
+           """
+             Set up the window with the given background color and title. 
+             Returns the new window.
+           """
+           w = turtle.Screen()             
+           w.bgcolor(colr)
+           w.title(ttle)
+           return w
+           
+           
+       def make_turtle(colr, sz):      
+           """
+             Set up a turtle with the given color and pensize.
+             Returns the new turtle.
+           """
+           t = turtle.Turtle()
+           t.color(colr)
+           t.pensize(sz)
+           return t
+
+           
+       wn = make_window("lightgreen", "Tess and Alex dancing")
+       tess = make_turtle("hotpink", 5)
+       alex = make_turtle("black", 1)
+       dave = make_turtle("yellow", 2)  
+   
+The trick about refactoring code is to anticipate which things we are likely to want to change
+each time we call the function: these should become the parameters, or changeable parts,
+of the functions we write.
 
 Glossary
 --------
+
+.. glossary::
 
     argument
         A value provided to a function when the function is called. This value
@@ -503,7 +588,7 @@ Glossary
 
         The syntax of a compound statement looks like this:
 
-            .. code-block:: python
+            .. sourcecode:: python3
             
                 keyword ... :
                     statement
@@ -583,15 +668,55 @@ Glossary
         The opposite of a fruitful function: one that does not return a value.  It is
         executed for the work it does, rather than for the value it returns.
 
-Exercices:
-==========
 
-.. inginious:: Max
 
-.. inginious:: GCD    
-  
-  
-  
-  
-  
-  
+Exercises
+---------
+
+#.  Write a void (non-fruitful) function to draw a square.  Use it in a program to draw the image shown below. 
+    Assume each side is 20 units.
+    (Hint: notice that the turtle has already moved away from the ending point of the last 
+    square when the program ends.)
+    
+    .. image:: illustrations/five_squares.png
+    
+#.  Write a program to draw this. Assume the innermost square is 20 units per side,
+    and each successive square is 20 units bigger, per side, than the one inside it.   
+    
+    .. image:: illustrations/nested_squares.png
+
+#.  Write a void function ``draw_poly(t, n, sz)`` which makes a turtle 
+    draw a regular polygon. 
+    When called with ``draw_poly(tess, 8, 50)``, it will draw a shape like this:
+    
+    .. image:: illustrations/regularpolygon.png
+
+#. Draw this pretty pattern.
+
+   .. image:: illustrations/tess08.png    
+   
+#.  The two spirals in this picture differ only by the turn angle.  Draw both.
+
+    .. image:: illustrations/tess_spirals.png
+       :height: 240
+       
+#.  Write a void function ``draw_equitriangle(t, sz)`` which calls ``draw_poly`` from the 
+    previous question to have its turtle draw a equilateral triangle. 
+    
+#.  Write a fruitful function ``sum_to(n)`` that returns the sum of all integer numbers up to and 
+    including ``n``.   So ``sum_to(10)`` would be `1+2+3...+10` which would return the value 55.
+    
+#.  Write a function ``area_of_circle(r)`` which returns the area of a circle of radius ``r``.
+
+#.  Write a void function to draw a star, where the length of each side is 100 units.
+    (Hint: You should turn the turtle by 144 degrees at each point.)  
+    
+     .. image:: illustrations/star.png
+     
+#.  Extend your program above.  Draw five stars, but between each, pick up the pen, 
+    move forward by 350 units, turn right by 144, put the pen down, and draw the next star.
+    You'll get something like this:
+    
+    .. image:: illustrations/five_stars.png
+    
+    What would it look like if you didn't pick up the pen?
