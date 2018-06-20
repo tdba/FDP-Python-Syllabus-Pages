@@ -1,15 +1,3 @@
-
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
-
-    
-|    
-    
 The way of the program
 ======================
 
@@ -31,10 +19,6 @@ the program.
 On one level, you will be learning to program, a useful skill by itself. On
 another level, you will use programming as a means to an end. As we go along,
 that end will become clearer.
-
-
-.. index:: programming language, portable, high-level language,
-           low-level language, compile, interpret, PyScripter
 
 The Python programming language
 -------------------------------
@@ -59,10 +43,7 @@ run on different kinds of computers with few or no modifications.
 The engine that translates and runs Python is called the **Python Interpreter**: 
 There are two ways to use it: *immediate mode* and *script
 mode*. In immediate mode, you type Python expressions into the Python Interpreter window, 
-and the interpreter immediately shows the result:
-
-.. image:: illustrations/interpreter_sshot.png
-   :alt: Screen shot of interpreter
+and the interpreter immediately shows the result.
 
 The ``>>>`` is called the **Python prompt**. The interpreter uses the prompt to indicate that it is ready for
 instructions. We typed ``2 + 2``, and the interpreter evaluated our expression, and replied ``4``, 
@@ -81,20 +62,13 @@ For example, we created a file named ``firstprogram.py`` using PyScripter.
 By convention, files that contain Python programs have names that end with
 ``.py``
 
-To execute the program, we can click the **Run** button in PyScripter:
-
-.. image:: illustrations/my_first_program.png
-   :alt: first program screenshot
- 
+To execute the program, we can click the **Run** button in PyScripter. 
 
 Most programs are more interesting than this one.
 
 Working directly in the interpreter is convenient for testing short bits of code because you
 get immediate feedback. Think of it as scratch paper used to help you work out
 problems. Anything longer than a few lines should be put into a script.
-
-
-.. index:: program, algorithm
 
 What is a program?
 ------------------
@@ -134,9 +108,6 @@ instructions.
 That may be a little vague, but we will come back to this topic later when we
 talk about **algorithms**.
 
-
-.. index:: debugging, bug
-
 What is debugging?
 ------------------
 
@@ -151,9 +122,6 @@ Three kinds of errors can occur in a program: `syntax errors
 <http://en.wikipedia.org/wiki/Runtime_error>`__, and `semantic errors
 <http://en.wikipedia.org/wiki/Logic_error>`__.  It is useful to
 distinguish between them in order to track them down more quickly.
-
-
-.. index:: syntax, syntax error
 
 Syntax errors
 -------------
@@ -172,9 +140,6 @@ to run your program. During the first few weeks of your programming career, you
 will probably spend a lot of time tracking down syntax errors. As you gain
 experience, though, you will make fewer errors and find them faster.
 
-
-.. index:: runtime error, exception, safe language
-
 Runtime errors
 --------------
 
@@ -185,9 +150,6 @@ bad) has happened.
 
 Runtime errors are rare in the simple programs you will see in the first few
 chapters, so it might be a while before you encounter one.
-
-
-.. index:: semantics, semantic error
 
 Semantic errors
 ---------------
@@ -201,12 +163,6 @@ The problem is that the program you wrote is not the program you wanted to
 write. The meaning of the program (its semantics) is wrong.  Identifying
 semantic errors can be tricky because it requires you to work backward by
 looking at the output of the program and trying to figure out what it is doing.
-
-
-.. index::
-    single: Holmes, Sherlock
-    single: Doyle, Arthur Conan 
-    single: Linux
 
 Experimental debugging
 ----------------------
@@ -240,9 +196,6 @@ BBBB. This later evolved to Linux (*The Linux Users' Guide* Beta Version 1).
 
 Later chapters will make more suggestions about debugging and other programming
 practices.
-
-
-.. index:: formal language, natural language, parse, token
 
 Formal and natural languages
 ----------------------------
@@ -297,8 +250,6 @@ understand the general implication of this sentence.
 Although formal and natural languages have many features in common --- tokens,
 structure, syntax, and semantics --- there are many differences:
 
-.. glossary::
-
     ambiguity
         Natural languages are full of ambiguity, which people deal with by
         using contextual clues and other information. Formal languages are
@@ -322,8 +273,6 @@ People who grow up speaking a natural language---everyone---often have a hard
 time adjusting to formal languages. In some ways, the difference between formal
 and natural language is like the difference between poetry and prose, but more
 so:
-
-.. glossary::
 
     poetry
         Words are used for their sounds as well as for their meaning, and the
@@ -356,8 +305,7 @@ Traditionally, the first program written in a new language is called *Hello,
 World!* because all it does is display the words, Hello, World!  In Python, the script
 looks like this: (For scripts, we'll show line numbers to the left of the Python statements.)
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         print("Hello, World!")
 
@@ -365,8 +313,7 @@ This is an example of using the **print function**, which doesn't actually print
 anything on paper. It displays a value on the screen. In this case, the result shown
 is
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         Hello, World!
 
@@ -376,10 +323,6 @@ they don't appear in the result.
 Some people judge the quality of a programming language by the simplicity of
 the Hello, World! program. By this standard, Python does about as well as
 possible.
-
-
-
-.. index:: comment
 
 Comments
 --------
@@ -397,8 +340,7 @@ only for the human reader --- it is completely ignored by the interpreter.
 In Python, the `#` token starts a comment.  The rest of the line 
 is ignored.   Here is a new version of *Hello, World!*.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         #---------------------------------------------------
         # This demo program shows off how elegant Python is!
@@ -415,8 +357,6 @@ programs much easier for humans to parse.  Use them liberally!
 
 Glossary
 --------
-
-.. glossary::
 
     algorithm
         A set of specific steps for solving a category of problems.
@@ -517,87 +457,3 @@ Glossary
         One of the basic elements of the syntactic structure of a program,
         analogous to a word in a natural language.
 
-
-Exercises
----------
-
-#. Write an English sentence with understandable semantics but incorrect
-   syntax. Write another English sentence which has correct syntax but has 
-   semantic errors.
-#. Using the Python interpreter, type ``1 + 2`` and then hit return. Python *evaluates* 
-   this *expression*, displays the result, and then shows another prompt. ``*``
-   is the *multiplication operator*, and ``**`` is the
-   *exponentiation operator*. Experiment by entering different expressions and
-   recording what is displayed by the Python interpreter. 
-#. Type ``1 2`` and then hit return. Python tries to evaluate the expression,
-   but it can't because the expression is not syntactically legal. Instead, it
-   shows the error message:
-   
-        .. sourcecode:: python3
-
-              File "<interactive input>", line 1
-                1 2
-                  ^
-            SyntaxError: invalid syntax
-
-   In many cases, Python indicates where the syntax error occurred, but it is
-   not always right, and it doesn't give you much information about what is
-   wrong.
-   
-   So, for the most part, the burden is on you to learn the syntax rules.
-   
-   In this case, Python is complaining because there is no operator between the
-   numbers.
-   
-   See if you can find a few more examples of things that will produce error
-   messages when you enter them at the Python prompt. Write down what you enter
-   at the prompt and the last line of the error message that Python reports
-   back to you. 
-   
-#. Type  ``print("hello")``. Python executes this, which has the effect
-   of printing the letters h-e-l-l-o. Notice that the quotation marks that you
-   used to enclose the string are not part of the output.  Now type ``"hello"``
-   and describe your result.  Make notes of when you see the quotation marks
-   and when you don't.
-    
-#. Type ``cheese`` without the quotation marks. The output will look
-   something like this::
-
-        Traceback (most recent call last):
-          File "<interactive input>", line 1, in ?
-        NameError: name 'cheese' is not defined
-
-   This is a run-time error; specifically, it is a NameError, and even more
-   specifically, it is an error because the name `cheese` is not defined. If
-   you don't know what that means yet, you will soon.
-#. Type ``6 + 4 * 9`` at the Python prompt and hit enter.  Record what
-   happens.
-   
-   Now create a Python script with the following contents:
-
-       .. sourcecode:: python3
-          :linenos:
-        
-           6 + 4 * 9
-
-   What happens when you run this script? Now change the script contents to:
-
-       .. sourcecode:: python3
-           :linenos:
-        
-           print(6 + 4 * 9)
-
-   and run it again.
-   
-   What happened this time?
-   
-   Whenever an *expression* is typed at the Python prompt, it is evaluated
-   and the result is *automatically* shown on the line below.  (Like on your calculator,
-   if you type this expression you'll get the result 42.)   
-   
-   A script is different, however.  Evaluations of
-   expressions are not automatically displayed, 
-   so it is necessary to use the **print** function to make the answer
-   show up.  
-   
-   It is hardly ever necessary to use the print function in immediate mode at the command prompt.  

@@ -1,23 +1,5 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
-
-|
-    
 Variables, expressions and statements
 =====================================
-
-
-.. index:: value, data type, string, integer, int, float, class, type
-
-.. index::
-    single: triple quoted string
-
-.. _values_n_types:
 
 Values and data types
 ---------------------
@@ -35,7 +17,7 @@ enclosed in quotation marks.
 If you are not sure what class a value falls into, Python has a function 
 called **type** which can tell you.
 
-    .. sourcecode:: python3
+    .. code:: python3
         
         >>> type("Hello, World!")
         <class 'str'>
@@ -49,7 +31,7 @@ called **float**, because these numbers are represented in a format called
 interchangeably.  We'll come back to a deeper understanding of what a class 
 is in later chapters. 
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> type(3.2)
         <class 'float'>
@@ -57,7 +39,7 @@ is in later chapters.
 What about values like ``"17"`` and ``"3.2"``? They look like numbers, but they
 are in quotation marks like strings.
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> type("17")
         <class 'str'>
@@ -88,7 +70,7 @@ Strings enclosed with three occurrences of either quote symbol are
 called triple quoted strings.  They can 
 contain either single or double quotes: 
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> print('''"Oh no", she exclaimed, "Ben's bike is broken!"''')
         "Oh no", she exclaimed, "Ben's bike is broken!"
@@ -96,7 +78,7 @@ contain either single or double quotes:
 
 Triple quoted strings can even span multiple lines:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> message = """This message will
         ... span several
@@ -116,7 +98,7 @@ value is identical in all cases, and the surrounding quotes are not part of
 the value. But when the interpreter wants to display a string, it has to 
 decide which quotes to use to make it look like a string. 
 
-    .. sourcecode:: pycon
+    .. code-block:: python
 
         >>> 'This is a string.'
         'This is a string.'
@@ -131,7 +113,7 @@ When you type a large integer, you might be tempted to use commas between
 groups of three digits, as in ``42,000``. This is not a legal integer in
 Python, but it does mean something else, which is legal:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> 42000
         42000
@@ -146,8 +128,6 @@ strict, the notation is concise, and even the smallest change might
 mean something quite different from what you intended. 
     
 
-.. index:: variable, assignment, assignment statement, state snapshot
-
 Variables
 ---------
 
@@ -156,7 +136,7 @@ manipulate **variables**. A variable is a name that refers to a value.
 
 The **assignment statement** gives a value to a variable:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> message = "What's up, Doc?"
         >>> n = 17
@@ -172,7 +152,7 @@ the token ``==``.  The assignment statement binds a *name*, on the
 left-hand side of the operator, to a *value*, on the right-hand side.
 This is why you will get an error if you enter:
 
-    .. sourcecode:: pycon
+    .. code-block:: python
         
         >>> 17 = n
         File "<interactive input>", line 1
@@ -186,16 +166,12 @@ This is why you will get an error if you enter:
 A common way to represent variables on paper is to write the name with an arrow
 pointing to the variable's value. This kind of figure is called a **state
 snapshot** because it shows what state each of the variables is in at a particular
-instant in time.  (Think of it as the variable's state of mind). 
-This diagram shows the result of executing the assignment statements:
-
-    .. image:: illustrations/state.png
-       :alt: State snapshot
+instant in time.  (Think of it as the variable's state of mind).
 
 If you ask the interpreter to evaluate a variable, it will produce the value that is currently 
 linked to the variable:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> message
         'What's up, Doc?'
@@ -211,7 +187,7 @@ You can assign a value to a variable, and later assign a different value to the 
 (*This is different from maths. In maths, if you give `x` the value 3, it
 cannot change to link to a different value half-way through your calculations!*)
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> day = "Thursday"
         >>> day
@@ -227,10 +203,7 @@ You'll notice we changed the value of ``day`` three times, and on the third assi
 made it refer to a value that was of a different type.   
 
 A great deal of programming is about having the computer remember things, e.g. *The number of missed calls on your phone*, 
-and then arranging to update or change the variable when you miss another call. 
-
-
-.. index:: keyword, underscore character
+and then arranging to update or change the variable when you miss another call.
 
 Variable names and keywords
 ---------------------------
@@ -248,7 +221,7 @@ special meaning, so a safe rule for beginners is to start all names with a lette
  
 If you give a variable an illegal name, you get a syntax error:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> 76trombones = "big parade"
         SyntaxError: invalid syntax
@@ -295,8 +268,6 @@ they help the programmer document, or remember, what the variable is used for.
    write the program code to calculate the average, and you must write an assignment 
    statement to give the variable ``pi`` the value you want it to have.
 
-.. index:: statement
-
 Statements
 ----------
 
@@ -308,9 +279,6 @@ and ``import`` statements.  (There are other kinds too!)
 When you type a statement on the command line, Python executes it.  Statements
 don't produce any result. 
 
-
-.. index:: expression
-
 Evaluating expressions
 ----------------------
 
@@ -318,7 +286,7 @@ An **expression** is a combination of values, variables, operators, and calls to
 type an expression at the Python prompt, the interpreter **evaluates** it and
 displays the result:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> 1 + 1
         2
@@ -332,7 +300,7 @@ The *evaluation of an expression* produces a value, which is why expressions
 can appear on the right hand side of assignment statements. A value all by
 itself is a simple expression, and so is a variable.
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> 17
         17
@@ -342,9 +310,6 @@ itself is a simple expression, and so is a variable.
         5
         >>> y
         3.14
-
-
-.. index:: operator, operand, floor division
 
 Operators and operands
 ----------------------
@@ -361,7 +326,7 @@ The tokens ``+``, ``-``, and ``*``, and the use of parenthesis for grouping,
 mean in Python what they mean in mathematics. The asterisk (``*``) is the
 token for multiplication, and ``**`` is the token for exponentiation.
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> 2 ** 3
         8
@@ -376,7 +341,7 @@ expect.
 
 Example: so let us convert 645 minutes into hours:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> minutes = 645
         >>> hours = minutes / 60
@@ -390,7 +355,7 @@ The second, called **floor division** uses the token `//`.
 Its result is always a whole number --- and if it has to adjust the number it always
 moves it to the left on the number line.  So `6 // 4` yields `1`, but `-6 // 4` might surprise you!  
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> 7 / 4
         1.75
@@ -405,9 +370,6 @@ Take care that you choose the correct flavor of the division operator.  If you'r
 working with expressions where you need floating point values, use the division operator
 that does the division accurately.
 
-
-.. index:: type converter functions, int, float, str, truncation
-
 Type converter functions
 ------------------------
     
@@ -420,7 +382,7 @@ it into an int. For floating point numbers, it *discards* the decimal portion
 of the number --- a process we call *truncation towards zero* on
 the number line.  Let us see this in action:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> int(3.14)
         3
@@ -440,7 +402,7 @@ the number line.  Let us see this in action:
 
 This last case doesn't look like a number --- what do we expect?
         
-    .. sourcecode:: python3
+    .. code-block:: python
     
         Traceback (most recent call last):
         File "<interactive input>", line 1, in <module>
@@ -451,7 +413,7 @@ This last case doesn't look like a number --- what do we expect?
 The type converter ``float`` can turn an integer, a float, or a syntactically legal
 string into a float:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> float(17)
         17.0
@@ -460,16 +422,12 @@ string into a float:
 
 The type converter ``str`` turns its argument into a string:
 
-    .. sourcecode:: python3  
+    .. code-block:: python
     
         >>> str(17)
         '17'
         >>> str(123.45)
         '123.45'
-
-  
-
-.. index:: order of operations, rules of precedence
 
 Order of operations
 -------------------
@@ -502,7 +460,7 @@ is a useful way to remember the order of operations:
      is the exponentiation operator ``**``, so a useful hint is to always use 
      parentheses to force exactly the order you want when exponentiation is involved:
    
-       .. sourcecode:: python3
+       .. code-block:: python
         
           >>> 2 ** 3 ** 2     # The right-most ** operator gets done first!
           512
@@ -510,9 +468,7 @@ is a useful way to remember the order of operations:
           64
 
 The immediate mode command prompt of Python is great for exploring and experimenting
-with expressions like this.       
-
-.. index:: string operations, concatenation
+with expressions like this.
 
 Operations on strings
 ---------------------
@@ -521,7 +477,7 @@ In general, you cannot perform mathematical operations on strings, even if the
 strings look like numbers. The following are illegal (assuming that ``message``
 has type string):
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> message - 1        # Error
         >>> "Hello" / 123      # Error
@@ -532,8 +488,7 @@ Interestingly, the ``+`` operator does work with strings, but for strings,
 the ``+`` operator represents **concatenation**, not addition.  
 Concatenation means joining the two operands by linking them end-to-end. For example:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         fruit = "banana"
         baked_good = " nut bread"
@@ -555,26 +510,14 @@ repetition are different from integer addition and multiplication. Can you
 think of a property that addition and multiplication have that string
 concatenation and repetition do not?
 
-
-.. index:: input, input dialog
-
-.. _input:
-
 Input
 -----
 
 There is a built-in function in Python for getting input from the user:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         n = input("Please enter your name: ")
-
-A sample run of this script in PyScripter would pop up a dialog window like this:
-
-    .. image:: illustrations/enter_name_dialog.png
-       :alt: input dialog
-
 
 The user of the program can enter the name and click `OK`, and when this happens
 the text that has been entered is returned from the ``input`` function, and in this
@@ -583,8 +526,6 @@ case assigned to the variable ``n``.
 Even if you asked the user to enter their age, you would get back a string like ``"17"``.
 It would be your job, as the programmer, to convert that string into a int or a float,
 using the ``int`` or ``float`` converter functions we saw earlier.
-
-.. index:: composition of functions,  function composition
 
 Composition
 -----------
@@ -599,15 +540,11 @@ For example, we know how to get the user to enter some input, we know how to
 convert the string we get into a float, we know how to write a complex expression, and
 we know how to print values. Let's put these together in a small four-step program that
 asks the user to input a value for the radius of a circle, and then 
-computes the area of the circle from the formula  
-
-    .. image:: illustrations/circle_area.png
-       :alt: formula for area of a circle
+computes the area of the circle from the formula.
 
 Firstly, we'll do the four steps one at a time: 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
        
         response = input("What is your radius? ")
         r = float(response)
@@ -617,17 +554,15 @@ Firstly, we'll do the four steps one at a time:
 Now let's compose the first two lines into a single line of code, and compose the
 second two lines into another line of code.
     
-    .. sourcecode:: python3
-       :linenos:
+    .. code-block:: python
        
        r = float( input("What is your radius? ") )
        print("The area is ", 3.14159 * r**2)
    
 If we really wanted to be tricky, we could write it all in one statement:
 
-    .. sourcecode:: python3
-       :linenos:
-       
+    .. code-block:: python
+
        print("The area is ", 3.14159*float(input("What is your radius?"))**2)
 
 Such compact code may not be most understandable for humans, but it does
@@ -635,11 +570,7 @@ illustrate how we can compose bigger chunks from our building blocks.
 
 If you're ever in doubt about whether to compose code or fragment it into smaller steps,
 try to make it as simple as you can for the human to follow.  My choice would
-be the first case above, with four separate steps.  
-
-.. index::
-    single: modulus operator
-    single: operator; modulus
+be the first case above, with four separate steps.
 
 The modulus operator
 --------------------
@@ -649,7 +580,7 @@ the remainder when the first number is divided by the second. In Python, the
 modulus operator is a percent sign (``%``). The syntax is the same as for other
 operators. It has the same precedence as the multiplication operator.
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> q = 7 // 3     # This is integer division operator
         >>> print(q)
@@ -672,8 +603,7 @@ It is also extremely useful for doing conversions, say from seconds,
 to hours, minutes and seconds. So let's write a program to ask the user to enter
 some seconds, and we'll convert them into hours, minutes, and remaining seconds.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         total_secs = int(input("How many seconds, in total?"))
         hours = total_secs // 3600      
@@ -687,8 +617,6 @@ some seconds, and we'll convert them into hours, minutes, and remaining seconds.
 Glossary
 --------
 
-.. glossary::
-
     assignment statement
         A statement that assigns a value to a name (variable). To the left of
         the assignment operator, ``=``, is a name. To the right of the
@@ -697,7 +625,7 @@ Glossary
         left and right hand sides of the assignment statement is often
         confusing to new programmers. In the following assignment:
 
-            .. sourcecode:: python3
+            .. code-block:: python
         
                  n = n + 1
 
@@ -792,59 +720,3 @@ Glossary
         with a letter.  In best programming practice, variable names should be
         chosen so that they describe their use in the program, making the
         program *self documenting*.
-
-
-Exercises
----------
-
-
-#. Take the sentence: *All work and no play makes Jack a dull boy.*
-   Store each word in a separate variable, then print out the sentence on
-   one line using ``print``.
-#. Add parenthesis to the expression ``6 * 1 - 2`` to change its value
-   from 4 to -6.
-#. Place a comment before a line of code that previously worked, and
-   record what happens when you rerun the program.
-#. Start the Python interpreter and enter ``bruce + 4`` at the prompt.
-   This will give you an error:
-
-       .. sourcecode:: python3
-        
-            NameError: name 'bruce' is not defined
-
-   Assign a value to ``bruce`` so that ``bruce + 4`` evaluates to ``10``.
-#. The formula for computing the final amount if one is earning
-   compound interest is given on Wikipedia as
-
-       .. image:: illustrations/compoundInterest.png
-          :alt: formula for compound interest
-
-   Write a Python program that assigns the principal amount of $10000 to variable `P`, 
-   assign to `n` the value 12, and assign to `r` the interest rate of 8%.
-   Then have the program prompt the user for the number of years `t` that the money will
-   be compounded for.  Calculate and print the final amount after `t` years.      
- 
-#. Evaluate the following numerical expressions in your head, then use
-   the Python interpreter to check your results:
-
-    #. ``>>> 5 % 2``
-    #. ``>>> 9 % 5``
-    #. ``>>> 15 % 12``
-    #. ``>>> 12 % 15``
-    #. ``>>> 6 % 6``
-    #. ``>>> 0 % 7``
-    #. ``>>> 7 % 0``
-
-   What happened with the last example? Why? If you were able to correctly
-   anticipate the computer's response in all but the last one, it is time to
-   move on. If not, take time now to make up examples of your own. Explore the
-   modulus operator until you are confident you understand how it works.
-   
-#. You look at the clock and it is exactly 2pm.  You set an alarm to go off
-   in 51 hours.  At what time does the alarm go off?  (Hint: you could count on
-   your fingers, but this is not what we're after.  If you are tempted
-   to count on your fingers, change the 51 to 5100.)
-   
-#. Write a Python program to solve the general version of the above problem.
-   Ask the user for the time now (in hours), and ask for the number of hours to wait.  
-   Your program should output what the time will be on the clock when the alarm goes off.

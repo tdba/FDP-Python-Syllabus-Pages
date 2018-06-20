@@ -1,16 +1,5 @@
-..  Copyright (C) Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
- 
-|    
-    
 Modules
 =======
-
 
 A **module** is a file containing Python definitions and statements intended
 for use in other Python programs. There are many Python modules that come with
@@ -20,10 +9,6 @@ the ``turtle`` module and the ``string`` module.
 We have also shown you how to access help. The help system contains 
 a listing of all the standard modules that are available with Python.  
 Play with help! 
-
-.. _random_numbers:
-
-.. index:: random numbers, shuffle, promise
 
 Random numbers
 --------------
@@ -41,8 +26,7 @@ We often want to use random numbers in programs, here are a few typical uses:
 Python provides a module ``random`` that helps with tasks like this.  You can
 look it up using help, but here are the key things we'll do with it: 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         import random
     
@@ -59,8 +43,7 @@ the upper bound is excluded.   All the values have an equal probability of occur
 also take an optional step argument. So let's assume we needed a random odd number less
 than 100, we could say: 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         r_odd = rng.randrange(1, 100, 2)  
 
@@ -81,14 +64,11 @@ This example shows how to shuffle a list.  (``shuffle`` cannot work directly
 with a lazy promise, so notice that we had to convert the range object
 using the ``list`` type converter first.)  
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         cards = list(range(52))  # Generate ints [0 .. 51] 
                                  #    representing a pack of cards.
         rng.shuffle(cards)       # Shuffle the pack
-
-.. index:: deterministic algorithm,  algorithm; deterministic, unit tests   
     
 Repeatability and Testing
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -106,8 +86,7 @@ a known seed every time.  (Often this is only wanted during testing --- playing 
 of cards where the shuffled deck was always in the same order as last time you played
 would get boring very rapidly!)  
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         drng = random.Random(123)  # Create generator with known starting state 
      
@@ -122,8 +101,7 @@ Picking balls from bags, throwing dice, shuffling a pack of cards
 Here is an example to generate a list containing `n` random ints between a
 lower and an upper bound: 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         import random
 
@@ -138,7 +116,7 @@ lower and an upper bound:
               result.append(rng.randrange(lower_bound, upper_bound))
            return result
     
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> make_random_ints(5, 1, 13)  # Pick 5 random month numbers
         [8, 1, 8, 5, 6] 
@@ -151,8 +129,7 @@ But what if you don't want duplicates?  If you wanted 5 distinct months,
 then this algorithm is wrong.  In this case a good algorithm is to generate the 
 list of possibilities, shuffle it, and slice off the number of elements you want:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         xs = list(range(1,13))  # Make list 1..12  (there are no duplicates)
         rng = random.Random()   # Make a random number generator
@@ -171,8 +148,7 @@ Suppose I wanted five numbers between one and ten million, without duplicates.
 Generating a list of ten million items, shuffling it, and then slicing off 
 the first five would be a performance disaster!  So let us have another try:  
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         import random
 
@@ -197,15 +173,14 @@ the first five would be a performance disaster!  So let us have another try:
     
 This agreeably produces 5 random numbers, without duplicates: 
 
-    .. sourcecode:: pycon
+    .. code-block:: python
 
         [3344629, 1735163, 9433892, 1081511, 4923270]
    
 Even this function has its pitfalls.  Can you spot what is going to happen in
 this case?  
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         xs = make_random_ints_no_dups(10, 1, 6)
 
@@ -228,8 +203,7 @@ elements in a list.  We can also write our own.  How do we think they would comp
 for speed?   We'll try to do the summation of a list [0, 1, 2 ...] in both cases, and 
 compare the results:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         import time
 
@@ -257,7 +231,7 @@ compare the results:
 
 On a reasonably modest laptop, we get these results: 
 
-    .. sourcecode:: pycon
+    .. code-block:: python
 
         my_sum    = 49999995000000 (time taken = 1.5567 seconds)
         their_sum = 49999995000000 (time taken = 0.9897 seconds)
@@ -273,7 +247,7 @@ The ``math`` module contains the kinds of mathematical functions you'd typically
 calculator (``sin``, ``cos``, ``sqrt``, ``asin``, ``log``, ``log10``) and some mathematical constants
 like ``pi`` and ``e``: 
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> import math
         >>> math.pi                 # Constant pi
@@ -301,9 +275,7 @@ and every random number generator has a seed value that determines its next resu
 Mathematical functions are "pure" and don't have any state --- calculating the square root of
 2.0 doesn't depend on any kind of state or history about what happened in the past.  
 So the functions are not methods of an object --- 
-they are simply functions that are grouped together in a module called ``math``.    
-
-.. index:: import statement, statement; import
+they are simply functions that are grouped together in a module called ``math``.
 
 Creating your own modules
 -------------------------
@@ -312,8 +284,7 @@ All we need to do to create our own modules is to save our script as
 a file with a ``.py`` extension.  Suppose, for example, this script is
 saved as a file named ``seqtools.py``: 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def remove_at(pos, seq):
             return seq[:pos] + seq[pos+1:]
@@ -321,7 +292,7 @@ saved as a file named ``seqtools.py``:
 We can now use our module, both in scripts we write, or in the interactive Python interpreter. To do so, we
 must first ``import`` the module. 
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> import seqtools
         >>> s = "A string!"
@@ -336,8 +307,6 @@ so the file extension is not included in the **import statement**.
 The use of modules makes it possible to break up very large programs into
 manageable sized parts, and to keep related parts together.
 
-.. index:: namespace
-
 Namespaces
 ----------
 
@@ -350,16 +319,14 @@ the typical things we'd do with random numbers.
 Each module has its own namespace, so we can use the same identifier name in
 multiple modules without causing an identification problem.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         # Module1.py
         
         question = "What is the meaning of Life, the Universe, and Everything?"
         answer = 42
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         # Module2.py
         
@@ -368,8 +335,7 @@ multiple modules without causing an identification problem.
 
 We can now import both modules and access ``question`` and ``answer`` in each:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         import module1
         import module2
@@ -381,7 +347,7 @@ We can now import both modules and access ``question`` and ``answer`` in each:
     
 will output the following: 
 
-    .. sourcecode:: pycon
+    .. code-block:: python
 
         What is the meaning of Life, the Universe, and Everything?
         What is your quest?
@@ -390,8 +356,7 @@ will output the following:
     
 Functions also have their own namespaces:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def f():
             n = 7
@@ -410,7 +375,7 @@ Functions also have their own namespaces:
 
 Running this program produces the following output:
 
-    .. sourcecode:: pycon
+    .. code-block:: python
         
         printing n before calling f: 11
         printing n inside of f: 7
@@ -452,8 +417,6 @@ having naming collisions.
       
       In other languages this is not necessarily the case.  So don't blur the concepts,
       just because Python blurs them!
-
-.. index:: scope, scope; global, scope; local, scope; builtin, builtin scope, global scope, local scope
     
 Scope and lookup rules
 ----------------------
@@ -488,8 +451,7 @@ more than one of these scopes, but the innermost, or local scope, will always ta
 precedence over the global scope, and the global scope always gets used in preference to the
 built-in scope.  Let's start with a simple example:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def range(n):
             return 123*n
@@ -510,8 +472,7 @@ that you can do nasty things that will cause confusion, and then you avoid doing
 
 Now, a slightly more complex example:
 
-    .. sourcecode:: python3
-       :linenos:
+    .. code-block:: python
 
        n = 10
        m = 3
@@ -535,8 +496,6 @@ called on line 7.
 What is the scope of the variable ``n`` on line 1?  Its scope --- the region in which it is
 visible ---  is lines 1, 2, 6, 7.  It is hidden from view in lines 3, 4, 5 because of the 
 local variable ``n``.
-
-.. index:: attribute, dot operator
    
 Attributes and the dot operator
 -------------------------------
@@ -555,15 +514,12 @@ to access them in the same way. ``seqtools.remove_at`` refers to the
 When we use a dotted name, we often refer to it as a **fully qualified name**,
 because we're saying exactly which ``question`` attribute we mean.
     
-.. index:: import statement  
-    
 Three ``import`` statement variants
 -----------------------------------
     
 Here are three different ways to import names into the current namespace, and to use them:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         import math
         x = math.sqrt(10)
@@ -573,8 +529,7 @@ access one of the functions in the module, you need to use the dot notation to g
 
 Here is a different arrangement: 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         from math import cos, sin, sqrt
         x = sqrt(10)
@@ -584,8 +539,7 @@ The names are added directly to the current namespace, and can be used without q
  
 Then we have a convenient shorthand:  
   
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         from math import *   # Import all the identifiers from math,
                              #   adding them to the current namespace.
@@ -595,8 +549,7 @@ Of these three, the first method is generally preferred, even though it
 means a little more typing each time. Although, we can make things
 shorter by importing a module under a different name:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         >>> import math as m
         >>> m.pi
@@ -607,8 +560,7 @@ that's a small price!
 
 Finally, observe this case:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def area(radius):
             import math
@@ -628,16 +580,13 @@ function, and you've had to copy this into each module for which you
 wrote tests.   Now we can put that definition into a module of its
 own, say ``unit_tester.py``, and simply use one line in each new script instead: 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         from unit_tester import test
 
 
 Glossary
 --------
-
-.. glossary::
 
     attribute
         A variable defined inside a module (or class or instance -- as we will
@@ -661,8 +610,7 @@ Glossary
         functions ``f1`` and ``f2``, and variables ``v1`` and ``v2``, examples
         of these two forms include:
 
-                .. sourcecode:: python3
-                    :linenos:
+                .. code-block:: python
                 
                     import mymod1 
                     from mymod2 import f1, f2, v1, v2 
@@ -676,7 +624,7 @@ Glossary
         Function-like attribute of an object. Methods are *invoked* (called) on
         an object using the dot operator. For example:
 
-            .. sourcecode:: python3
+            .. code-block:: python
             
                 >>> s = "this is a string."
                 >>> s.upper()
@@ -700,15 +648,13 @@ Glossary
         A situation in which two or more names in a given namespace cannot be
         unambiguously resolved. Using
 
-            .. sourcecode:: python3
-                :linenos:
+            .. code-block:: python
 
                 import string
 
         instead of
 
-            .. sourcecode:: python3
-                :linenos:
+            .. code-block:: python
             
                 from string import *
 
@@ -719,177 +665,3 @@ Glossary
         of other software. The standard library of a programming language is
         the set of such tools that are distributed with the core programming
         language.  Python comes with an extensive standard library.
-
-Exercises
----------
-
-
-#. Open help for the ``calendar`` module. 
-
-    a. Try the following:
- 
-         .. sourcecode:: python3
-            :linenos:
-            
-            import calendar
-            cal = calendar.TextCalendar()      # Create an instance
-            cal.pryear(2012)                   # What happens here?
-
-    b. Observe that the week starts on Monday. An adventurous CompSci student
-       believes that it is better mental chunking to have his week start on
-       Thursday, because then there are only two working days to the weekend, and
-       every week has a break in the middle.  Read the documentation for TextCalendar, 
-       and see how you can help him print a calendar that suits his needs. 
-    
-    c. Find a function to print just the month in which your birthday occurs this year.
-
-    d. Try this: 
-    
-        .. sourcecode:: python3
-            :linenos:
-            
-            d = calendar.LocaleTextCalendar(6, "SPANISH")     
-            d.pryear(2012)   
-        
-       Try a few other languages, including one that doesn't work, and see what happens.
-        
-    e. Experiment with ``calendar.isleap``. What does it expect as an
-       argument? What does it return as a result? What kind of a function is this?
-
-   Make detailed notes about what you learned from these exercises.
-   
-#. Open help for the ``math`` module. 
-
-   a. How many functions are in the ``math`` module?
-   b. What does ``math.ceil`` do? What about ``math.floor``? (*hint:* both
-      ``floor`` and ``ceil`` expect floating point arguments.)
-   c. Describe how we have been computing the same value as ``math.sqrt``
-      without using the ``math`` module.
-   d. What are the two data constants in the ``math`` module?
-
-   Record detailed notes of your investigation in this exercise.
-   
-#. Investigate the ``copy`` module. What does ``deepcopy``
-   do? In which exercises from last chapter would ``deepcopy`` have come in
-   handy?
-   
-#. Create a module named ``mymodule1.py``. Add attributes ``myage`` set to
-   your current age, and ``year`` set to the current year. Create another
-   module named ``mymodule2.py``. Add attributes ``myage`` set to 0, and
-   ``year`` set to the year you were born. Now create a file named
-   ``namespace_test.py``. Import both of the modules above and write the
-   following statement:
-
-       .. sourcecode:: python3
-            :linenos:
-        
-            print( (mymodule2.myage - mymodule1.myage) == 
-                   (mymodule2.year - mymodule1.year)  )
-
-   When you will run ``namespace_test.py`` you will see either ``True`` or
-   ``False`` as output depending on whether or not you've already had your
-   birthday this year.
-   
-   What this example illustrates is that out different modules can both have
-   attributes named ``myage`` and ``year``.  Because they're in different namespaces,
-   they don't clash with one another.  When we write ``namespace_test.py``, we
-   fully qualify exactly which variable ``year`` or ``myage`` we are referring to.
-   
-#. Add the following statement to ``mymodule1.py``, ``mymodule2.py``, and
-   ``namespace_test.py`` from the previous exercise:
-
-       .. sourcecode:: python3
-            :linenos:
-        
-            print("My name is", __name__)
-
-   Run ``namespace_test.py``. What happens? Why? Now add the following to the
-   bottom of ``mymodule1.py``:
-
-       .. sourcecode:: python3
-            :linenos:
-        
-            if __name__ == "__main__":
-                print("This won't run if I'm  imported.")
-
-   Run ``mymodule1.py`` and ``namespace_test.py`` again. In which case do you
-   see the new print statement?
-   
-#. In a Python shell / interactive interpreter, try the following:
-
-       .. sourcecode:: python3
-        
-            >>> import this
-
-   What does Tim Peters have to say about namespaces?
-   
-   
-#. Give the Python interpreter's response to each of the following from a
-   continuous interpreter session:
-
-       .. sourcecode:: python3
-        
-          >>> s = "If we took the bones out, it wouldn't be crunchy, would it?"
-          >>> s.split()
-          >>> type(s.split())
-          >>> s.split("o")
-          >>> s.split("i")
-          >>> "0".join(s.split("o"))
-          
-   Be sure you understand why you get each result. Then apply what you have
-   learned to fill in the body of the function below using the ``split`` and
-   ``join`` methods of ``str`` objects:
-
-       .. sourcecode:: python3
-            :linenos:
-        
-            def myreplace(old, new, s):
-                """ Replace all occurrences of old with new in s. """
-                ...
-                
-                
-            test(myreplace(",", ";", "this, that, and some other thing") ==
-                                     "this; that; and some other thing")
-            test(myreplace(" ", "**", 
-                             "Words will now      be  separated by stars.") ==
-                             "Words**will**now**be**separated**by**stars.")
-    
-   Your solution should pass the tests.
-   
-#. Create a module named ``wordtools.py`` with our test scaffolding in place.
-
-   Now add functions to these tests pass::
-   
-        test(cleanword("what?") == "what")
-        test(cleanword("'now!'") == "now")
-        test(cleanword("?+='w-o-r-d!,@$()'") ==  "word")
-    
-        test(has_dashdash("distance--but"))
-        test(not has_dashdash("several"))
-        test(has_dashdash("spoke--"))
-        test(has_dashdash("distance--but"))
-        test(not has_dashdash("-yo-yo-"))
-
-        test(extract_words("Now is the time!  'Now', is the time? Yes, now.") ==
-              ['now','is','the','time','now','is','the','time','yes','now'])
-        test(extract_words("she tried to curtsey as she spoke--fancy") ==
-              ['she','tried','to','curtsey','as','she','spoke','fancy'])
-    
-        test(wordcount("now", ["now","is","time","is","now","is","is"]) == 2)
-        test(wordcount("is", ["now","is","time","is","now","the","is"]) == 3)
-        test(wordcount("time", ["now","is","time","is","now","is","is"]) == 1)
-        test(wordcount("frog", ["now","is","time","is","now","is","is"]) == 0)
-    
-        test(wordset(["now", "is", "time", "is", "now", "is", "is"]) ==
-              ["is", "now", "time"])
-        test(wordset(["I", "a", "a", "is", "a", "is", "I", "am"]) ==
-              ["I", "a", "am", "is"])
-        test(wordset(["or", "a", "am", "is", "are", "be", "but", "am"]) ==
-              ["a", "am", "are", "be", "but", "is", "or"])
-       
-        test(longestword(["a", "apple", "pear", "grape"]) == 5)
-        test(longestword(["a", "am", "I", "be"]) == 2)
-        test(longestword(["this","supercalifragilisticexpialidocious"]) == 34)
-        test(longestword([ ]) == 0)
-
-   Save this module so you can use the tools it contains in future programs.

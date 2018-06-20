@@ -1,23 +1,5 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
-   
-|
-
- 
 Hello, little turtles!
 ======================
-
-.. index::  
-    single: module
-    single: function
-    single: function definition
-    single: definition; function
-    single: turtle module
 
 There are many *modules* in Python that provide very powerful features that we
 can use in our own programs.  Some of these can send email, or fetch web pages.
@@ -29,9 +11,6 @@ a little more Python, and to develop our theme of *computational thinking*,
 or *thinking like a computer scientist*.  Most of the Python covered here 
 will be explored in more depth later.
 
-
-.. index:: object, invoke, method, attribute, state, canvas
-
 Our first turtle program
 ------------------------
 
@@ -40,8 +19,7 @@ turtle and start drawing a rectangle. (We'll call the variable that
 refers to our first turtle ``alex``, but we can choose another 
 name if we follow the naming rules from the previous chapter).
 
-    .. sourcecode:: python3
-       :linenos:
+    .. code-block:: python
        
         import turtle             # Allows us to use turtles
         wn = turtle.Screen()      # Creates a playground for turtles
@@ -53,9 +31,7 @@ name if we follow the naming rules from the previous chapter).
 
         wn.mainloop()             # Wait for user to close window
     
-When we run this program, a new window pops up:
-
-    .. image:: illustrations/tess01.png  
+When we run this program, a new window pops up.
     
 Here are a couple of things we'll need to understand about this program. 
   
@@ -101,8 +77,7 @@ window objects.  We'll just show a couple. In this program we've only commented 
 lines that are different from the previous example (and we've used a different
 variable name for this turtle):
     
-    .. sourcecode:: python3
-       :linenos:
+    .. code-block:: python
 
         import turtle
         wn = turtle.Screen()
@@ -120,10 +95,8 @@ variable name for this turtle):
         wn.mainloop()
 
   
-When we run this program, this new window pops up, and will remain on the 
+When we run this program, a new window pops up, and will remain on the 
 screen until we close it.
-
-    .. image:: illustrations/tess02.png 
 
   
 .. admonition:: Extend this program ...
@@ -140,8 +113,6 @@ screen until we close it.
        user will return a string, but ``tess``' ``pensize`` method 
        expects its argument to be an int.  So you'll need to convert 
        the string to an int before you pass it to ``pensize``.   
- 
-.. index:: instance
   
 Instances --- a herd of turtles
 -------------------------------
@@ -151,8 +122,7 @@ Each of them is called an **instance**.  Each instance has its own attributes an
 methods --- so ``alex`` might draw with a thin black pen and be at some position,
 while ``tess`` might be going in her own direction with a fat pink pen. 
 
-    .. sourcecode:: python3
-       :linenos:
+    .. code-block:: python
        
         import turtle
         wn = turtle.Screen()         # Set up the window and its attributes
@@ -185,10 +155,6 @@ while ``tess`` might be going in her own direction with a fat pink pen.
         alex.left(90)
 
         wn.mainloop()
-
-Here is what happens when ``alex`` completes his rectangle, and ``tess`` completes her triangle:
-
-    .. image:: illustrations/tess03.png  
   
 Here are some *How to think like a computer scientist* observations:
 
@@ -214,9 +180,6 @@ Here are some *How to think like a computer scientist* observations:
 * And, uh-huh, two turtles may not be enough for a herd. But the important idea is that the
   turtle module gives us a kind of factory that lets us create as many turtles as we 
   need. Each instance has its own state and behaviour.  
-
-  
-.. index:: for loop
   
 The **for** loop
 ----------------
@@ -232,8 +195,7 @@ Python's **for** loop solves this for us.   Let's say we have some friends, and
 we'd like to send them each an email inviting them to our party.  We don't
 quite know how to send email yet, so for the moment we'll just print a message for each friend:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         for f in ["Joe","Zoe","Brad","Angelina","Zuki","Thandi","Paris"]:
             invite = "Hi " + f + ".  Please come to my party on Saturday!"
@@ -243,7 +205,7 @@ quite know how to send email yet, so for the moment we'll just print a message f
 
 When we run this, the output looks like this:
 
-    .. sourcecode:: pycon
+    .. code-block:: python
 
         Hi Joe.  Please come to my party on Saturday!
         Hi Zoe.  Please come to my party on Saturday!
@@ -268,8 +230,6 @@ When we run this, the output looks like this:
 * At the end of each execution of the body of the loop, Python returns 
   to the ``for`` statement, to see if there are more items to be handled, and to assign the
   next one to ``f``.
-
-.. index:: control flow, flow of execution
   
 Flow of Execution of the for loop
 ---------------------------------
@@ -286,11 +246,6 @@ top to bottom, one statement at a time.  The ``for`` loop changes this.
 
    Control flow is often easy to visualize and understand if we draw a flowchart.
    This shows the exact steps and logic of how the ``for`` statement executes.
-   
-   .. image:: illustrations/flowchart_for.png 
-      :height: 420
-
-.. index:: range function, chunking
 
 The loop simplifies our turtle program
 --------------------------------------
@@ -299,8 +254,7 @@ To draw a square we'd like to do the same thing four times --- move the turtle, 
 We previously used 8 lines to have ``alex`` draw the four sides of a square.  
 This does exactly the same, but using just three lines:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         for i in [0,1,2,3]:
             alex.forward(50)
@@ -319,8 +273,7 @@ Some observations:
   have used any four values, but these are the conventional ones to use.  In fact, they are
   so popular that Python gives us special built-in ``range`` objects:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         for i in range(4):
             # Executes the body with i = 0, then 1, then 2, then 3
@@ -340,8 +293,7 @@ Some observations:
   
 So to repeat something four times, a good Python programmer would do this:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         for i in range(4):
             alex.forward(50)
@@ -352,8 +304,7 @@ By now you should be able to see how to change our previous program so that
 
 But now, what would happen if we made this change?
     
-   .. sourcecode:: python3
-        :linenos:
+   .. code-block:: python
 
         for c in ["yellow", "red", "purple", "blue"]:
             alex.color(c)
@@ -363,8 +314,7 @@ But now, what would happen if we made this change?
 A variable can also be assigned a value that is a list.  So lists can also be used in
 more general situations, not only in the ``for`` loop.  The code above could be rewritten like this:
  
-   .. sourcecode:: python3
-        :linenos:
+   .. code-block:: python
 
         # Assign a list to a variable
         clrs = ["yellow", "red", "purple", "blue"]   
@@ -396,8 +346,7 @@ if we're going to play with turtles.
 A turtle's pen can be picked up or put down.  This allows us to move a turtle
 to a different place without drawing a line.   The methods are 
 
-  .. sourcecode:: python3
-        :linenos:
+  .. code-block:: python
 
         alex.penup()
         alex.forward(100)     # This moves alex, but no line is drawn
@@ -406,21 +355,16 @@ to a different place without drawing a line.   The methods are
 Every turtle can have its own shape.  The ones available "out of the box"
 are ``arrow``, ``blank``, ``circle``, ``classic``, ``square``, ``triangle``, ``turtle``.
 
-  .. sourcecode:: python3
-        :linenos:
+  .. code-block:: python
            
-        alex.shape("turtle")           
-
-
-  .. image:: illustrations/alex06.png
+        alex.shape("turtle")
 
 We can speed up or slow down the turtle's animation speed. (Animation controls how
 quickly the turtle turns and moves forward).  Speed settings can be set
 between 1 (slowest) to 10 (fastest).  But if we set the speed to 0, it has 
 a special meaning --- turn off animation and go as fast as possible. 
 
-  .. sourcecode:: python3
-        :linenos:
+  .. code-block:: python
        
         alex.speed(10)
       
@@ -430,8 +374,7 @@ Stamping works, even when the pen is up.
     
 Let's do an example that shows off some of these new features:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
        
         import turtle
         wn = turtle.Screen()             
@@ -448,9 +391,7 @@ Let's do an example that shows off some of these new features:
            tess.forward(size)       # Move tess along  
            tess.right(24)           #  ...  and turn her
 
-        wn.mainloop()  
-   
-    .. image:: illustrations/tess07.png   
+        wn.mainloop()
 
 Be careful now!   How many times was the body of the loop executed?   How many turtle 
 images do we see on the screen?  All except one of the shapes we see on the screen here
@@ -461,9 +402,6 @@ or to put her pen down and draw a line, or to change her shape, etc.)
    
 Glossary
 --------
-
-.. glossary::
-
 
     attribute
         Some state or value that belongs to a particular object.  For example, ``tess`` has
@@ -518,95 +456,3 @@ Glossary
         A condition that occurs which causes a loop to stop repeating its body.
         In the ``for`` loops we saw in this chapter, the terminating condition 
         has been when there are no more elements to assign to the loop variable.
-    
-
-
-Exercises
----------
-#. Write a program that prints ``We like Python's turtles!`` 1000 times. 
-
-#. Give three attributes of your cellphone object.  Give three methods of your cellphone.  
-
-#. Write a program that uses a for loop to print
-     |  ``One of the months of the year is January``
-     |  ``One of the months of the year is February``
-     |  ...
-     
-#. Suppose our turtle ``tess`` is at heading 0 --- facing east.  We execute the statement
-   ``tess.left(3645)``.  What does ``tess`` do, and what is her final heading?
-     
-#. Assume you have the assignment ``xs = [12, 10, 32, 3, 66, 17, 42, 99, 20]``
-    
-   a. Write a loop that prints each of the numbers on a new line.
-   b. Write a loop that prints each number and its square on a new line.
-   c. Write a loop that adds all the numbers from the list into a variable called `total`.
-      You should set the `total` variable to have the value 0 before you start adding them up,
-      and print the value in ``total`` after the loop has completed.  
-   d. Print the product of all the numbers in the list. 
-      (product means all multiplied together)   
-      
-#. Use ``for`` loops to make a turtle draw these regular polygons 
-   (regular means all sides the same lengths, all angles the same):  
-  
-   * An equilateral triangle    
-   * A square    
-   * A hexagon (six sides)    
-   * An octagon (eight sides)
-      
-#. .. _drunk_pirate_problem:
-
-   A drunk pirate makes a random turn and then takes 100 steps forward, makes another random turn, 
-   takes another 100 steps, turns another random amount, etc.  A social science student records the angle of each turn
-   before the next 100 steps are taken. Her experimental data is ``[160, -43, 270, -97, -43, 200, -940, 17, -86]``.  
-   (Positive angles are counter-clockwise.)  Use a turtle to draw the path taken by our drunk friend.   
-   
-#. Enhance your program above to also tell us what the drunk pirate's heading is after he has finished stumbling
-   around.  (Assume he begins at heading 0).   
- 
-#. If you were going to draw a regular polygon with 18 sides, what angle would you need to 
-   turn the turtle at each corner?
-   
-#. At the interactive prompt, anticipate what each of the following lines will do, and 
-   then record what happens. Score yourself, giving yourself one point for each one you 
-   anticipate correctly:
-   
-        .. sourcecode:: python3 
-
-            >>> import turtle
-            >>> wn = turtle.Screen()
-            >>> tess = turtle.Turtle()
-            >>> tess.right(90)
-            >>> tess.left(3600)
-            >>> tess.right(-90)
-            >>> tess.speed(10)
-            >>> tess.left(3600)
-            >>> tess.speed(0)
-            >>> tess.left(3645)
-            >>> tess.forward(-100)
-   
-#. Write a program to draw a shape like this:
-
-        .. image:: illustrations/star.png
-   
-   Hints: 
-   
-   * Try this on a piece of paper, moving and turning your cellphone as if it was a 
-     turtle.  Watch how many complete rotations your cellphone makes before you complete the 
-     star.  Since each full rotation is 360 degrees, you can figure out the total 
-     number of degrees that your phone was rotated through.  If you divide that by 5, because
-     there are five points to the star, you'll know how many degrees to turn the turtle at each point.
-   * You can hide a turtle behind its invisibility cloak if you don't want it shown.  It will still
-     draw its lines if its pen is down.  The method is invoked as ``tess.hideturtle()`` .  To make the
-     turtle visible again, use ``tess.showturtle()`` .
-     
-#. Write a program to draw a face of a clock that looks something like this:
-    
-        .. image:: illustrations/tess_clock1.png
-      
-   
-#. Create a turtle, and assign it to a variable.  When you ask for its type, what do you get?
-
-#. What is the collective noun for turtles?  (Hint: they don't come in *herds*.)
-
-#. What the collective noun for pythons?  Is a python a viper?  Is a python venomous?  
-    

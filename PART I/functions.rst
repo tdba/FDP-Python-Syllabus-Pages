@@ -1,25 +1,8 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
-
-|
-     
-
 Functions
 =========
 
-.. index::
-    single: function
-    single: function definition
-    single: definition; function
-
 Functions
 ---------
-      
      
 In Python, a **function** is a named sequence of statements
 that belong together.  Their primary purpose is to help us
@@ -28,7 +11,7 @@ the problem.
  
 The syntax for a **function definition** is:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         def NAME( PARAMETERS ):
             STATEMENTS
@@ -61,8 +44,7 @@ squares.   "Draw a square" is an *abstraction*, or a mental
 chunk, of a number of smaller steps.  So let's write a function to capture the pattern
 of this "building block": 
 
-    .. sourcecode:: python3
-       :linenos:
+    .. code-block:: python
         
         import turtle 
 
@@ -81,10 +63,7 @@ of this "building block":
         draw_square(alex, 50)       # Call the function to draw the square
         wn.mainloop()
 
-        
-    .. image:: illustrations/alex04.png 
 
-        
 This function is named ``draw_square``.  It has two parameters: one to tell 
 the function which turtle to move around, and the other to tell it the size
 of the square we want drawn.   Make sure you know where the body of the function
@@ -134,8 +113,7 @@ statements will be executed each time we call it.  And we could use it to get
 any of our turtles to draw a square.   In the next example, we've changed the ``draw_square``
 function a little, and we get tess to draw 15 squares, with some variations.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         import turtle
 
@@ -161,8 +139,6 @@ function a little, and we get tess to draw 15 squares, with some variations.
 
         wn.mainloop()
 
-    .. image:: illustrations/tess05.png 
-
 Functions can call other functions
 ----------------------------------
 
@@ -172,8 +148,7 @@ square, we cannot repeat the same thing 4 times, because the four sides are not 
 
 So we eventually come up with this rather nice code that can draw a rectangle.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         def draw_rectangle(t, w, h):
             """Get turtle t to draw a rectangle of width w and height h."""
@@ -198,8 +173,7 @@ But now we might spot that a square is a special kind of rectangle.
 We already have a function that draws a rectangle, so we can use that to draw
 our square. 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         def draw_square(tx, sz):        # A new version of draw_square
             draw_rectangle(tx, sz, sz)
@@ -232,8 +206,6 @@ demonstrates two:
 As we might expect, we have to create a function before we can execute it.
 In other words, the function definition has to be executed before the
 function is called.
-
-.. index:: flow of execution
 
 Flow of execution
 -----------------
@@ -268,8 +240,6 @@ called it. When it gets to the end of the program, it terminates.
 What's the moral of this sordid tale? When we read a program, don't read from
 top to bottom. Instead, follow the flow of execution.
 
-.. index:: PyScripter; single stepping
-
 .. admonition:: Watch the flow of execution in action
 
    In PyScripter, we can watch the flow of execution by "single-stepping" through
@@ -293,7 +263,7 @@ top to bottom. Instead, follow the flow of execution.
    much simpler, because it prevents stepping into the module containing 
    the turtle code.   
    
-       .. sourcecode:: python3
+       .. code-block:: python
 
            import turtle
            __import__("turtle").__traceable__ = False
@@ -301,9 +271,7 @@ top to bottom. Instead, follow the flow of execution.
    Now we're ready to begin.  Put the mouse cursor on the line of the program
    where we create the turtle screen, and press the *F4* key.  This will run the Python
    program up to, but not including, the line where we have the cursor.   Our program 
-   will "break" now, and provide a highlight on the next line to be executed, something like this:
-
-   .. image:: illustrations/breakpoint.png
+   will "break" now, and provide a highlight on the next line to be executed.
  
    At this point we can press the *F7* key (*step into*) repeatedly to single step through
    the code.  Observe as we execute lines 10, 11, 12, ... how the turtle window gets 
@@ -321,16 +289,6 @@ top to bottom. Instead, follow the flow of execution.
    
    There are some other options, including one that allow us to *resume* execution without further stepping.
    Find them under the *Run* menu of PyScripter.
-
-.. index::
-    single: parameter
-    single: function; parameter
-    single: argument
-    single: function; argument
-    single: import statement
-    single: statement; import
-    single: composition
-    single: function; composition
     
 Functions that require arguments
 --------------------------------
@@ -340,7 +298,7 @@ For example, if we want to find the absolute value of a number, we have
 to indicate what the number is. Python has a built-in function for 
 computing the absolute value:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> abs(5)
         5
@@ -353,7 +311,7 @@ Some functions take more than one argument. For example the built-in function
 ``pow`` takes two arguments, the base and the exponent. Inside the function,
 the values that are passed get assigned to variables called **parameters**.
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> pow(2, 3)
         8
@@ -362,7 +320,7 @@ the values that are passed get assigned to variables called **parameters**.
 
 Another built-in function that takes more than one argument is ``max``.
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> max(7, 11)
         11
@@ -397,12 +355,9 @@ for their resulting value, Python always wants to return something.  So if the p
 doesn't arrange to return a value, Python will automatically return the value ``None``.
 
 How do we write our own fruitful function?  In the exercises at the end of chapter 2 we saw
-the standard formula for compound interest, which we'll now write as a fruitful function:   
+the standard formula for compound interest, which we'll now write as a fruitful function:
 
-    .. image:: illustrations/compoundInterest.png
-
-    .. sourcecode:: python3
-       :linenos: 
+    .. code-block:: python 
 
        def final_amt(p, r, n, t):
            """
@@ -446,8 +401,7 @@ the caller, in ``final_amt`` its name is ``p``.
 These short variable names are getting quite tricky, so perhaps we'd prefer one of these
 versions instead:       
 
-    .. sourcecode:: python3
-       :linenos:
+    .. code-block:: python
      
        def final_amt_v2(principalAmount, nominalPercentageRate, 
                                            numTimesPerYear, years):
@@ -467,13 +421,6 @@ E = mc\ :sup:`2` would not be nearly so memorable if Einstein had
 used longer variable names!  If you do prefer short names, 
 make sure you also have some comments to enlighten the reader 
 about what the variables are used for.
-  
-
-
-.. index::
-    single: local variable
-    single: variable; local
-    single: lifetime
     
 Variables and parameters are local
 ----------------------------------
@@ -481,8 +428,7 @@ Variables and parameters are local
 When we create a **local variable** inside a function, it only exists inside
 the function, and we cannot use it outside. For example, consider again this function:
 
-    .. sourcecode:: python3
-       :linenos: 
+    .. code-block:: python 
 
        def final_amt(p, r, n, t):
            a = p * (1 + r/n) ** (n*t)
@@ -490,7 +436,7 @@ the function, and we cannot use it outside. For example, consider again this fun
  
 If we try to use ``a``, outside the function, we'll get an error:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a
         NameError: name 'a' is not defined
@@ -512,9 +458,7 @@ So it is not possible for a function to set some local variable to a
 value, complete its execution, and then when it is called again next
 time, recover the local variable.  Each call of the function creates
 new local variables, and their lifetimes expire when the function returns
-to the caller. 
-    
-.. index:: refactoring code, chunking    
+to the caller.
 
 Turtles Revisited
 -----------------
@@ -527,8 +471,7 @@ Two things we're always going to want to do when working with turtles
 is to create the window for the turtle, and to create one or more turtles.
 We could write some functions to make these tasks easier in future:
 
-    .. sourcecode:: python3
-       :linenos: 
+    .. code-block:: python 
 
        def make_window(colr, ttle):   
            """
@@ -564,8 +507,6 @@ of the functions we write.
 Glossary
 --------
 
-.. glossary::
-
     argument
         A value provided to a function when the function is called. This value
         is assigned to the corresponding parameter in the function.  The argument
@@ -588,7 +529,7 @@ Glossary
 
         The syntax of a compound statement looks like this:
 
-            .. sourcecode:: python3
+            .. code-block:: python
             
                 keyword ... :
                     statement
@@ -667,56 +608,3 @@ Glossary
     void function
         The opposite of a fruitful function: one that does not return a value.  It is
         executed for the work it does, rather than for the value it returns.
-
-
-
-Exercises
----------
-
-#.  Write a void (non-fruitful) function to draw a square.  Use it in a program to draw the image shown below. 
-    Assume each side is 20 units.
-    (Hint: notice that the turtle has already moved away from the ending point of the last 
-    square when the program ends.)
-    
-    .. image:: illustrations/five_squares.png
-    
-#.  Write a program to draw this. Assume the innermost square is 20 units per side,
-    and each successive square is 20 units bigger, per side, than the one inside it.   
-    
-    .. image:: illustrations/nested_squares.png
-
-#.  Write a void function ``draw_poly(t, n, sz)`` which makes a turtle 
-    draw a regular polygon. 
-    When called with ``draw_poly(tess, 8, 50)``, it will draw a shape like this:
-    
-    .. image:: illustrations/regularpolygon.png
-
-#. Draw this pretty pattern.
-
-   .. image:: illustrations/tess08.png    
-   
-#.  The two spirals in this picture differ only by the turn angle.  Draw both.
-
-    .. image:: illustrations/tess_spirals.png
-       :height: 240
-       
-#.  Write a void function ``draw_equitriangle(t, sz)`` which calls ``draw_poly`` from the 
-    previous question to have its turtle draw a equilateral triangle. 
-    
-#.  Write a fruitful function ``sum_to(n)`` that returns the sum of all integer numbers up to and 
-    including ``n``.   So ``sum_to(10)`` would be `1+2+3...+10` which would return the value 55.
-    
-#.  Write a function ``area_of_circle(r)`` which returns the area of a circle of radius ``r``.
-
-#.  Write a void function to draw a star, where the length of each side is 100 units.
-    (Hint: You should turn the turtle by 144 degrees at each point.)  
-    
-     .. image:: illustrations/star.png
-     
-#.  Extend your program above.  Draw five stars, but between each, pick up the pen, 
-    move forward by 350 units, turn right by 144, put the pen down, and draw the next star.
-    You'll get something like this:
-    
-    .. image:: illustrations/five_stars.png
-    
-    What would it look like if you didn't pick up the pen?

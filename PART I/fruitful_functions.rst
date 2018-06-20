@@ -1,22 +1,5 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".  
- 
-|
-
 Fruitful functions
 ==================
-
-.. index:: return statement, return value, temporary variable,
-           dead code, None, unreachable code
-
-.. index::
-    single: value 
-    single: variable; temporary 
 
 Return values
 -------------
@@ -25,8 +8,7 @@ The built-in functions we have used, such as ``abs``, ``pow``, ``int``, ``max``,
 have produced results. Calling each of these functions generates a value, which
 we usually assign to a variable or use as part of an expression.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         biggest = max(3, 7, 2, 5)
         x = abs(3 - 11) + 10 
@@ -37,8 +19,7 @@ In this chapter, we are going to write more functions that return values, which 
 will call *fruitful functions*, for want of a better name.  The first example
 is ``area``, which returns the area of a circle with the given radius:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def area(radius):
             b = 3.14159 * radius**2
@@ -50,8 +31,7 @@ the return expression, and then return it immediately as the result (the fruit)
 of this function.  The expression provided can be arbitrarily complicated, 
 so we could have written this function like this:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def area(radius):
             return 3.14159 * radius * radius
@@ -63,8 +43,7 @@ Sometimes it is useful to have multiple return statements, one in each branch
 of a conditional. We have already seen the built-in ``abs``, now we see how to
 write our own: 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def absolute_value(x):
             if x < 0:
@@ -77,8 +56,7 @@ write our own:
 Another way to write the above function is to leave out the ``else`` and just
 follow the ``if`` condition by the second ``return`` statement.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def absolute_value(x):
             if x < 0:
@@ -95,8 +73,7 @@ In a fruitful function, it is a good idea to ensure that every possible path
 through the program hits a ``return`` statement. The following version of
 ``absolute_value`` fails to do this:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def bad_absolute_value(x):
             if x < 0:
@@ -108,7 +85,7 @@ This version is not correct because if ``x`` happens to be 0, neither condition
 is true, and the function ends without hitting a ``return`` statement. In this
 case, the return value is a special value called **None**:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> print(bad_absolute_value(0))
         None
@@ -121,8 +98,7 @@ a function which looks through a list of words.  It should return the
 first 2-letter word.  If there is not one, it should return the 
 empty string:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def find_first_2_letter_word(xs):
             for wd in xs:
@@ -130,7 +106,7 @@ empty string:
                    return wd
             return ""
 
-    .. sourcecode:: python3
+    .. code-block:: python
              
         >>> find_first_2_letter_word(["This",  "is", "a", "dead", "parrot"])
         'is'    
@@ -139,10 +115,7 @@ empty string:
 
 Single-step through this code and convince yourself that in the first test case
 that we've provided, the function returns while processing the second element
-in the list: it does not have to traverse the whole list.  
-
-
-.. index:: scaffolding, incremental development
+in the list: it does not have to traverse the whole list.
 
 Program development
 -------------------
@@ -159,10 +132,7 @@ at a time.
 
 As an example, suppose we want to find the distance between two points, given
 by the coordinates (x\ :sub:`1`\ , y\ :sub:`1`\ ) and
-(x\ :sub:`2`\ , y\ :sub:`2`\ ).  By the Pythagorean theorem, the distance is:
-
-    .. image:: illustrations/distance_formula.png
-       :alt: Distance formula 
+(x\ :sub:`2`\ , y\ :sub:`2`\ ).
 
 The first step is to consider what a ``distance`` function should look like in
 Python. In other words, what are the inputs (parameters) and what is the output
@@ -173,8 +143,7 @@ parameters. The return value is the distance, which is a floating-point value.
 
 Already we can write an outline of the function that captures our thinking so far:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def distance(x1, y1, x2, y2):
             return 0.0
@@ -185,7 +154,7 @@ that we can test it before we make it more complicated.
 
 To test the new function, we call it with sample values:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> distance(1, 2, 4, 6)
         0.0
@@ -203,8 +172,7 @@ A logical first step in the computation is to find the differences
 x\ :sub:`2`\ - x\ :sub:`1`\  and y\ :sub:`2`\ - y\ :sub:`1`\ .  We will
 refer to those values using temporary variables named ``dx`` and ``dy``.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def distance(x1, y1, x2, y2):
             dx = x2 - x1
@@ -222,8 +190,7 @@ computation correctly. If not, there are only a few lines to check.
 
 Next we compute the sum of squares of ``dx`` and ``dy``:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def distance(x1, y1, x2, y2):
             dx = x2 - x1
@@ -237,8 +204,7 @@ should be 25).
 Finally, using the fractional exponent ``0.5`` to find the square root,
 we compute and return the result:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def distance(x1, y1, x2, y2):
             dx = x2 - x1
@@ -278,20 +244,17 @@ that is in the ``math`` module (we'll learn about modules shortly).  Which do yo
 prefer?  Which looks "closer" to the Pythagorean formula we started out with?
 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         import math
         
         def distance(x1, y1, x2, y2):
             return math.sqrt( (x2-x1)**2 + (y2-y1)**2 )  
    
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> distance(1, 2, 4, 6)
-        5.0   
-      
-.. index:: debugging   
+        5.0
    
 Debugging with ``print``
 ------------------------
@@ -327,9 +290,6 @@ it to.  Be clear about the following, however:
   your code to help debug and understand what is happening when the code runs,
   but these will then be removed once you get things working.
 
-   
-.. index:: composition, function composition
-
 Composition
 -----------
 
@@ -345,24 +305,21 @@ radius of the circle, which is the distance between the two points.
 Fortunately, we've just written a function, ``distance``, that does just that,
 so now all we have to do is use it:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         radius = distance(xc, yc, xp, yp)
 
 The second step is to find the area of a circle with that radius and return it.
 Again we will use one of our earlier functions:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         result = area(radius)
         return result
 
 Wrapping that up in a function, we get:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def area2(xc, yc, xp, yp):
             radius = distance(xc, yc, xp, yp)
@@ -377,14 +334,10 @@ debugging, and single-stepping through the code to inspect what is happening,
 but once the program is working, we can make it more concise by
 composing the function calls:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def area2(xc, yc, xp, yp):
             return area(distance(xc, yc, xp, yp))
-
-
-.. index:: Boolean function
 
 Boolean functions
 -----------------
@@ -392,8 +345,7 @@ Boolean functions
 Functions can return Boolean values, which is often convenient for hiding
 complicated tests inside functions. For example:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def is_divisible(x, y):
             """ Test if x is exactly divisible by y """
@@ -411,15 +363,14 @@ We can make the function more concise by taking advantage of the fact that the
 condition of the ``if`` statement is itself a Boolean expression. We can return
 it directly, avoiding the ``if`` statement altogether:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def is_divisible(x, y):
             return x % y == 0
 
 This session shows the new function in action:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> is_divisible(6, 4)
         False
@@ -428,8 +379,7 @@ This session shows the new function in action:
 
 Boolean functions are often used in conditional statements:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if is_divisible(x, y):
             ... # Do something ...
@@ -438,15 +388,12 @@ Boolean functions are often used in conditional statements:
 
 It might be tempting to write something like:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if is_divisible(x, y) == True:
 
 
 but the extra comparison is unnecessary.
-
-.. index:: style
 
 Programming with style
 ----------------------
@@ -523,8 +470,7 @@ determines the line number in the script where the call was made from.
 This allows us to print the line number of the test, which will help 
 when we want to identify which tests have passed or failed. 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         import sys
         
@@ -541,7 +487,7 @@ There is also some slightly tricky string formatting using the ``format`` method
 which we will gloss over for the moment, and cover in detail in a future chapter.  
 But with this function written, we can proceed to construct our test suite:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         def test_suite():
             """ Run the suite of tests for code in this module (this file). 
@@ -558,7 +504,7 @@ Here you'll see that we've constructed five tests in our test suite.  We could r
 against the first or second versions (the correct versions) of ``absolute_value``, 
 and we'd get output similar to the following: 
 
-    .. sourcecode:: pycon
+    .. code-block:: python
 
         Test at line 25 ok.
         Test at line 26 ok.
@@ -568,8 +514,7 @@ and we'd get output similar to the following:
 
 But let's say you change the function to an incorrect version like this:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
      
         def absolute_value(n):   # Buggy version
             """ Compute the absolute value of n """  
@@ -594,8 +539,6 @@ You may want to read about it, and use it instead of our test function.
 
 Glossary
 --------
-
-.. glossary::
 
     Boolean function
         A function that returns a Boolean value.  The only possible
@@ -647,235 +590,3 @@ Glossary
         going backwards by putting new bugs into previously working code.  
         The term *regression* testing is often used to capture this idea that we
         don't want to go backwards!         
-               
-
-Exercises
----------
-
-All of the exercises below should be added to a single file.  In that file, you should
-also add the ``test`` and ``test_suite`` scaffolding functions shown above, and then, 
-as you work through the exercises, add the new tests to your test suite.  
-(If you open the online version of the textbook,
-you can easily copy and paste the tests and the fragments of code into your Python editor.)
-
-After completing each exercise, confirm that all the tests pass.
-
-#.  The four compass points can be abbreviated by single-letter strings as "N", "E", "S", and "W".
-    Write a function ``turn_clockwise`` that takes one of these four compass points as 
-    its parameter, and returns the next compass point in the clockwise direction. 
-    Here are some tests that should pass::
-    
-       test(turn_clockwise("N") == "E")
-       test(turn_clockwise("W") == "N")
-    
-    You might ask `"What if the argument to the function is some other value?"`  For all
-    other cases, the function should return the value ``None``::
-
-       test(turn_clockwise(42) == None)
-       test(turn_clockwise("rubbish") == None)
-
-       
-#.  Write a function ``day_name`` that converts an integer number 0 to 6 into the name of
-    a day.  Assume day 0 is "Sunday".  Once again, return None if the arguments to the function
-    are not valid.  Here are some tests that should pass::
-   
-       test(day_name(3) == "Wednesday")
-       test(day_name(6) == "Saturday")
-       test(day_name(42) == None)
-
-       
-#.  Write the inverse function ``day_num`` which is given a day name, and returns its number::
-
-        test(day_num("Friday") == 5)
-        test(day_num("Sunday") == 0)
-        test(day_num(day_name(3)) == 3)
-        test(day_name(day_num("Thursday")) == "Thursday")
-        
-    Once again, if this function is given an invalid argument, it should return ``None``::
-    
-        test(day_num("Halloween") == None)
-    
-#.  Write a function that helps answer questions like '"Today is Wednesday.  I leave on holiday
-    in 19 days time.  What day will that be?"' So the function must take a day name and
-    a ``delta`` argument --- the number of days to add --- and should return the resulting day name::
-
-        test(day_add("Monday", 4) ==  "Friday")
-        test(day_add("Tuesday", 0) == "Tuesday")
-        test(day_add("Tuesday", 14) == "Tuesday")
-        test(day_add("Sunday", 100) == "Tuesday")
-        
-    `Hint: use the first two functions written above to help you write this one.` 
-        
-#.  Can your ``day_add`` function already work with negative deltas? For example,
-    -1 would be yesterday, or -7 would be a week ago::
-    
-        test(day_add("Sunday", -1) == "Saturday")
-        test(day_add("Sunday", -7) == "Sunday")
-        test(day_add("Tuesday", -100) == "Sunday")
-        
-    If your function already works, explain why.  If it does not work, make it work.
-    
-    `Hint:` Play with some cases of using the modulus function `%` 
-    (introduced at the beginning of the previous chapter).  Specifically, explore 
-    what happens to  ``x % 7``  when x is negative. 
-    
-#.  Write a function ``days_in_month`` which takes the name of a month, and returns the number
-    of days in the month.  Ignore leap years::
-
-       test(days_in_month("February") == 28)
-       test(days_in_month("December") == 31)
-       
-    If the function is given invalid arguments, it should return ``None``.
-           
-#. Write a function ``to_secs`` that converts hours, minutes and seconds to 
-   a total number of seconds.  Here are some tests that should pass::
-   
-       test(to_secs(2, 30, 10) == 9010)
-       test(to_secs(2, 0, 0) == 7200)
-       test(to_secs(0, 2, 0) == 120)
-       test(to_secs(0, 0, 42) == 42)
-       test(to_secs(0, -10, 10) == -590)
-       
-#. Extend ``to_secs`` so that it can cope with real values as inputs.  It
-   should always return an integer number of seconds (truncated towards zero):: 
-
-       test(to_secs(2.5, 0, 10.71) == 9010)
-       test(to_secs(2.433,0,0) == 8758)  
-       
-#. Write three functions that are the "inverses" of ``to_secs``:
-   
-   #. ``hours_in`` returns the whole integer number of hours
-      represented by a total number of seconds.
-      
-   #. ``minutes_in`` returns the whole integer number of left over minutes
-      in a total number of seconds, once the hours
-      have been taken out.
-      
-   #. ``seconds_in`` returns the left over seconds
-      represented by a total number of seconds.
-      
-   You may assume that the total number of seconds passed to these functions is an integer.
-   Here are some test cases::
-   
-       test(hours_in(9010) == 2)
-       test(minutes_in(9010) == 30)
-       test(seconds_in(9010) == 10)
-       
-   .. admonition:: It won't always be obvious what is wanted ...
-   
-       In the third case above, the requirement seems quite ambiguous and fuzzy.  But the test clarifies 
-       what we actually need to do.  
-       
-       Unit tests often have this secondary benefit of clarifying the specifications.   If you write your
-       own test suites, consider it part of the problem-solving process as you ask questions about what
-       you really expect to happen, and whether you've considered all the possible cases.
-       
-       Since our book is titled *How to Think Like ...* you might enjoy reading at least one reference about
-       thinking, and about fun ideas like *fluid intelligence*, a key ingredient in problem solving. 
-       See, for example, http://psychology.about.com/od/cognitivepsychology/a/fluid-crystal.htm.     
-       Learning Computer Science requires a good mix of both fluid and crystallized kinds of intelligence.
-       
-#. Which of these tests fail?  Explain why. ::
-
-       test(3 % 4 == 0)
-       test(3 % 4 == 3)
-       test(3 / 4 == 0)
-       test(3 // 4 == 0)
-       test(3+4  *  2 == 14)
-       test(4-2+2 == 0)
-       test(len("hello, world!") == 13)
-       
-#. Write a ``compare`` function that returns ``1`` if ``a > b``, ``0`` if
-   ``a == b``, and ``-1`` if ``a < b`` ::
-    
-       test(compare(5, 4) == 1)
-       test(compare(7, 7) == 0)
-       test(compare(2, 3) == -1)
-       test(compare(42, 1) == 1)
-
-#. Write a function called ``hypotenuse`` that
-   returns the length of the hypotenuse of a right triangle given the lengths
-   of the two legs as parameters::
-    
-       test(hypotenuse(3, 4) == 5.0)
-       test(hypotenuse(12, 5) == 13.0)
-       test(hypotenuse(24, 7) == 25.0)
-       test(hypotenuse(9, 12) == 15.0)
- 
-#. Write a function ``slope(x1, y1, x2, y2)`` that returns the slope of
-   the line through the points (x1, y1) and (x2, y2). Be sure your
-   implementation of ``slope`` can pass the following tests::
-    
-       test(slope(5, 3, 4, 2) == 1.0)
-       test(slope(1, 2, 3, 2) == 0.0)
-       test(slope(1, 2, 3, 3) == 0.5)
-       test(slope(2, 4, 1, 2) == 2.0)
-
-   Then use a call to ``slope`` in a new function named
-   ``intercept(x1, y1, x2, y2)`` that returns the y-intercept of the line
-   through the points ``(x1, y1)`` and ``(x2, y2)`` ::
-
-       test(intercept(1, 6, 3, 12) == 3.0) 
-       test(intercept(6, 1, 1, 6) == 7.0) 
-       test(intercept(4, 6, 12, 8) == 5.0) 
-
-#. Write a function called ``is_even(n)`` that takes an integer as an argument
-   and returns ``True`` if the argument is an **even number** and ``False`` if
-   it is **odd**.
-   
-   Add your own tests to the test suite.
-   
-#. Now write the function ``is_odd(n)`` that returns ``True`` when ``n`` is odd
-   and ``False`` otherwise. Include unit tests for this function too. 
-
-   Finally, modify it so that it uses a call to ``is_even`` to determine if its 
-   argument is an odd integer, and ensure that its test still pass.
-   
-#. Write a function ``is_factor(f, n)`` that passes these tests::
-    
-      test(is_factor(3, 12)) 
-      test(not is_factor(5, 12)) 
-      test(is_factor(7, 14)) 
-      test(not is_factor(7, 15)) 
-      test(is_factor(1, 15)) 
-      test(is_factor(15, 15)) 
-      test(not is_factor(25, 15))
-       
-   An important role of unit tests is that they can also
-   act as unambiguous "specifications" of what is expected.  These test
-   cases answer the question *Do we treat 1 and 15 as factors of 15?*    
- 
-#. Write ``is_multiple`` to satisfy these unit tests::
-    
-       test(is_multiple(12, 3))
-       test(is_multiple(12, 4))
-       test(not is_multiple(12, 5))
-       test(is_multiple(12, 6))
-       test(not is_multiple(12, 7))
-
-   Can you find a way to use ``is_factor`` in your definition of ``is_multiple``?
-
-#. Write the function ``f2c(t)`` designed to return the
-   integer value of the nearest degree Celsius for given temperature in
-   Fahrenheit. (*hint:* you may want to make use of the built-in function,
-   ``round``. Try printing ``round.__doc__`` in a Python shell or looking up
-   help for the ``round`` function, and
-   experimenting with it until you are comfortable with how it works.) ::
-    
-        test(f2c(212) == 100)     # Boiling point of water
-        test(f2c(32) == 0)        # Freezing point of water
-        test(f2c(-40) == -40)     # Wow, what an interesting case! 
-        test(f2c(36) == 2)
-        test(f2c(37) == 3)
-        test(f2c(38) == 3)
-        test(f2c(39) == 4)
-
-#. Now do the opposite: write the function ``c2f`` which converts Celsius to Fahrenheit:: 
-  
-        test(c2f(0) == 32)
-        test(c2f(100) == 212)
-        test(c2f(-40) == -40)
-        test(c2f(12) == 54)
-        test(c2f(18) == 64)
-        test(c2f(-48) == -54)
-

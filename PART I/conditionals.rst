@@ -1,29 +1,9 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
-
-|    
-    
 Conditionals
 ============
 
 Programs get really interesting when we can test conditions and change the 
 program behaviour depending on the outcome of the tests.  That's what this
-chapter is about. 
-
-.. index::
-    single: Boolean value
-    single: value; Boolean
-    single: Boolean expression
-    single: expression; Boolean
-    single: logical operator
-    single: operator; logical 
-    single: operator; comparison
-    single: comparison operator
+chapter is about.
 
 Boolean values and expressions
 ------------------------------
@@ -36,7 +16,7 @@ This is the basis of all modern computer logic.
 In Python, the two Boolean values are ``True`` and ``False`` (the
 capitalization must be exactly as shown), and the Python type is **bool**.
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> type(True)
         <class 'bool'> 
@@ -49,7 +29,7 @@ A **Boolean expression** is an expression that evaluates to produce a result whi
 a Boolean value.  For example, the operator ``==`` tests if two values are equal.  
 It produces (or *yields*) a Boolean value:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> 5 == (3 + 2)   # Is five equal 5 to the result of 3 + 2? 
         True
@@ -65,7 +45,7 @@ to ``True``; in the second statement, 5 is not equal to 6, so we get ``False``.
 The ``==`` operator is one of six common **comparison operators** which all produce 
 a ``bool`` result; here are all six:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         x == y               # Produce True if ... x is equal to y
         x != y               # ... x is not equal to y
@@ -84,7 +64,7 @@ Like any other types we've seen so far, Boolean values can be assigned to
 variables, printed, etc.
 
 
-    .. sourcecode:: python3
+    .. code-block:: python
      
         >>> age = 18
         >>> old_enough_to_get_driving_licence = age >= 17
@@ -92,11 +72,6 @@ variables, printed, etc.
         True
         >>> type(old_enough_to_get_driving_licence)
         <class 'bool'> 
-    
-
-.. index::
-    single: logical operator
-    single: operator; logical 
     
 Logical operators
 -----------------
@@ -171,7 +146,7 @@ Simplifying Boolean Expressions
 A set of rules for simplifying and rearranging expressions is called an *algebra*. 
 For example, we are all familiar with school algebra rules, such as:
 
-    .. sourcecode:: python3
+    .. code-block:: python
     
         n * 0 == 0
 
@@ -180,7 +155,7 @@ which provides rules for working with Boolean values.
 
 First, the ``and`` operator:
 
-      .. sourcecode:: pycon
+      .. code-block:: python
     
         x and False == False
         False and x == False
@@ -191,7 +166,7 @@ First, the ``and`` operator:
 
 Here are some corresponding rules for the ``or`` operator:
 
-      .. sourcecode:: pycon
+      .. code-block:: python
     
         x or False == x
         False or x == x
@@ -202,21 +177,9 @@ Here are some corresponding rules for the ``or`` operator:
         
 Two ``not`` operators cancel each other:
 
-      .. sourcecode:: pycon
+      .. code-block:: python
     
         not (not x) == x
- 
- 
-.. index:: conditional branching, conditional execution, if, elif, else,
-           if statement, compound statement, statement block, block, body,
-           pass statement
-
-.. index::
-    single: statement; if
-    single: compound statement; header
-    single: compound statement; body
-    single: conditional statement
-    single: statement; pass
 
 Conditional execution
 ---------------------
@@ -226,8 +189,7 @@ conditions and change the behavior of the program accordingly. **Conditional
 statements** give us this ability. The simplest form is the **if**
 statement:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if x % 2 == 0:
             print(x, " is even.")
@@ -244,12 +206,9 @@ the statements indented under the ``else`` clause get executed.
 
 .. admonition::  Flowchart of an if statement with an else clause
 
-   .. image:: illustrations/flowchart_if_else.png  
-
 The syntax for an ``if`` statement looks like this:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if BOOLEAN EXPRESSION:
             STATEMENTS_1        # Executed if condition evaluates to True
@@ -275,31 +234,24 @@ to have a section with no statements (usually as a place keeper, or scaffolding,
 for code we haven't written yet). In that case, we can use the ``pass`` statement, which
 does nothing except act as a placeholder.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if True:          # This is always True,
             pass          #   so this is always executed, but it does nothing
         else:
-            pass 
-
-
-.. index:: alternative execution, branch, wrapping code in a function
+            pass
 
 Omitting the ``else`` clause
 ----------------------------
 
 .. admonition::  Flowchart of an if statement with no else clause
 
-   .. image:: illustrations/flowchart_if_only.png
-
 Another form of the ``if`` statement is one in which the ``else`` clause is omitted entirely.  
 In this case, when the condition evaluates to ``True``, the statements are
 executed, otherwise the flow of execution continues to the statement after the ``if``.
 
       
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         if x < 0:
             print("The negative number ",  x, " is not valid here.")
@@ -321,11 +273,6 @@ usually placed near the top of our script.
     
     Notice too that ``else`` is not a statement.  The ``if`` statement has 
     two *clauses*, one of which is the (optional) ``else`` clause.
-      
-        
-.. index::
-    single: chained conditional 
-    single: conditional; chained
 
 Chained conditionals
 --------------------
@@ -334,9 +281,8 @@ Sometimes there are more than two possibilities and we need more than two
 branches. One way to express a computation like that is a **chained
 conditional**:
    
-    .. sourcecode:: python3
-        :linenos:
-        
+    .. code-block:: python
+
         if x < y:
             STATEMENTS_A
         elif x > y:
@@ -344,17 +290,14 @@ conditional**:
         else:
             STATEMENTS_C
 
-.. admonition:: Flowchart of this chained conditional 
- 
-    .. image:: illustrations/flowchart_chained_conditional.png        
+.. admonition:: Flowchart of this chained conditional
         
 ``elif`` is an abbreviation of ``else if``. Again, exactly one branch will be
 executed. There is no limit of the number of ``elif`` statements but only a
 single (and optional) final ``else`` statement is allowed and it must be the last
 branch in the statement:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if choice == "a":
             function_one()
@@ -370,11 +313,6 @@ and so on. If one of them is true, the corresponding branch executes, and the
 statement ends. Even if more than one condition is true, only the first true
 branch executes.
 
-
-.. index::
-    single: nested conditionals
-    single: conditionals; nested
-
 Nested conditionals
 -------------------
 
@@ -384,12 +322,7 @@ the previous example as follows:
 
 .. admonition:: Flowchart of this nested conditional
 
-   .. image:: illustrations/flowchart_nested_conditional.png
-
-..
-   
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if x < y:
             STATEMENTS_A
@@ -412,8 +345,7 @@ Logical operators often provide a way to simplify nested conditional
 statements. For example, we can rewrite the following code using a single
 conditional:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if 0 < x:            # Assume x is an int here
             if x < 10:
@@ -424,18 +356,10 @@ conditionals, so instead of the above which uses two ``if`` statements each with
 a simple condition, we could make a more complex condition using the ``and`` operator.  Now we only
 need a single ``if`` statement:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if 0 < x and x < 10:
             print("x is a positive single digit.")
-
-          
-            
-
-.. index::
-    single: return statement
-    single: statement; return
 
 The ``return`` statement
 ------------------------
@@ -445,8 +369,7 @@ function is fruitful or void, allows us to terminate the execution of a function
 before (or when) we reach the end. One reason to use an *early return* is if we detect an error
 condition:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def print_square_root(x):
             if x <= 0:
@@ -462,8 +385,6 @@ displays an error message and then uses ``return`` to exit the function. The
 flow of execution immediately returns to the caller, and the remaining lines of
 the function are not executed.
 
-
-                 
 Logical opposites
 -----------------
 
@@ -490,8 +411,7 @@ our intentions will usually be clearer if we can eliminate them.
 
 For example, if we wrote this Python:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if not (age >= 17):
             print("Hey, you're too young to get a driving licence!")
@@ -499,8 +419,7 @@ For example, if we wrote this Python:
 it would probably be clearer to use the simplification laws, and to 
 write instead:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if age < 17:
             print("Hey, you're too young to get a driving licence!")
@@ -509,7 +428,7 @@ write instead:
 Two powerful simplification laws (called de Morgan's laws) that are often
 helpful when dealing with complicated Boolean expressions are:
 
-      .. sourcecode:: pycon
+      .. code-block:: python
     
           not (x and y)  ==  (not x) or (not y) 
           not (x or y)   ==  (not x) and (not y)
@@ -519,8 +438,7 @@ lightsabre sword is charged to 90% or higher,
 and we have 100 or more energy units in our protective shield.  
 We find this fragment of Python code in the game:
 
-      .. sourcecode:: python3
-        :linenos:
+      .. code-block:: python
         
         if not ((sword_charge >= 0.90) and (shield_energy >= 100)):
             print("Your attack has no effect, the dragon fries you to a crisp!")
@@ -530,8 +448,7 @@ We find this fragment of Python code in the game:
 de Morgan's laws together with the logical opposites would let us
 rework the condition in a (perhaps) easier to understand way like this:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if (sword_charge < 0.90) or (shield_energy < 100):
             print("Your attack has no effect, the dragon fries you to a crisp!")
@@ -541,8 +458,7 @@ rework the condition in a (perhaps) easier to understand way like this:
 We could also get rid of the ``not`` by swapping around the ``then`` and
 ``else`` parts of the conditional.  So here is a third version, also equivalent:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         if (sword_charge >= 0.90) and (shield_energy >= 100):
             print("The dragon crumples in a heap. You rescue the gorgeous princess!")   
@@ -570,10 +486,6 @@ clarity in our creations.
     
     We think of our code as our creation, our work of art!  We make it great.
 
-.. index::
-    single: type conversion
-    single: type; conversion
-
 Type conversion
 ---------------
 
@@ -584,7 +496,7 @@ of another type into its own type. The ``int`` function, for example,
 takes any value and converts it to an integer, if possible, or complains
 otherwise:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> int("32")
         32
@@ -594,7 +506,7 @@ otherwise:
 ``int`` can also convert floating-point values to integers, but remember
 that it truncates the fractional part:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> int(-2.3)
         -2
@@ -608,7 +520,7 @@ that it truncates the fractional part:
 The ``float`` function converts integers and strings to floating-point
 numbers:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> float(32)
         32.0
@@ -625,7 +537,7 @@ inside the computer.
 The ``str`` function converts any argument given to it to type
 ``string``:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> str(32)
         '32'
@@ -641,9 +553,6 @@ The ``str`` function converts any argument given to it to type
 ``str`` will work with any value and convert it into a string.  As
 mentioned earlier, ``True`` is Boolean value; ``true`` is just an ordinary variable name,
 and is not defined here, so we get an error.
-
-
-.. index:: bar chart
 
 A Turtle Bar Chart
 ------------------
@@ -670,8 +579,7 @@ Ok, so can we get tess to draw a bar chart?  Let us start with some data to be c
 
 Corresponding to each data measurement, we'll draw a simple rectangle of that height, with a fixed width.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         def draw_bar(t, height):
             """ Get turtle t to draw one bar, of height. """
@@ -686,11 +594,7 @@ Corresponding to each data measurement, we'll draw a simple rectangle of that he
      
         ...    
         for v in xs:              # Assume xs and tess are ready 
-            draw_bar(tess, v)    
-
-..
-        
-    .. image:: illustrations/tess_bar_1.png
+            draw_bar(tess, v)
 
 Ok, not fantasically impressive, but it is a nice start!  The important thing here
 was the mental chunking, or how we broke the problem into smaller pieces. Our chunk
@@ -703,14 +607,11 @@ as the new third line of the body.
 We've put a little space in front of the number, and turned the 
 number into a string.  Without this extra space we tend
 to cramp our text awkwardly against the bar to the left.   
-The result looks a lot better now:
-
-    .. image:: illustrations/tess_bar_2.png
+The result looks a lot better now.
 
 And now we'll add two lines to fill each bar.  Our final program now looks like this:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
        
         def draw_bar(t, height):
             """ Get turtle t to draw one bar, of height. """
@@ -740,17 +641,10 @@ And now we'll add two lines to fill each bar.  Our final program now looks like 
 
         wn.mainloop()
 
-It produces the following, which is more satisfying:
-
-    .. image:: illustrations/tess_bar_3.png
-
-
 Mmm.  Perhaps the bars should not be joined to each other at the bottom.  We'll need to pick up the pen while making the gap between the bars.  We'll leave that as an exercise for you!
 
 Glossary
 --------
-
-.. glossary::
 
     block
         A group of consecutive statements with the same indentation.
@@ -818,116 +712,3 @@ Glossary
         statements in question are going to be used multiple times.  It is
         even more useful when it allows the programmer to express their mental
         chunking, and how they've broken a complex problem into pieces.
-
-
-Exercises
----------
-   
-#. Assume the days of the week are numbered 0,1,2,3,4,5,6 from Sunday to Saturday.
-   Write a function which is given the day number, and it returns the day name (a string).
- 
-#. You go on a wonderful holiday (perhaps to jail, if you don't like happy exercises)
-   leaving on day number 3 (a Wednesday).  You return home after 137 sleeps. 
-   Write a general version of the program which asks for the starting day number, and
-   the length of your stay, and it will tell you the name of day of the week you will return on.   
-   
-#. Give the logical opposites of these conditions
-    
-    #.  ``a > b`` 
-    #.  ``a >= b``
-    #.  ``a >= 18  and  day == 3``
-    #.  ``a >= 18  and  day != 3``
-    
-#.  What do these expressions evaluate to?
-
-        #.  ``3 == 3``
-        #.  ``3 != 3``
-        #.  ``3 >= 4``
-        #.  ``not (3 < 4)``
-    
-#.  Complete this truth table:
-
-
-          === === ======  =======
-          p   q   r       (not (p and q)) or r
-          === === ======  =======
-          F   F   F        ?
-          F   F   T        ?
-          F   T   F        ?
-          F   T   T        ?
-          T   F   F        ?
-          T   F   T        ?
-          T   T   F        ?
-          T   T   T        ?
-          === === ======  ======= 
-  
-   
-#.  Write a function which is given an exam mark, and it returns a string --- 
-    the grade for that mark --- according to this scheme:   
-    
-           =======   =====
-           Mark      Grade
-           =======   =====
-           >= 75     First   
-           [70-75)   Upper Second   
-           [60-70)   Second   
-           [50-60)   Third 
-           [45-50)   F1 Supp   
-           [40-45)   F2   
-           < 40      F3   
-           =======   =====    
-    
-    The square and round brackets denote closed and open intervals. 
-    A closed interval includes the number, and open interval excludes it.   So 39.99999 gets grade F3, but 40 gets grade F2.
-    Assume ::
-    
-       xs = [83, 75, 74.9, 70, 69.9, 65, 60, 59.9, 55, 50, 
-                            49.9, 45, 44.9, 40, 39.9, 2, 0] 
-    
-    Test your function by printing the mark and the grade for all the elements in this list.
-    
-#.  Modify the turtle bar chart program so that the pen is up for the small gaps between each bar.
-
-#.  Modify the turtle bar chart program so that the bar for any value 
-    of 200 or more is filled with red, values between [100 and 200) are filled with yellow,
-    and bars representing values less than 100 are filled with green.    
-  
-#.  In the turtle bar chart program, what do you expect to happen if one or more 
-    of the data values in the list is negative?   Try it out.  Change the
-    program so that when it prints the text value for the negative bars, it puts
-    the text below the bottom of the bar. 
-  
-#.  Write a function ``find_hypot`` which, given the length of two sides of a right-angled triangle, returns
-    the length of the hypotenuse.  (Hint:  ``x ** 0.5`` will return the square root.)
-    
-#.  Write a function ``is_rightangled`` which, given the length of three sides of a triangle, 
-    will determine whether the triangle is right-angled.  Assume that the third argument to the
-    function is always the longest side.  It will return ``True`` if the triangle 
-    is right-angled, or ``False`` otherwise.  
-    
-    Hint: Floating point arithmetic is not always exactly accurate,
-    so it is not safe to test floating point numbers for equality. 
-    If a good programmer wants to know whether
-    ``x`` is equal or close enough to ``y``, they would probably code it up as:
-    
-    .. sourcecode:: python3
-    
-      if  abs(x-y) < 0.000001:    # If x is approximately equal to y
-          ...    
-   
-#.  Extend the above program so that the sides can be given to the function in any order.
-
-#.  If you're intrigued by why floating point arithmetic is sometimes inaccurate, on a piece
-    of paper, divide 10 by 3 and write down the decimal result.  You'll find it does not terminate,
-    so you'll need an infinitely long sheet of paper.  The *representation* of numbers in computer 
-    memory or on your calculator has similar problems: memory is finite, and some digits may have to be discarded. So small
-    inaccuracies creep in.   Try this script:
-    
-   .. sourcecode:: python3
-      :linenos:
-   
-        import math     
-        a = math.sqrt(2.0)
-        print(a, a*a)                
-        print(a*a == 2.0)
-        
