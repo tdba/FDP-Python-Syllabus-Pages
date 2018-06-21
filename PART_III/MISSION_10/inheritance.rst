@@ -1,13 +1,3 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
-
-|
-    
 Inheritance
 ===========
 
@@ -65,8 +55,7 @@ added.
 We add the code in this chapter to our ``Cards.py`` file from the previous chapter.
 In the class definition, the name of the parent class appears in parentheses:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class Hand(Deck):
             pass
@@ -80,8 +69,7 @@ the name of the player that holds it. The name is an optional parameter with
 the empty string as a default value. ``cards`` is the list of cards in the
 hand, initialized to the empty list:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class Hand(Deck):
             def __init__(self, name=""):
@@ -92,8 +80,7 @@ For just about any card game, it is necessary to add and remove cards from the
 deck. Removing cards is already taken care of, since ``Hand`` inherits
 ``remove`` from ``Deck``. But we have to write ``add``:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class Hand(Deck):
             ...
@@ -120,8 +107,7 @@ to each hand.
 of cards to deal. If there are not enough cards in the deck, the method deals
 out all of the cards and stops:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class Deck:
             ...
@@ -154,7 +140,7 @@ Printing a Hand
 To print the contents of a hand, we can take advantage of the 
 ``__str__`` method inherited from ``Deck``. For example:
 
-    .. sourcecode:: python3
+    .. block-code:: python
         
         >>> deck = Deck()
         >>> deck.shuffle()
@@ -175,8 +161,7 @@ information in a ``Hand`` object we might want to include when we print one. To
 do that, we can provide a ``__str__`` method in the ``Hand`` class that
 overrides the one in the ``Deck`` class:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class Hand(Deck)
             ...
@@ -210,8 +195,7 @@ The ``CardGame`` class
 The ``CardGame`` class takes care of some basic chores common to all games,
 such as creating the deck and shuffling it:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class CardGame:
             def __init__(self):
@@ -257,8 +241,7 @@ abilities of a ``Hand``. We will define a new class, ``OldMaidHand``, that
 inherits from ``Hand`` and provides an additional method called
 ``remove_matches``:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class OldMaidHand(Hand):
             def remove_matches(self):
@@ -288,7 +271,7 @@ the hand, both cards are removed.
 
 The following example demonstrates how to use ``remove_matches``:
 
-    .. sourcecode:: python3
+    .. block-code:: python
         
         >>> game = CardGame()
         >>> hand = OldMaidHand("frank")
@@ -336,8 +319,7 @@ as a parameter.
 Since ``__init__`` is inherited from ``CardGame``, a new ``OldMaidGame`` object
 contains a new shuffled deck:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class OldMaidGame(CardGame):
             def play(self, names):
@@ -375,8 +357,7 @@ Some of the steps of the game have been separated into methods.
 ``remove_all_matches`` traverses the list of hands and invokes
 ``remove_matches`` on each:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class OldMaidGame(CardGame):
             ...
@@ -401,8 +382,7 @@ operator wraps it back around to 0.
 The method ``play_one_turn`` takes a parameter that indicates whose turn it is.
 The return value is the number of matches made during this turn:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class OldMaidGame(CardGame):
             ...
@@ -428,8 +408,7 @@ is random.
 The method ``find_neighbor`` starts with the player to the immediate left and
 continues around the circle until it finds a player that still has cards:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class OldMaidGame(CardGame):
             ...
@@ -451,7 +430,7 @@ The following output is from a truncated form of the game where only the top
 fifteen cards (tens and higher) were dealt to three players.  With this small
 deck, play stops after seven matches instead of twenty-five.
 
-    .. sourcecode:: python3
+    .. block-code:: python
         
         >>> import cards
         >>> game = cards.OldMaidGame()
@@ -530,8 +509,6 @@ So Jeff loses.
 Glossary
 --------
 
-.. glossary::
-
     inheritance
         The ability to define a new class that is a modified version of a
         previously defined class.
@@ -544,25 +521,3 @@ Glossary
         subclass.
 
 
-Exercises
----------
-
-#. Add a method, ``print_hands``, to the ``OldMaidGame`` class which traverses
-   ``self.hands`` and prints each hand.
-   
-#. Define a new kind of Turtle, ``TurtleGTX``,  that comes with some extra features:
-   it can jump forward a given distance, and it has an odometer that keeps track of 
-   how far the turtle has travelled since it came off the production line. (The parent
-   class has a number of synonyms like ``fd``, ``forward``, ``back``, 
-   ``backward``, and ``bk``: for this exercise, just focus on putting 
-   this functionality into the ``forward`` method.)  Think carefully about how 
-   to count the distance if the turtle is asked to move forward 
-   by a negative amount.  (We would not want
-   to buy a second-hand turtle whose odometer reading was faked because its previous
-   owner drove it backwards around the block too often. Try this in a car near you, and see
-   if the car's odometer counts up or down when you reverse.)
-   
-#. After travelling some random distance, your turtle should break down with a flat tyre. 
-   After this happens, raise an exception whenever ``forward`` is called.  
-   Also provide a ``change_tyre`` method that can fix the flat.  
-   

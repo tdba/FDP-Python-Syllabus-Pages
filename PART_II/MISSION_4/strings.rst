@@ -438,8 +438,7 @@ Looping and counting
 --------------------
 
 The following program counts the number of times the letter ``a`` appears in a
-string, and is another example of the counter pattern introduced in
-:ref:`counting`:
+string, and is another example of the counter pattern introduced in `counting`:
 
     .. code-block:: python
         

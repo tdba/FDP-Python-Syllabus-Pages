@@ -1,13 +1,3 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
- 
-|      
-    
 Recursion
 ========= 
 
@@ -29,21 +19,13 @@ where it can be defined in terms of itself.
 Let us start by looking at the famous Koch fractal.  An order 0 Koch fractal is simply
 a straight line of a given size.
 
-.. image:: illustrations/koch_0.png
-
 An order 1 Koch fractal is obtained like this: instead of drawing just one line,
-draw instead four smaller segments, in the pattern shown here:
-
-.. image:: illustrations/koch_1.png
+draw instead four smaller segments.
 
 Now what would happen if we repeated this Koch pattern again on each of the order 1 segments?  
-We'd get this order 2 Koch fractal:
+We'd get an order 2 Koch fractal.
 
-.. image:: illustrations/koch_2.png
-
-Repeating our pattern again gets us an order 3 Koch fractal:
-
-.. image:: illustrations/koch_3.png
+Repeating our pattern again gets us an order 3 Koch fractal.
 
 Now let us think about it the other way around.  To draw a Koch fractal
 of order 3, we can simply draw four order 2 Koch fractals.  But each of these
@@ -51,8 +33,7 @@ in turn needs four order 1 Koch fractals, and each of those in turn needs four
 order 0 fractals.  Ultimately, the only drawing that will take place is 
 at order 0. This is very simple to code up in Python:
 
-.. sourcecode:: python3
-    :linenos: 
+.. block-code:: python
    
     def koch(t, order, size):
         """
@@ -78,8 +59,7 @@ Let's make a simple observation and tighten up this code.  Remember that
 turning right by 120 is the same as turning left by -120.  So with a 
 bit of clever rearrangement, we can use a loop instead of lines 10-16:
 
-.. sourcecode:: python3
-    :linenos:
+.. block-code:: python
 
     def koch(t, order, size):
         if order == 0:                  
@@ -124,8 +104,7 @@ things easier for our next observations.
     fractal and a level 0 fractal, we could simplify the above code, quite mechanically,
     to a situation where there was no longer any recursion, like this:
     
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         def koch_0(t, size):
             t.forward(size)
@@ -152,13 +131,6 @@ things easier for our next observations.
     
     This might be a useful hint to build your understanding.  The mental goal
     is, however, to be able to do the abstraction!
-
-.. index::
-    single: data structure
-    single: data structure; recursive
-    single: recursive definition
-    single: definition; recursive
-    single: recursive data structure
        
 Recursive data structures
 -------------------------
@@ -190,14 +162,14 @@ Now suppose our job is to write a function that will sum all of the values in a
 nested number list. Python has a built-in function which finds the sum of a
 sequence of numbers:
 
-.. sourcecode:: python3
+.. block-code:: python
     
     >>> sum([1, 2, 8])
     11
 
 For our *nested number list*, however, ``sum`` will not work:
 
-.. sourcecode:: python3
+.. block-code:: python
     
     >>> sum([1, 2, [11, 13], 8])
     Traceback (most recent call last):
@@ -207,8 +179,6 @@ For our *nested number list*, however, ``sum`` will not work:
 
 The problem is that the third element of this list, ``[11, 13]``, is itself a
 list, so it cannot just be added to ``1``, ``2``, and ``8``.
-
-.. index:: recursion, recursive call, base case, infinite recursion, recursion; infinite
 
 Processing recursive number lists
 ---------------------------------
@@ -221,8 +191,7 @@ which are themselves sub-lists.
 Thanks to recursion, the Python code needed to sum the values of a nested number list is
 surprisingly short:
 
-.. sourcecode:: python3
-    :linenos: 
+.. block-code:: python
     
     def r_sum(nested_num_list):
         tot = 0
@@ -232,17 +201,6 @@ surprisingly short:
             else:
                 tot += element
         return tot
-
-.. Victor: Type comparison in this chapter is done using the `type` function and
-   `==` operator. The `isinstance` function is the preferred way to
-   compare types but it hasn't been introduced yet.
-   
-   Peter: I prefer teaching this style: once again Python has different ways
-   to do the same thing. What I dislike about isinstance is that one has
-   to remember the typename to use the function.  So I cannot easily recall
-   whether the type([]) is `list`, `lst`, `"lst"` or `"list"`.  And
-   if I use a variable called `list` or `str` in my program, isinstance breaks.
-   (Well, I suppose it also breaks if I use `type` as a variable!) 
 
 The body of ``r_sum`` consists mainly of a ``for`` loop that traverses
 ``nested_num_list``. If ``element`` is a numerical value (the ``else`` branch),
@@ -261,8 +219,7 @@ science.
 A slightly more complicated problem is finding the largest value in our nested
 number list:
 
-.. sourcecode:: python3
-    :linenos:
+.. block-code:: python
     
     def r_max(nxs):
         """ 
@@ -303,8 +260,7 @@ Again here we have a base case at line 13.  If we don't supply a base case,
 Python stops after reaching a maximum recursion depth and returns a runtime
 error.  See how this happens, by running this little script which we will call `infinite_recursion.py`: 
 
-.. sourcecode:: python3
-    :linenos:
+.. block-code:: python
     
     def recursion_depth(number):
         print("{0}, ".format(number), end="")
@@ -320,8 +276,6 @@ long traceback that ends with a message like the following::
 We would certainly never want something like this to happen to a user of one of
 our programs, so in the next chapter we'll see how
 errors, any kinds of errors, are handled in Python.
-
-.. index:: fibonacci numbers
 
 Case study: Fibonacci numbers  
 ----------------------------- 
@@ -346,8 +300,7 @@ as the sum of the previous two terms::
 
 This translates very directly into some Python: 
 
-.. sourcecode:: python3
-    :linenos:
+.. block-code:: python
 
     def fib(n):
         if n <= 1:
@@ -357,8 +310,7 @@ This translates very directly into some Python:
 
 This is a particularly inefficient algorithm, and we'll show one way of fixing it when we learn about dictionaries:
 
-.. sourcecode:: python3
-    :linenos:
+.. block-code:: python
     
     import time
     t0 = time.clock()
@@ -379,8 +331,7 @@ Example with recursive directories and files
 
 The following program lists the contents of a directory and all its subdirectories.
 
-.. sourcecode:: python3
-    :linenos:
+.. block-code:: python
     
     import os
 
@@ -423,118 +374,9 @@ Calling the function ``print_files`` with some folder name will produce output s
     | | alien2.png
     | | alien3.png
     ...    
-
-An animated fractal, using PyGame
----------------------------------
-
-Here we have a tree fractal pattern of order 8.  We've labelled some of the edges,
-showing the depth of the recursion at which each edge was drawn.  
-
-.. image:: illustrations/recursivetree1.png
-
-In the tree above, the angle of deviation from the trunk is 30 degrees. 
-Varying that angle gives other interesting shapes, for example, with
-the angle at 90 degrees we get this:
- 
-.. image:: illustrations/recursivetree2.png
-
-An interesting animation occurs if we generate and draw trees very rapidly,
-each time varying the angle a little. Although the Turtle module can draw trees
-like this quite elegantly, we could struggle for good frame rates.  
-So we'll use PyGame instead, with a few embellishments and observations. 
-(Once again, we suggest you cut and paste this code into your Python environment.)  
-
-.. sourcecode:: python3
-    :linenos:
-
-    import pygame, math
-    pygame.init()           # prepare the pygame module for use
-
-    # Create a new surface and window.
-    surface_size = 1024
-    main_surface = pygame.display.set_mode((surface_size,surface_size))
-    my_clock = pygame.time.Clock()
-
-    
-    def draw_tree(order, theta, sz, posn, heading, color=(0,0,0), depth=0):
-
-       trunk_ratio = 0.29       # How big is the trunk relative to whole tree?
-       trunk = sz * trunk_ratio # length of trunk 
-       delta_x = trunk * math.cos(heading)
-       delta_y = trunk * math.sin(heading)
-       (u, v) = posn
-       newpos = (u + delta_x, v + delta_y)
-       pygame.draw.line(main_surface, color, posn, newpos)
-
-       if order > 0:   # Draw another layer of subtrees
-
-          # These next six lines are a simple hack to make the two major halves
-          # of the recursion different colors. Fiddle here to change colors
-          # at other depths, or when depth is even, or odd, etc.
-          if depth == 0:
-              color1 = (255, 0, 0)
-              color2 = (0, 0, 255)
-          else:
-              color1 = color
-              color2 = color
-
-          # make the recursive calls to draw the two subtrees
-          newsz = sz*(1 - trunk_ratio)
-          draw_tree(order-1, theta, newsz, newpos, heading-theta, color1, depth+1)
-          draw_tree(order-1, theta, newsz, newpos, heading+theta, color2, depth+1)
-
-
-    def gameloop():
-    
-        theta = 0
-        while True:
-
-            # Handle evente from keyboard, mouse, etc.
-            ev = pygame.event.poll()
-            if ev.type == pygame.QUIT:
-                break;
-
-            # Updates - change the angle
-            theta += 0.01
-
-            # Draw everything
-            main_surface.fill((255, 255, 0))
-            draw_tree(9, theta, surface_size*0.9, (surface_size//2, surface_size-50), -math.pi/2)
-
-            pygame.display.flip()
-            my_clock.tick(120)
-
-            
-    gameloop()
-    pygame.quit()
-
-* The ``math`` library works with angles in radians rather than degrees.
-* Lines 14 and 15 uses some high school trigonmetry.  From the length of the desired line (``trunk``), 
-  and its desired angle, ``cos`` and ``sin`` help us to calculate the ``x`` and ``y`` 
-  distances we need to move. 
- 
-* Lines 22-30 are unnecessary, except if we want a colorful tree.
-* In the main game loop at line 49 we change the angle on every frame, and redraw
-  the new tree.  
-* Line 18 shows that PyGame can also draw lines, and plenty more.  Check out the
-  documentation.  For example, drawing a small circle at each branch point of the
-  tree can be accomplished by adding this line directly below line 18:
-  
-  .. sourcecode:: python3
-    :linenos: 
-    
-    pygame.draw.circle(main_surface, color, (int(posn[0]), int(posn[1])), 3)
-  
-
-Another interesting effect --- instructive too, if you wish to reinforce the idea
-of different instances of the function being called at different depths of recursion ---
-is to create a list of colors, and let each recursive depth use a different color 
-for drawing. (Use the depth of the recursion to index the list of colors.)
     
 Glossary
 --------
-
-.. glossary::
 
     base case
         A branch of the conditional statement in a recursive function that does
@@ -559,113 +401,6 @@ Glossary
         provide an elegant way to express complex data structures, like a directory
         that can contain other directories, or a menu that can contain other menus.
 
-Exercises
----------
-   
-#. Modify the Koch fractal program so that it draws a Koch snowflake, like this:
-
-   .. image:: illustrations/koch_snowflake.png
-   
-   |
-   
-   .. index:: fractal; Cesaro torn square
-   
-#. a.  Draw a Cesaro torn line fractal, of the order given by the user.  
-       We show four different lines of orders 0,1,2,3.     
-       In this example, the angle of the tear is 10 degrees.   
-      
-       .. image:: illustrations/cesaro_torn_line.png
-       
-   b.  Four lines make a square.  Use the code in part a) to draw cesaro squares.
-       Varying the angle gives interesting effects --- experiment a bit, 
-       or perhaps let the user input the angle of the tear. 
-
-       .. image:: illustrations/cesaro_torn_square.png
-   
-   .. index:: fractal; Sierpinski triangle
-   
-   c. (For the mathematically inclined). In the squares shown here, the higher-order drawings
-      become a little larger. (Look at the bottom lines of each square - they're not aligned.)
-      This is because we just halved the drawn part of the line for each recursive subproblem.  
-      So we've "grown" the overall square by the width of the tear(s).  
-      Can you solve the geometry problem so that the total size of the subproblem case 
-      (including the tear) remains exactly the same size as the original?
- 
-   |
-   
-#. A Sierpinski triangle of order 0 is an equilateral triangle.  
-   An order 1 triangle can be drawn by drawing 3 smaller triangles 
-   (shown slightly disconnected here, just to help our understanding).   
-   Higher order 2 and 3 triangles are also shown.  
-   Draw Sierpinski triangles of any order input by the user.   
-   
-   .. image:: illustrations/sierpinski.png
-  
-#. Adapt the above program to change the color of its three sub-triangles at some depth
-   of recursion. The illustration below shows two cases: on the left, the color is changed at depth 0
-   (the outmost level of recursion), on the right, at depth 2. If the user supplies a negative
-   depth, the color never changes.
-   (Hint: add a new optional parameter ``colorChangeDepth`` (which defaults to -1), and make this one
-   smaller on each recursive subcall. Then, in the section of code before you recurse, test
-   whether the parameter is zero, and change color.)
-
-   .. image:: illustrations/sierpinski_color.png
-   
-   
-#. Write a function, ``recursive_min``, that returns the smallest value in a
-   nested number list.  Assume there are no empty lists or sublists:
-
-   .. sourcecode:: python3
-    
-        test(recursive_min([2, 9, [1, 13], 8, 6]) == 1)
-        test(recursive_min([2, [[100, 1], 90], [10, 13], 8, 6]) == 1)
-        test(recursive_min([2, [[13, -7], 90], [1, 100], 8, 6]) == -7)
-        test(recursive_min([[[-13, 7], 90], 2, [1, 100], 8, 6]) == -13)
- 
-#. Write a function ``count`` that returns the number of occurrences
-   of ``target`` in  a nested list:
-
-   .. sourcecode:: python3
-    
-        test(count(2, []), 0)
-        test(count(2, [2, 9, [2, 1, 13, 2], 8, [2, 6]]) == 4)
-        test(count(7, [[9, [7, 1, 13, 2], 8], [7, 6]]) == 2)
-        test(count(15, [[9, [7, 1, 13, 2], 8], [2, 6]]) == 0)
-        test(count(5, [[5, [5, [1, 5], 5], 5], [5, 6]]) == 6)
-        test(count("a", 
-             [["this",["a",["thing","a"],"a"],"is"], ["a","easy"]]) == 4)
- 
-#. Write a function ``flatten`` that returns a simple list  
-   containing all the values in a nested list:
-
-   .. sourcecode:: python3
-    
-       test(flatten([2,9,[2,1,13,2],8,[2,6]]) == [2,9,2,1,13,2,8,2,6])
-       test(flatten([[9,[7,1,13,2],8],[7,6]]) == [9,7,1,13,2,8,7,6])
-       test(flatten([[9,[7,1,13,2],8],[2,6]]) == [9,7,1,13,2,8,2,6])
-       test(flatten([["this",["a",["thing"],"a"],"is"],["a","easy"]]) ==
-                     ["this","a","thing","a","is","a","easy"])
-       test(flatten([]) == [])
-       
-#. Rewrite the fibonacci algorithm without using recursion. Can you find bigger
-   terms of the sequence?  Can you find ``fib(200)``?
-   
-#. Use help to find out what ``sys.getrecursionlimit()`` and
-   ``sys.setrecursionlimit(n)`` do. Create several experiments similar to what
-   was done in `infinite_recursion.py`
-   to test your understanding of how these module functions work.
- 
-   
-#. Write a program that walks a directory structure (as in the last section of
-   this chapter), but instead of printing filenames, it returns a list of all
-   the full paths of files in the directory or the subdirectories.  (Don't include
-   directories in this list --- just files.)  For example, the output list might
-   have elements like this::
-   
-      ["C:\Python31\Lib\site-packages\pygame\docs\ref\mask.html",
-       "C:\Python31\Lib\site-packages\pygame\docs\ref\midi.html",
-       ...
-       "C:\Python31\Lib\site-packages\pygame\examples\aliens.py",
        ...
        "C:\Python31\Lib\site-packages\pygame\examples\data\boom.wav", 
        ... ]   
@@ -687,3 +422,4 @@ Exercises
 
    *Hint #2:* Look in the ``os`` module for a function that removes
    files.
+

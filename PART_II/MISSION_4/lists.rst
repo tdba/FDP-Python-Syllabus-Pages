@@ -153,7 +153,7 @@ other sequences:
     
 Using this produces a more elegant version of the nested loop program we previously used 
 to count the number of students doing Computer Science
-in the section :ref:`nested_data`:  
+in the section `nested_data`:  
 
     .. code-block:: python
         

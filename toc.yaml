@@ -60,6 +60,32 @@ PART_II:
       content:
         dictionaries.rst:
           title: Dictionaries
-#PART_III:
-  #title: Objects
-  #content:
+PART_III:
+  title: Objects
+  content:
+    MISSION_8:
+      title: Mission 8 - Recursion and higher order
+      content: 
+        recursion.rst:
+          title: Recursion
+    MISSION_9:
+      title: Mission 9 - Class and objects
+      content:
+        classes_and_objects_I.rst:
+          title: Basics of class and objects
+        classes_and_objects_II.rst:
+          title: Advanced class and objects
+    MISSION_10:
+      title: Mission 10 - Polymorphism and inheritance
+      content:
+        even_more_oop.rst:
+          title: Even more OOP
+        collections.rst:
+          title: Collections
+        inheritance.rst:
+          title: Inheritance
+    MISSION_11:
+      title: Mission 11 - Linked lists
+      content:
+        linked_lists.rst:
+          title: Linked lists

@@ -206,7 +206,7 @@ the statements indented under the ``else`` clause get executed.
 
 .. admonition::  Flowchart of an if statement with an else clause
 
-The syntax for an ``if`` statement looks like this:
+	The syntax for an ``if`` statement looks like this:
 
     .. code-block:: python
         
@@ -246,9 +246,9 @@ Omitting the ``else`` clause
 
 .. admonition::  Flowchart of an if statement with no else clause
 
-Another form of the ``if`` statement is one in which the ``else`` clause is omitted entirely.  
-In this case, when the condition evaluates to ``True``, the statements are
-executed, otherwise the flow of execution continues to the statement after the ``if``.
+	Another form of the ``if`` statement is one in which the ``else`` clause is omitted entirely.  
+	In this case, when the condition evaluates to ``True``, the statements are
+	executed, otherwise the flow of execution continues to the statement after the ``if``.
 
       
     .. code-block:: python
