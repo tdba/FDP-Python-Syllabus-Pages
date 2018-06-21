@@ -1,34 +1,34 @@
 PART I:
   title: Introduction
   content:
-	MISSION 0:
-	  title: Mission 0 - APP 0
-	  content: 
-		way_of_the_program.rst:
-		  title: Introduction to programming
-	MISSION 1:
-	  title: Mission 1 - Basics
-	  content:
-		variables_expressions_statements.rst:
-		  title: Variables and expressions
-		hello_little_turtles.rst:
-		  title: Turtle
-		modules.rst:
-		  title: Modules
-	MISSION 2:
-	  title: Mission 2 - Control structures
-	  content:
-		conditionals.rst:
-		  title: Conditions
-		iteration.rst:
-		  title: Iteration
-	MISSION 3:
-	  title: Mission 3 - Functions
-	  content:
-		functions.rst:
-		  title: Functions
-		fruitful_functions.rst:
-		  title: Fruitful functions
+    MISSION 0:
+      title: Mission 0 - APP 0
+      content: 
+        way_of_the_program.rst:
+          title: Introduction to programming
+    MISSION 1:
+      title: Mission 1 - Basics
+      content:
+        variables_expressions_statements.rst:
+          title: Variables and expressions
+        hello_little_turtles.rst:
+          title: Turtle
+        modules.rst:
+          title: Modules
+    MISSION 2:
+      title: Mission 2 - Control structures
+      content:
+        conditionals.rst:
+          title: Conditions
+        iteration.rst:
+          title: Iteration
+    MISSION 3:
+      title: Mission 3 - Functions 
+      content:
+        functions.rst:
+          title: Functions
+        fruitful_functions.rst:
+          title: Fruitful functions
 PART II:
   title: Data Structures
   content:
