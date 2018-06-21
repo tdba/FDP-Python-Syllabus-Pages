@@ -56,7 +56,7 @@ bit more effort, but it has advantages that will be apparent soon.
 We'll want our points to each have an ``x`` and a ``y`` attribute,
 so our first class definition looks like this:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Point:
             """ Point class represents and manipulates x,y coords. """
@@ -88,7 +88,7 @@ the newly created object that needs to be initialized.
 
 So let's use our new ``Point`` class now:
 
-    .. block-code:: python
+    .. code-block:: python
         
         p = Point()         # Instantiate an object of type Point
         q = Point()         # Make a second point
@@ -97,7 +97,7 @@ So let's use our new ``Point`` class now:
     
 This program prints: 
 
-    .. block-code:: python
+    .. code-block:: python
     
        0 0 0 0
    
@@ -107,7 +107,7 @@ attributes called ``x`` and ``y`` for each, and gave them both the value 0.
 This should look familiar --- we've used classes before to create
 more than one object:   
 
-    .. block-code:: python
+    .. code-block:: python
 
         from turtle import Turtle    
         
@@ -136,7 +136,7 @@ Like real world objects, object instances have both attributes and methods.
 
 We can modify the attributes in an instance using dot notation:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> p.x = 3
         >>> p.y = 4
@@ -151,7 +151,7 @@ Each attribute refers to a number.
 
 We can access the value of an attribute using the same syntax:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> print(p.y)
         4
@@ -169,7 +169,7 @@ unambiguously.
 We can use dot notation as part of any expression, so the following statements
 are legal:
 
-    .. block-code:: python
+    .. code-block:: python
         
         print("(x={0}, y={1})".format(p.x, p.y))
         distance_squared_from_origin = p.x * p.x + p.y * p.y
@@ -182,7 +182,7 @@ Improving our initializer
 
 To create a point at position (7, 6) currently needs three lines of code:
 
-    .. block-code:: python
+    .. code-block:: python
         
         p = Point()
         p.x = 7
@@ -191,7 +191,7 @@ To create a point at position (7, 6) currently needs three lines of code:
 We can make our class constructor more general by placing extra parameters into
 the ``__init__`` method, as shown in this example:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Point:
             """ Point class represents and manipulates x,y coords. """
@@ -207,7 +207,7 @@ The ``x`` and ``y`` parameters here are both optional.  If the caller does not
 supply arguments, they'll get the default values of 0.  Here is our improved class 
 in action:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> p = Point(4, 2)
         >>> q = Point(6, 3)
@@ -255,7 +255,7 @@ attribute, methods are accessed using dot notation.
 Let's add another method, ``distance_from_origin``, to see better how methods
 work:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Point:
             """ Create a new Point, at coordinates x, y """
@@ -272,7 +272,7 @@ work:
 Let's create a few point instances, look at their attributes, and call our new
 method on them: (We must run our program first, to make our ``Point`` class available to the interpreter.)
 
-    .. block-code:: python
+    .. code-block:: python
 
         >>> p = Point(3, 4)
         >>> p.x
@@ -318,7 +318,7 @@ now have a reference, but there is only one turtle!
 
 Here is a simple function involving our new ``Point`` objects:
  
-    .. block-code:: python
+    .. code-block:: python
         
         
         def print_point(pt):  
@@ -339,7 +339,7 @@ is to add a new method to the class.  And we don't like chatterbox methods that 
 can produce a string representation of itself.  Let's initially 
 call it ``to_string``:
 
-    .. block-code:: python
+    .. code-block:: python
 
         class Point:
             # ...
@@ -349,7 +349,7 @@ call it ``to_string``:
 
 Now we can say: 
 
-    .. block-code:: python
+    .. code-block:: python
     
         >>> p = Point(3, 4)
         >>> print(p.to_string())
@@ -360,7 +360,7 @@ turn our object into a string?  Yes!  And doesn't ``print``
 automatically use this when printing things?  Yes again! 
 But these automatic mechanisms do not yet do exactly what we want: 
 
-    .. block-code:: python
+    .. code-block:: python
     
        >>> str(p)    
        '<__main__.Point object at 0x01F9AA10>'
@@ -372,7 +372,7 @@ method ``__str__`` instead of ``to_string``, the Python interpreter
 will use our code whenever it needs to convert a ``Point`` to a string.  
 Let's re-do this again, now:
 
-    .. block-code:: python
+    .. code-block:: python
 
             class Point:
                 # ...
@@ -382,7 +382,7 @@ Let's re-do this again, now:
                 
 and now things are looking great!  
 
-    .. block-code:: python
+    .. code-block:: python
 
         >>> str(p)     # Python now uses the __str__ method that we wrote.
         (3, 4)
@@ -396,7 +396,7 @@ Instances as return values
 Functions and methods can return instances. For example, given two ``Point`` objects,
 find their midpoint.  First we'll write this as a regular function:
 
-    .. block-code:: python
+    .. code-block:: python
 
         def midpoint(p1, p2):
             """ Return the midpoint of points p1 and p2 """        
@@ -406,7 +406,7 @@ find their midpoint.  First we'll write this as a regular function:
 
 The function creates and returns a new ``Point`` object:
 
-    .. block-code:: python
+    .. code-block:: python
 
         >>> p = Point(3, 4)
         >>> q = Point(5, 12)
@@ -418,7 +418,7 @@ The function creates and returns a new ``Point`` object:
 Now let us do this as a method instead.  Suppose we have a point object,
 and wish to find the midpoint halfway between it and some other target point:
 
-    .. block-code:: python
+    .. code-block:: python
 
         class Point:
            # ...
@@ -432,7 +432,7 @@ and wish to find the midpoint halfway between it and some other target point:
 This method is identical to the function, aside from some renaming.
 It's usage might be like this:
 
-    .. block-code:: python
+    .. code-block:: python
 
         >>> p = Point(3, 4)
         >>> q = Point(5, 12)

@@ -9,7 +9,7 @@ that records the time of day. We'll provide an ``__init__`` method to ensure
 that every instance is created with appropriate attributes and initialization.  
 The class definition looks like this:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class MyTime:
         
@@ -21,7 +21,7 @@ The class definition looks like this:
 
 We can instantiate a new ``MyTime`` object:  
 
-    .. block-code:: python
+    .. code-block:: python
         
         tim1 = MyTime(11, 59, 30)
 
@@ -37,7 +37,7 @@ two kinds of functions: pure functions and modifiers.
 
 The following is a rough version of ``add_time``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def add_time(t1, t2):
             h = t1.hours + t2.hours
@@ -57,7 +57,7 @@ objects: ``current_time``, which contains the current time; and ``bread_time``,
 which contains the amount of time it takes for a breadmaker to make bread. Then
 we'll use ``add_time`` to figure out when the bread will be done.  
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> current_time = MyTime(9, 14, 30)
         >>> bread_time = MyTime(3, 35, 0)
@@ -75,7 +75,7 @@ hours column.
 
 Here's a better version of the function:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def add_time(t1, t2):
             
@@ -109,7 +109,7 @@ Functions that work this way are called **modifiers**.
 ``increment``, which adds a given number of seconds to a ``MyTime`` object, would
 be written most naturally as a modifier. A rough draft of the function looks like this:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def increment(t, secs):
             t.seconds += secs
@@ -131,7 +131,7 @@ greater than sixty? In that case, it is not enough to carry once; we have to
 keep doing it until ``seconds`` is less than sixty. One solution is to replace
 the ``if`` statements with ``while`` statements:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def increment(t, seconds):
             t.seconds += seconds
@@ -155,7 +155,7 @@ Once again, OOP programmers would prefer to put functions that work with
 to a method. To save space, we will leave out previously defined methods, 
 but you should keep them in your version:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class MyTime:
             # Previous method definitions here...
@@ -177,7 +177,7 @@ the class definition and (optionally) change the name of the first parameter to
 
 Now we can invoke ``increment`` using the syntax for invoking a method.
 
-    .. block-code:: python
+    .. code-block:: python
         
         current_time.increment(500)
 
@@ -203,7 +203,7 @@ that the computer knows how to do arithmetic with numbers.  The following
 method is added to the ``MyTime`` class to convert any instance into 
 a corresponding number of seconds:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class MyTime:
             # ...
@@ -219,7 +219,7 @@ Now, all we need is a way to convert from an integer back to a ``MyTime`` object
 Supposing we have ``tsecs`` seconds, some integer division and mod operators
 can do this for us:
 
-    .. block-code:: python
+    .. code-block:: python
 
         hrs = tsecs // 3600
         leftoversecs = tsecs % 3600
@@ -239,7 +239,7 @@ could be 2 hours 70 minutes and 140 seconds.)
 
 Let's rewrite a more powerful initializer for ``MyTime``:
 
-    .. block-code:: python
+    .. code-block:: python
 
          class MyTime:
             # ...
@@ -259,7 +259,7 @@ Let's rewrite a more powerful initializer for ``MyTime``:
 
 Now we can rewrite ``add_time`` like this:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def add_time(t1, t2):
             secs = t1.to_seconds() + t2.to_seconds()
@@ -323,7 +323,7 @@ Another example
 The ``after`` function should compare two times, and tell us whether the first
 time is strictly after the second, e.g.
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> t1 = MyTime(10, 55, 12)
         >>> t2 = MyTime(10, 48, 22)
@@ -334,7 +334,7 @@ This is slightly more complicated because it operates on two ``MyTime``
 objects, not just one.  But we'd prefer to write it as a method anyway --- 
 in this case, a method on the first argument:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class MyTime:
             # Previous method definitions here...
@@ -357,7 +357,7 @@ in this case, a method on the first argument:
 
 We invoke this method on one object and pass the other as an argument:
 
-    .. block-code:: python
+    .. code-block:: python
         
         if current_time.after(done_time):
             print("The bread will be done before it starts!")
@@ -372,7 +372,7 @@ line 16 is only executed if both times have the same hours and the same minutes.
 Could we make this easier by using our "Aha!" insight and extra work from earlier, 
 and reducing both times to integers?   Yes, with spectacular results!
 
-    .. block-code:: python
+    .. code-block:: python
        
         class MyTime:
             # Previous method definitions here...
@@ -399,7 +399,7 @@ own user-defined types.
 For example, to override the addition operator ``+``, we can provide a method named
 ``__add__``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class MyTime:
             # Previously defined methods here...
@@ -415,7 +415,7 @@ that contains their sum.
 Now, when we apply the ``+`` operator to ``MyTime`` objects, Python invokes
 the ``__add__`` method that we have written:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> t1 = MyTime(1, 15, 42) 
         >>> t2 = MyTime(3, 50, 30)
@@ -431,7 +431,7 @@ For the next couple of exercises we'll go back to the ``Point`` class defined
 in our first chapter about objects, and overload some of its operators.   Firstly, adding
 two points adds their respective (x, y) coordinates:
 
-    .. block-code:: python
+    .. code-block:: python
 
         class Point:
             # Previously defined methods here...
@@ -448,7 +448,7 @@ assumes that the other operand is also a ``Point``. It computes the
 **dot product** of the two Points, defined according to the rules of linear
 algebra:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def __mul__(self, other):
             return self.x * other.x + self.y * other.y
@@ -457,7 +457,7 @@ If the left operand of ``*`` is a primitive type and the right operand is a
 ``Point``, Python invokes ``__rmul__``, which performs
 **scalar multiplication**:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def __rmul__(self, other):
             return Point(other * self.x,  other * self.y)
@@ -468,7 +468,7 @@ floating-point number, then ``__rmul__`` will yield an error.
 
 This example demonstrates both kinds of multiplication:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> p1 = Point(3, 4)
         >>> p2 = Point(5, 7)
@@ -482,7 +482,7 @@ What happens if we try to evaluate ``p2 * 2``? Since the first parameter is a
 ``__mul__``, the program tries to access the ``x`` coordinate of ``other``,
 which fails because an integer has no attributes:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> print(p2 * 2)
         AttributeError: 'int' object has no attribute 'x'
@@ -506,7 +506,7 @@ For example, the ``multadd`` operation (which is common in linear algebra)
 takes three parameters; it multiplies the first two and then adds the third. We
 can write it in Python like this:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def multadd (x, y, z):
             return x * y + z
@@ -516,14 +516,14 @@ and for any value of ``z`` that can be added to the product.
 
 We can invoke it with numeric values:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> multadd (3, 2, 1)
         7
 
 Or with ``Point``\s:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> p1 = Point(3, 4)
         >>> p2 = Point(5, 7)
@@ -542,7 +542,7 @@ A function like this that can take arguments with different types is called
 As another example, consider the function ``front_and_back``, which prints a list
 twice, forward and backward:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def front_and_back(front):
             import copy
@@ -556,7 +556,7 @@ parameter.
 
 Here's an example that applies ``front_and_back`` to a list:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> my_list = [1, 2, 3, 4]
         >>> front_and_back(my_list)
@@ -577,14 +577,14 @@ Look up *duck typing*, and see if you can figure out why it has this name.
 ``copy`` works on any object, and we have already written a ``__str__`` method
 for ``Point`` objects, so all we need is a ``reverse`` method in the ``Point`` class:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def reverse(self):
             (self.x , self.y) = (self.y, self.x)
 
 Then we can pass ``Point``\s to ``front_and_back``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> p = Point(3, 4)
         >>> front_and_back(p)

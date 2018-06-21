@@ -19,7 +19,7 @@ the size.
 Again, we'll define a new class, and provide it with an initializer and
 a string converter method:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Rectangle:
             """ A class to manufacture rectangle objects """
@@ -43,7 +43,7 @@ To specify the upper-left corner, we have embedded a ``Point`` object (as we use
 it in the previous chapter) within our new ``Rectangle`` object!
 We create two new ``Rectangle`` objects, and then print them producing:  
 
-    .. block-code:: python
+    .. code-block:: python
 
         box: ((0, 0), 100, 200)
         bomb: ((100, 80), 5, 10)
@@ -60,7 +60,7 @@ its attributes. For example, to grow the size of a rectangle without
 changing its position, we could modify the values of ``width`` and
 ``height``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         box.width += 50
         box.height += 100
@@ -69,7 +69,7 @@ Of course, we'd probably like to provide a method to encapsulate this
 inside the class.  We will also provide another method to move the 
 position of the rectangle elsewhere: 
 
-    .. block-code:: python
+    .. code-block:: python
 
         class Rectangle:
             # ...
@@ -86,7 +86,7 @@ position of the rectangle elsewhere:
 
 Let us try this: 
 
-    .. block-code:: python
+    .. code-block:: python
 
         >>> r = Rectangle(Point(10,5), 100, 50)
         >>> print(r)
@@ -117,7 +117,7 @@ We've already seen the ``is`` operator in the chapter on lists, where we
 talked about aliases:
 it allows us to find out if two references refer to the same object: 
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> p1 = Point(3, 4)
         >>> p2 = Point(3, 4)
@@ -128,7 +128,7 @@ Even though ``p1`` and ``p2`` contain the same coordinates, they are not the
 same object. If we assign ``p1`` to ``p3``, then the two variables are aliases
 of the same object:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> p3 = p1
         >>> p1 is p3
@@ -140,7 +140,7 @@ compares only the references, not the contents of the objects.
 To compare the contents of the objects --- **deep equality** ---
 we can write a function called ``same_coordinates``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def same_coordinates(p1, p2):
             return (p1.x == p2.x) and (p1.y == p2.y)
@@ -148,7 +148,7 @@ we can write a function called ``same_coordinates``:
 Now if we create two different objects that contain the same data, we can use
 ``same_point`` to find out if they represent points with the same coordinates.
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> p1 = Point(3, 4)
         >>> p2 = Point(3, 4)
@@ -168,7 +168,7 @@ shallow and deep equality.
     But sometimes the implementors will attach shallow equality semantics, and 
     sometimes deep equality, as shown in this little experiment:  
     
-        .. block-code:: python
+        .. code-block:: python
         
             p = Point(4, 2)
             s = Point(4, 2)
@@ -182,7 +182,7 @@ shallow and deep equality.
 
     This outputs:
     
-            .. block-code:: python
+            .. code-block:: python
         
                 == on Points returns False
                 == on lists returns True  
@@ -202,7 +202,7 @@ Copying an object is often an alternative to aliasing. The ``copy``
 module contains a function called ``copy`` that can duplicate any
 object:
 
-    .. block-code:: python
+    .. code-block:: python
 
         
         >>> import copy
@@ -237,7 +237,7 @@ Fortunately, the ``copy`` module contains a function named ``deepcopy`` that
 copies not only the object but also any embedded objects. It won't be
 surprising to learn that this operation is called a **deep copy**.
 
-    .. block-code:: python
+    .. code-block:: python
 
         >>> b2 = copy.deepcopy(b1)
 

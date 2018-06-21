@@ -33,7 +33,7 @@ in turn needs four order 1 Koch fractals, and each of those in turn needs four
 order 0 fractals.  Ultimately, the only drawing that will take place is 
 at order 0. This is very simple to code up in Python:
 
-.. block-code:: python
+.. code-block:: python
    
     def koch(t, order, size):
         """
@@ -59,7 +59,7 @@ Let's make a simple observation and tighten up this code.  Remember that
 turning right by 120 is the same as turning left by -120.  So with a 
 bit of clever rearrangement, we can use a loop instead of lines 10-16:
 
-.. block-code:: python
+.. code-block:: python
 
     def koch(t, order, size):
         if order == 0:                  
@@ -104,7 +104,7 @@ things easier for our next observations.
     fractal and a level 0 fractal, we could simplify the above code, quite mechanically,
     to a situation where there was no longer any recursion, like this:
     
-    .. block-code:: python
+    .. code-block:: python
         
         def koch_0(t, size):
             t.forward(size)
@@ -162,14 +162,14 @@ Now suppose our job is to write a function that will sum all of the values in a
 nested number list. Python has a built-in function which finds the sum of a
 sequence of numbers:
 
-.. block-code:: python
+.. code-block:: python
     
     >>> sum([1, 2, 8])
     11
 
 For our *nested number list*, however, ``sum`` will not work:
 
-.. block-code:: python
+.. code-block:: python
     
     >>> sum([1, 2, [11, 13], 8])
     Traceback (most recent call last):
@@ -191,7 +191,7 @@ which are themselves sub-lists.
 Thanks to recursion, the Python code needed to sum the values of a nested number list is
 surprisingly short:
 
-.. block-code:: python
+.. code-block:: python
     
     def r_sum(nested_num_list):
         tot = 0
@@ -219,7 +219,7 @@ science.
 A slightly more complicated problem is finding the largest value in our nested
 number list:
 
-.. block-code:: python
+.. code-block:: python
     
     def r_max(nxs):
         """ 
@@ -260,7 +260,7 @@ Again here we have a base case at line 13.  If we don't supply a base case,
 Python stops after reaching a maximum recursion depth and returns a runtime
 error.  See how this happens, by running this little script which we will call `infinite_recursion.py`: 
 
-.. block-code:: python
+.. code-block:: python
     
     def recursion_depth(number):
         print("{0}, ".format(number), end="")
@@ -300,7 +300,7 @@ as the sum of the previous two terms::
 
 This translates very directly into some Python: 
 
-.. block-code:: python
+.. code-block:: python
 
     def fib(n):
         if n <= 1:
@@ -310,7 +310,7 @@ This translates very directly into some Python:
 
 This is a particularly inefficient algorithm, and we'll show one way of fixing it when we learn about dictionaries:
 
-.. block-code:: python
+.. code-block:: python
     
     import time
     t0 = time.clock()
@@ -331,7 +331,7 @@ Example with recursive directories and files
 
 The following program lists the contents of a directory and all its subdirectories.
 
-.. block-code:: python
+.. code-block:: python
     
     import os
 
