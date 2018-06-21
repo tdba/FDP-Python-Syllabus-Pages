@@ -1,17 +1,5 @@
-..  Copyright (C) Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
- 
-|    
-    
 Files
 =====
-
-.. index:: file, handle, file handle   
     
 About files
 -----------
@@ -41,8 +29,7 @@ Writing our first file
 
 Let's begin with a simple program that writes three lines of text into a file:   
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         myfile = open("test.txt", "w")
         myfile.write("My first file written from Python\n")
@@ -90,8 +77,7 @@ Reading a file line-at-a-time
 Now that the file exists on our disk, we can open it, this time for reading, and read all
 the lines in the file, one at a time. This time, the mode argument is ``"r"`` for reading:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
               
         mynewhandle = open("test.txt", "r")
         while True:                            # Keep reading forever
@@ -140,7 +126,7 @@ even have a newline at the end, hence its length is 0.
      
 If we try to open a file that doesn't exist, we get an error:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> mynewhandle = open("wharrah.txt", "r")
         IOError: [Errno 2] No such file or directory: "wharrah.txt"
@@ -156,8 +142,7 @@ alphabetical order.  A good plan is to read everything into a
 list of lines, then sort the list, and then write the sorted list 
 back to another file:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
               
         f = open("friends.txt", "r")
         xs = f.readlines() 
@@ -191,8 +176,7 @@ seen the ``split`` method on strings which can break a string into
 words.  So here is how we might count the number of words in a
 file:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
               
         f = open("somefile.txt")
         content = f.read() 
@@ -223,8 +207,7 @@ normal text editor.  Python works just as easily with binary files, but
 when we read from the file we're going to get bytes back rather than 
 a string.  Here we'll copy one binary file to another:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         f = open("somefile.zip", "rb")
         g = open("thecopy.zip", "wb")
@@ -250,8 +233,6 @@ If we set a breakpoint at line 6, (or print  ``type(buf)`` there) we'll
 see that the type of ``buf`` is ``bytes``.  We don't do any detailed
 work with ``bytes`` objects in this textbook.  
 
-.. index:: file; text,  text file
-
 An example
 ----------
 
@@ -265,8 +246,7 @@ contain a specific substring.  We call this kind of program a **filter**.
 Here is a filter that copies one file to another, 
 omitting any lines that begin with ``#``:
 
-    .. sourcecode:: python3
-       :linenos:
+    .. code-block:: python
         
         def filter(oldfile, newfile):
             infile = open(oldfile, "r")
@@ -303,8 +283,6 @@ file, and terminate immediately?   No!  Recall that ``readline`` always
 includes the newline character in the string it returns.  It is only when we 
 try to read *beyond* the end of the file that we get back the empty string of length 0.  
 
-.. index:: directory
-
 Directories
 -----------
 
@@ -320,7 +298,7 @@ If we want to open a file somewhere else, we have to specify the **path** to
 the file, which is the name of the directory (or folder) where the file is
 located:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> wordsfile = open("/usr/share/dict/words", "r")
         >>> wordlist = wordsfile.readlines()
@@ -351,8 +329,7 @@ What about fetching something from the web?
 The Python libraries are pretty messy in places.  But here is a very
 simple example that copies the contents at some web URL to a local file.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         import urllib.request
 
@@ -375,8 +352,7 @@ We'll need to get a few things right before this works:
 Here is a slightly different example.  Rather than save the web resource to
 our local disk, we read it directly into a string, and return it:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         import urllib.request
 
@@ -400,9 +376,6 @@ the socket object in much the same way as we can work with a file handle.
 
 Glossary
 --------
-
-.. glossary::
-
 
     delimiter
         A sequence of one or more characters used to specify the boundary
@@ -453,27 +426,3 @@ Glossary
         *main memory* or RAM of a computer is volatile.  Information stored in
         RAM is lost when the computer is turned off.
  
-Exercises
----------
-         
-#. Write a program that reads a file and writes out a new file 
-   with the lines in reversed order
-   (i.e. the first line in the old file becomes the last one in the new file.)
-   
-#. Write a program that reads a file and prints only those lines that contain the 
-   substring ``snake``.
-   
-#. Write a program that reads a text file and produces an output file which is a 
-   copy of the file, except the first five columns of each line contain a four
-   digit line number, followed by a space. 
-   Start numbering the first line in the output file at 1.  Ensure that
-   every line number is formatted to the same width in the output file.  Use one
-   of your Python programs as test data for this exercise: your output should be 
-   a printed and numbered listing of the Python program. 
-
-#. Write a program that undoes the numbering of the previous exercise: it should
-   read a file with numbered lines and produce another file without line numbers. 
-
-   
-
-   

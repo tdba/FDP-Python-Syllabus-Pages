@@ -1,15 +1,3 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
- 
-|    
-    
-.. index:: event, handler    
-    
 Event-Driven Programming
 ========================
 
@@ -25,8 +13,7 @@ Here's a program with some new features.  Copy it into your workspace, run it.  
 turtle window opens, press the arrow keys and make tess move about! 
 
 
-.. sourcecode:: python3
-    :linenos:
+.. code-block:: python
 
     import turtle
 
@@ -83,8 +70,7 @@ Mouse events
 A mouse event is a bit different from a keypress event because its handler needs two parameters
 to receive x,y coordinate information telling us where the mouse was when the event occurred. 
 
-.. sourcecode:: python3
-    :linenos:
+.. code-block:: python
    
     import turtle
 
@@ -126,8 +112,7 @@ have their own handlers for mouse clicks.  The turtle that
 two turtles.  Each will bind a handler to its own ``onclick`` event.  And the
 two handlers can do different things for their turtles. 
 
-.. sourcecode:: python3
-    :linenos:
+.. code-block:: python
      
     import turtle
 
@@ -167,8 +152,7 @@ Alarm clocks, kitchen timers, and thermonuclear bombs in James Bond movies are s
 create an "automatic" event after a certain interval. The turtle module in Python has a 
 timer that can cause an event when its time is up.
 
-.. sourcecode:: python3
-    :linenos:
+.. code-block:: python
    
     import turtle
 
@@ -194,8 +178,7 @@ the handler is called, and tess springs into action.
 Unfortunately, when one sets a timer, it only goes off once. So a common idiom, or style, is to restart
 the timer inside the handler.  In this way the timer will keep on giving new events.  Try this program:
 
-.. sourcecode:: python3
-    :linenos:
+.. code-block:: python
    
     import turtle
 
@@ -228,11 +211,7 @@ state which we could call "Awaiting PIN".  When the correct PIN is entered, it
 transitions into a different state --- say "Ready".  Then we could lock the phone, and it
 would enter a "Locked" state, and so on.
 
-A simple state machine that we encounter often is a traffic light.  Here 
-is a state diagram which shows that the machine continually cycles through three different
-states, which we've numbered 0, 1 and 2.
-
-    .. image::  illustrations/fsm_traffic_lights.png
+A simple state machine that we encounter often is a traffic light.  
  
 We're going to build a program that uses a turtle to simulate the traffic lights.
 There are three lessons here. The first shows off some different ways to use our turtles.
@@ -244,8 +223,7 @@ The third lesson is to use events from the keyboard to trigger the state changes
 Copy and run this program.  Make sure you understand what each line does, consulting the 
 documentation as you need to.   
    
-.. sourcecode:: python3
-    :linenos:
+.. code-block:: python
   
     import turtle           # Tess becomes a traffic light.
 
@@ -330,8 +308,6 @@ machine to move to its new state.
 Glossary
 --------
 
-.. glossary::
-
     bind
         We bind a function (or associate it) with an event, meaning that when the event occurs, the
         function is called to handle it.        
@@ -394,9 +370,7 @@ Exercises
     few states and transitions for a state diagram. In this diagram, each state 
     has two possible outcomes (A wins the next point, or B does), and the 
     uppermost arrow is always the transition that happens when A wins the point. 
-    Complete the diagram, showing all transitions and all states.  
     (Hint: there are twenty states, if you include the duece state, the advantage states, 
     and the "A wins" and "B wins" states in your diagram.)
     
-    .. image::  illustrations/fsm_tennis_scores.png
     

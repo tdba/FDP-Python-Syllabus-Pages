@@ -1,13 +1,3 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".|    
-    
-.. index:: list, element, item, sequence, collection    
-    
 Lists
 =====
 
@@ -18,16 +8,13 @@ similar to strings, which are ordered collections of characters, except that the
 elements of a list can be of any type.  Lists and strings --- and other collections
 that maintain the order of their items --- are called **sequences**.
 
-.. index:: nested list, list; nested
-
 List values
 -----------
 
 There are several ways to create a new list; the simplest is to enclose the
 elements in square brackets (``[`` and ``]``):
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         ps = [10, 20, 30, 40]
         qs = ["spam", "bungee", "swallow"]
@@ -37,8 +24,7 @@ strings. The elements of a list don't have to be the same type.  The following
 list contains a string, a float, an integer, and
 (amazingly) another list:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         zs = ["hello", 2.0, 5, [10, 20]]
 
@@ -49,18 +35,13 @@ and is denoted ``[]``.
 
 We have already seen that we can assign list values to variables or pass lists as parameters to functions:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         >>> vocabulary = ["apple", "cheese", "dog"]
         >>> numbers = [17, 123]
         >>> an_empty_list = []
         >>> print(vocabulary, numbers, an_empty_list)
         ["apple", "cheese", "dog"] [17, 123] []
-
-.. _accessing-elements:
-
-.. index:: list index, index, list traversal
 
 Accessing elements
 ------------------
@@ -70,14 +51,14 @@ accessing the characters of a string --- the index operator: ``[]`` (not to
 be confused with an empty list). The expression inside the brackets specifies
 the index. Remember that the indices start at 0:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> numbers[0]
         17
 
 Any expression evaluating to an integer can be used as an index:
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> numbers[9-8]
         5
@@ -89,7 +70,7 @@ Any expression evaluating to an integer can be used as an index:
 If you try to access or assign to an element that does not exist, you get a runtime
 error:
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> numbers[2]
         Traceback (most recent call last):
@@ -98,8 +79,7 @@ error:
 
 It is common to use a loop variable as a list index.
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         horsemen = ["war", "famine", "pestilence", "death"]
 
@@ -114,8 +94,7 @@ The above sample doesn't need or use the index ``i`` for anything besides gettin
 the items from the list, so this more direct version --- where the ``for`` loop gets
 the items --- might be preferred:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         horsemen = ["war", "famine", "pestilence", "death"]
 
@@ -134,8 +113,7 @@ loop instead of a constant. That way, if the size of the list changes, you
 won't have to go through the program changing all the loops; they will work
 correctly for any size list:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         horsemen = ["war", "famine", "pestilence", "death"]
            
@@ -150,7 +128,7 @@ looks even better now!)
 Although a list can contain another list, the nested list still counts as a
 single element in its parent list. The length of this list is 4:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> len(["car makers", 1, ["Ford", "Toyota", "BMW"], [1, 2, 3]])
         4
@@ -163,7 +141,7 @@ List membership
 used them previously with strings, but they also work with lists and
 other sequences:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> horsemen = ["war", "famine", "pestilence", "death"]
         >>> "pestilence" in horsemen
@@ -177,8 +155,7 @@ Using this produces a more elegant version of the nested loop program we previou
 to count the number of students doing Computer Science
 in the section :ref:`nested_data`:  
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         students = [
             ("John", ["CompSci", "Physics"]),
@@ -201,7 +178,7 @@ List operations
 
 The ``+`` operator concatenates lists:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a = [1, 2, 3]
         >>> b = [4, 5, 6]
@@ -211,7 +188,7 @@ The ``+`` operator concatenates lists:
 
 Similarly, the ``*`` operator repeats a list a given number of times:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> [0] * 4
         [0, 0, 0, 0]
@@ -221,15 +198,12 @@ Similarly, the ``*`` operator repeats a list a given number of times:
 The first example repeats ``[0]`` four times. The second example repeats the
 list ``[1, 2, 3]`` three times.
 
-
-.. index:: slice, sublist
-
 List slices
 -----------
 
 The slice operations we saw previously with strings let us work with sublists:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a_list = ["a", "b", "c", "d", "e", "f"]
         >>> a_list[1:3]
@@ -240,8 +214,6 @@ The slice operations we saw previously with strings let us work with sublists:
         ['d', 'e', 'f']
         >>> a_list[:]
         ['a', 'b', 'c', 'd', 'e', 'f']
-
-.. index:: mutable, item assignment, immutable
     
 Lists are mutable
 -----------------
@@ -250,7 +222,7 @@ Unlike strings, lists are **mutable**, which means we can change their
 elements. Using the index operator on the left side of an assignment, we can
 update one of the elements:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> fruit = ["banana", "apple", "quince"]
         >>> fruit[0] = "pear"
@@ -265,7 +237,7 @@ elements in the list, so the first element of ``fruit`` has been changed from
 assignment to an element of a list is called **item assignment**. Item
 assignment does not work for strings:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> my_string = "TEST"
         >>> my_string[2] = "X"
@@ -275,7 +247,7 @@ assignment does not work for strings:
 
 but it does for lists:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> my_list = ["T", "E", "S", "T"]
         >>> my_list[2] = "X"
@@ -285,7 +257,7 @@ but it does for lists:
 
 With the slice operator we can update a whole sublist at once:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a_list = ["a", "b", "c", "d", "e", "f"]
         >>> a_list[1:3] = ["x", "y"]
@@ -294,7 +266,7 @@ With the slice operator we can update a whole sublist at once:
 
 We can also remove elements from a list by assigning an empty list to them:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a_list = ["a", "b", "c", "d", "e", "f"]
         >>> a_list[1:3] = []
@@ -304,7 +276,7 @@ We can also remove elements from a list by assigning an empty list to them:
 And we can add elements to a list by squeezing them into an empty slice at the
 desired location:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a_list = ["a", "d", "f"]
         >>> a_list[1:1] = ["b", "c"]
@@ -314,8 +286,6 @@ desired location:
         >>> a_list
         ['a', 'b', 'c', 'd', 'e', 'f']
 
-.. index:: del statement, statement; del
-
 List deletion
 -------------
 
@@ -323,7 +293,7 @@ Using slices to delete list elements can be error-prone.
 Python provides an alternative that is more readable.
 The ``del`` statement removes an element from a list:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a = ["one", "two", "three"]
         >>> del a[1]
@@ -335,7 +305,7 @@ error if the index is out of range.
 
 You can also use ``del`` with a slice to delete a sublist:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a_list = ["a", "b", "c", "d", "e", "f"]
         >>> del a_list[1:5]
@@ -345,15 +315,12 @@ You can also use ``del`` with a slice to delete a sublist:
 As usual, the sublist selected by slice contains all the elements up to, but not including, the second
 index.
 
-.. index:: is operator, objects and values
-
 Objects and references
 ----------------------
 
 After we execute these assignment statements
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         a = "banana"
         b = "banana"
@@ -363,16 +330,13 @@ we know that ``a`` and ``b`` will refer to a string object with the letters
 
 There are two possible ways the Python interpreter could arrange its memory:
 
-    .. image:: illustrations/list1.png
-       :alt: List illustration 
-
 In one case, ``a`` and ``b`` refer to two different objects that have the same
 value. In the second case, they refer to the same object. 
 
 We can test whether two names refer to the same object using the ``is``
 operator: 
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> a is b
         True
@@ -385,7 +349,7 @@ that refer to the same string value refer to the same object.
 
 This is not the case with lists:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a = [1, 2, 3]
         >>> b = [1, 2, 3]
@@ -394,14 +358,7 @@ This is not the case with lists:
         >>> a is b
         False   
 
-The state snapshot here looks like this:
-
-    .. image:: illustrations/mult_references2.png
-       :alt: State snapshot for equal different lists 
-
-``a`` and ``b`` have the same value but do not refer to the same object.
-
-.. index:: aliases
+``a`` and ``b`` will then have the same value but do not refer to the same object.
 
 Aliasing
 --------
@@ -409,22 +366,17 @@ Aliasing
 Since variables refer to objects, if we assign one variable to another, both
 variables refer to the same object:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a = [1, 2, 3]
         >>> b = a
         >>> a is b
         True
     
-In this case, the state snapshot looks like this:
-
-    .. image:: illustrations/mult_references3.png
-       :alt: State snapshot for multiple references (aliases) to a list 
-
 Because the same list has two different names, ``a`` and ``b``, we say that it
 is **aliased**. Changes made with one alias affect the other:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> b[0] = 5
         >>> a
@@ -440,8 +392,6 @@ just not possible to change something and get a surprise when you access an alia
 That's why Python is free to alias strings (and any other immutable kinds of data)
 when it sees an opportunity to economize.
 
-.. index:: clone
-
 Cloning lists
 -------------
 
@@ -451,7 +401,7 @@ sometimes called **cloning**, to avoid the ambiguity of the word copy.
 
 The easiest way to clone a list is to use the slice operator:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a = [1, 2, 3]
         >>> b = a[:]
@@ -459,22 +409,16 @@ The easiest way to clone a list is to use the slice operator:
         [1, 2, 3]
 
 Taking any slice of ``a`` creates a new list. In this case the slice happens to
-consist of the whole list.  So now the relationship is like this:
-
-    .. image:: illustrations/mult_references2.png
-       :alt: State snapshot for equal different lists 
+consist of the whole list.
 
 Now we are free to make changes to ``b`` without worrying that we'll inadvertently be
 changing ``a``:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> b[0] = 5
         >>> a
         [1, 2, 3]
-
-
-.. index:: for loop, enumerate
 
 Lists and ``for`` loops
 -----------------------
@@ -482,15 +426,14 @@ Lists and ``for`` loops
 The ``for`` loop also works with lists, as we've already seen. The generalized syntax of a ``for``
 loop is:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         for VARIABLE in LIST:
             BODY
 
 So, as we've seen
         
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         friends = ["Joe", "Zoe", "Brad", "Angelina", "Zuki", "Thandi", "Paris"]
         for friend in friends:
@@ -501,8 +444,7 @@ print (the name of the) friend.
 
 Any list expression can be used in a ``for`` loop:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         for number in range(20):
             if number % 3 == 0:
@@ -518,8 +460,7 @@ example expresses enthusiasm for various fruits.
 Since lists are mutable, we often want to traverse a list, changing
 each of its elements. The following squares all the numbers in the list ``xs``:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         xs = [1, 2, 3, 4, 5]
         
@@ -533,8 +474,7 @@ In this example we are interested in both the *value* of an item, (we want to
 square that value), and its *index* (so that we can assign the new value to that position).
 This pattern is common enough that Python provides a nicer way to implement it:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         xs = [1, 2, 3, 4, 5]
         
@@ -545,21 +485,17 @@ This pattern is common enough that Python provides a nicer way to implement it:
 the list traversal. Try this next example to see more clearly how ``enumerate``
 works:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         for (i, v) in enumerate(["banana", "apple", "pear", "lemon"]):
              print(i, v)
     
-    .. sourcecode:: pycon
+    .. code-block:: python
   
         0 banana
         1 apple
         2 pear
         3 lemon
-
-
-.. index:: parameter
 
 List parameters
 ---------------
@@ -571,8 +507,7 @@ is only one underlying list object.
 For example, the function below takes a list as an
 argument and multiplies each element in the list by 2:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def double_stuff(a_list):
             """ Overwrite each element in a_list with double its value. """
@@ -581,8 +516,7 @@ argument and multiplies each element in the list by 2:
 
 If we add the following onto our script:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         things = [2, 5, 9]
         double_stuff(things)
@@ -590,20 +524,14 @@ If we add the following onto our script:
     
 When we run it we'll get:
 
-    .. sourcecode:: pycon
+    .. code-block:: python
 
         [4, 10, 18]
 
 
 In the function above, the parameter 
 ``a_list`` and the variable ``things`` are aliases for the
-same object.  So before any changes to the elements in the list, the state snapshot
-looks like this:
-
-    .. image:: illustrations/mult_references4.png
-       :alt: State snapshot for multiple references to a list as a parameter
-   
-Since the list object is shared by two frames, we drew it between them.
+same object.  So before any changes to the elements in the list.
 
 If a function modifies the items of a list parameter, the caller sees the change.
 
@@ -614,8 +542,6 @@ If a function modifies the items of a list parameter, the caller sees the change
         and passing arguments to functions.  Pay special attention to cases where you clone 
         a list or have two separate lists, and cases where there is only one underlying list,
         but more than one variable is aliased to reference the list.
-
-.. index:: list; append
     
 List methods
 ------------
@@ -623,7 +549,7 @@ List methods
 The dot operator can also be used to access built-in methods of list objects.  We'll
 start with the most useful method for adding something onto the end of an existing list:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> mylist = []
         >>> mylist.append(5)
@@ -637,7 +563,7 @@ start with the most useful method for adding something onto the end of an existi
 the list. We'll use it heavily when we're creating new lists.
 Continuing with this example, we show several other list methods:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> mylist.insert(1, 12)  # Insert 12 at pos 1, shift other items up
         >>> mylist
@@ -662,10 +588,6 @@ Continuing with this example, we show several other list methods:
 Experiment and play with the list methods shown here, and read their documentation until 
 you feel confident that you understand how they work.
 
-.. index:: side effect, modifier
-
-.. _pure-func-mod:
-
 Pure functions and modifiers
 ----------------------------
 
@@ -676,8 +598,7 @@ A **pure function** does not produce side effects. It communicates with the
 calling program only through parameters, which it does not modify, and a return
 value. Here is ``double_stuff`` written as a pure function:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def double_stuff(a_list):
             """ Return a new list which contains 
@@ -692,7 +613,7 @@ value. Here is ``double_stuff`` written as a pure function:
       
 This version of ``double_stuff`` does not change its arguments:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> things = [2, 5, 9]
         >>> xs = double_stuff(things)
@@ -705,7 +626,7 @@ An early rule we saw for assignment said "first evaluate the right hand side, th
 assign the resulting value to the variable".  So it is quite safe to assign the function
 result to the same variable that was passed to the function:
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> things = [2, 5, 9]
         >>> things = double_stuff(things)
@@ -732,8 +653,7 @@ important **pattern** for your toolbox. Whenever you need to
 write a function that creates and returns a list, the pattern is
 usually:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         initialize a result variable to be an empty list
         loop
@@ -745,8 +665,7 @@ Let us show another use of this pattern.  Assume you already have a function
 ``is_prime(x)`` that can test if x is prime.  Write a function
 to return a list of all prime numbers less than n:
 
-    .. sourcecode:: python3
-       :linenos:
+    .. code-block:: python
 
        def primes_lessthan(n):
            """ Return a list of all prime numbers less than n. """
@@ -755,8 +674,6 @@ to return a list of all prime numbers less than n:
                if is_prime(i):
                   result.append(i)
            return result
-
-.. index:: strings and lists, split, join
 
 Strings and lists
 -----------------
@@ -767,7 +684,7 @@ The ``split`` method (which we've already seen)
 breaks a string into a list of words.  By
 default, any number of whitespace characters is considered a word boundary:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> song = "The rain in Spain..."
         >>> wds = song.split()
@@ -778,7 +695,7 @@ An optional argument called a **delimiter** can be used to specify which
 string to use as the boundary marker between substrings. 
 The following example uses the string ``ai`` as the delimiter:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> song.split("ai")
         ['The r', 'n in Sp', 'n...']
@@ -789,7 +706,7 @@ The inverse of the ``split`` method is ``join``.  You choose a
 desired **separator** string, (often called the *glue*) 
 and join the list with the glue between each of the elements: 
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> glue = ";"
         >>> s = glue.join(wds)
@@ -799,14 +716,12 @@ and join the list with the glue between each of the elements:
 The list that you glue together (``wds`` in this example) is not modified.  Also, as these
 next examples show, you can use empty glue or multi-character strings as glue:
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> " --- ".join(wds)
         'The --- rain --- in --- Spain...'
         >>> "".join(wds)
         'TheraininSpain...'
-
-.. index:: promise, range function
     
 ``list`` and ``range``
 ----------------------   
@@ -815,7 +730,7 @@ Python has a built-in type conversion function called
 ``list`` that tries to turn whatever you give it
 into a list.  
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> xs = list("Crunchy Frog")
         >>> xs
@@ -829,8 +744,7 @@ and does it on demand, or "lazily".  We'll say that it gives a **promise**
 to produce the values when they are needed.   This is very convenient if your
 computation short-circuits a search and returns early, as in this case: 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
 
         def f(n):
             """ Find the first positive integer between 101 and less 
@@ -864,90 +778,16 @@ further elements are generated, and the function returns.  (Note: Before Python 
 You'll sometimes find the lazy ``range`` wrapped in a call to ``list``.  This forces
 Python to turn the lazy promise into an actual list: 
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> range(10)           # Create a lazy promise 
         range(0, 10)
         >>> list(range(10))     # Call in the promise, to produce a list.
         [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
- 
-.. index:: nested list, list; nested
-       
-Nested lists
-------------
 
-A nested list is a list that appears as an element in another list. In this
-list, the element with index 3 is a nested list:
-
-    .. sourcecode:: python3
-        
-        >>> nested = ["hello", 2.0, 5, [10, 20]]
-
-If we output the element at index 3, we get:
-
-    .. sourcecode:: python3
-
-       >>> print(nested[3]) 
-       [10, 20]
-
-To extract an element from the nested list, we can proceed in two steps:
-
-    .. sourcecode:: python3
-        
-        >>> elem = nested[3]
-        >>> elem[0]
-        10
-
-Or we can combine them:
-
-    .. sourcecode:: python3
-        
-        >>> nested[3][1]
-        20
-
-Bracket operators evaluate from left to right, so this expression gets the
-3'th element of ``nested`` and extracts the 1'th element from it.
-
-.. index:: matrix
-
-Matrices
---------
-
-Nested lists are often used to represent matrices. For example, the matrix:
-
-    .. image:: illustrations/matrix2.png
-
-might be represented as:
-
-    .. sourcecode:: python3
-        
-        >>> mx = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-
-``mx`` is a list with three elements, where each element is a row of the
-matrix. We can select an entire row from the matrix in the usual way:
-
-    .. sourcecode:: python3
-        
-        >>> mx[1]
-        [4, 5, 6]
-
-Or we can extract a single element from the matrix using the double-index form:
-
-    .. sourcecode:: python3
-        
-        >>> mx[1][2]
-        6
-
-The first index selects the row, and the second index selects the column.
-Although this way of representing matrices is common, it is not the only
-possibility. A small variation is to use a list of columns instead of a list of
-rows. Later we will see a more radical alternative using a dictionary.
 
 Glossary
 --------
-
-.. glossary::
-
 
     aliases
         Multiple variables that contain references to the same object.
@@ -1028,151 +868,3 @@ Glossary
         third (and optional argument) to the ``range`` function is called the
         step size.  If not specified, it defaults to 1.
 
-        
-Exercises
----------
-
-
-#. What is the Python interpreter's response to the following?
-
-       .. sourcecode:: python3
-        
-           >>> list(range(10, 0, -2))
-
-   The three arguments to the *range* function are *start*, *stop*, and *step*, 
-   respectively. In this example, ``start`` is greater than ``stop``.  What
-   happens if ``start < stop`` and ``step < 0``? Write a rule for the
-   relationships among ``start``, ``stop``, and ``step``.
-   
-#. Consider this fragment of code: 
-
-
-       .. sourcecode:: python3
-            :linenos:
-            
-            import turtle
-            
-            tess = turtle.Turtle()
-            alex = tess
-            alex.color("hotpink")
-   
-   Does this fragment create one or two turtle instances?  Does setting
-   the color of ``alex`` also change the color of ``tess``?  Explain in detail.
-   
-#. Draw a state snapshot for ``a`` and ``b`` before and after the third line of
-   the following Python code is executed:
-
-       .. sourcecode:: python3
-            :linenos:
-        
-            a = [1, 2, 3]
-            b = a[:]
-            b[0] = 5
-
-#. What will be the output of the following program?
-
-       .. sourcecode:: python3
-           :linenos:
-        
-           this = ["I", "am", "not", "a", "crook"]
-           that = ["I", "am", "not", "a", "crook"]
-           print("Test 1: {0}".format(this is that))
-           that = this
-           print("Test 2: {0}".format(this is that))
-
-   Provide a *detailed* explanation of the results.
-     
-#. Lists can be used to represent mathematical *vectors*.  In this exercise
-   and several that follow you will write functions to perform standard
-   operations on vectors.  Create a script named ``vectors.py`` and 
-   write Python code to pass the tests in each case.
-
-   Write a function ``add_vectors(u, v)`` that takes two lists of numbers of
-   the same length, and returns a new list containing the sums of the
-   corresponding elements of each:
-   
-        .. sourcecode:: python3
-           :linenos:
-            
-           test(add_vectors([1, 1], [1, 1]) == [2, 2])
-           test(add_vectors([1, 2], [1, 4]) == [2, 6])
-           test(add_vectors([1, 2, 1], [1, 4, 3]) == [2, 6, 4])
- 
-#. Write a function ``scalar_mult(s, v)`` that takes a number, ``s``, and a
-   list, ``v`` and returns the `scalar multiple
-   <http://en.wikipedia.org/wiki/Scalar_multiple>`__ of ``v`` by ``s``. : 
-
-        .. sourcecode:: python3
-            :linenos:
-            
-            test(scalar_mult(5, [1, 2]) == [5, 10])
-            test(scalar_mult(3, [1, 0, -1]) == [3, 0, -3])
-            test(scalar_mult(7, [3, 0, 5, 11, 2]) == [21, 0, 35, 77, 14])
-
-#. Write a function ``dot_product(u, v)`` that takes two lists of numbers of
-   the same length, and returns the sum of the products of the corresponding
-   elements of each (the `dot_product
-   <http://en.wikipedia.org/wiki/Dot_product>`__).
-
-       .. sourcecode:: python3
-            :linenos:
-        
-            test(dot_product([1, 1], [1, 1]) ==  2)
-            test(dot_product([1, 2], [1, 4]) ==  9)
-            test(dot_product([1, 2, 1], [1, 4, 3]) == 12)
-      
-#. *Extra challenge for the mathematically inclined*: Write a function
-   ``cross_product(u, v)`` that takes two lists of numbers of length 3 and
-   returns their
-   `cross product <http://en.wikipedia.org/wiki/Cross_product>`__.  You should
-   write your own tests.       
-             
-#. Describe the relationship between ``" ".join(song.split())`` and
-   ``song`` in the fragment of code below. 
-   Are they the same for all strings assigned to ``song``? 
-   When would they be different? 
-   
-       .. sourcecode:: python3
-            :linenos:
-
-            song = "The rain in Spain..."
-   
-#. Write a function ``replace(s, old, new)`` that replaces all occurrences of
-   ``old`` with ``new`` in a string ``s``: 
-   
-        .. sourcecode:: python3
-            :linenos:
-
-            test(replace("Mississippi", "i", "I") == "MIssIssIppI")
-          
-            s = "I love spom! Spom is my favorite food. Spom, spom, yum!"
-            test(replace(s, "om", "am") ==
-                "I love spam! Spam is my favorite food. Spam, spam, yum!")
-        
-            test(replace(s, "o", "a") ==
-                "I lave spam! Spam is my favarite faad. Spam, spam, yum!")
-
-   *Hint*: use the ``split`` and ``join`` methods.
-          
-#. Suppose you want to swap around the values in two variables.  You decide
-   to factor this out into a reusable function, and write this code:
-
-        .. sourcecode:: python3
-            :linenos:
-        
-            def swap(x, y):      # Incorrect version
-                 print("before swap statement: x:", x, "y:", y)
-                 (x, y) = (y, x)
-                 print("after swap statement: x:", x, "y:", y)
-        
-            a = ["This", "is", "fun"]
-            b = [2,3,4] 
-            print("before swap function call: a:", a, "b:", b)
-            swap(a, b)
-            print("after swap function call: a:", a, "b:", b)
-
-   Run this program and describe the results.  Oops!  So it didn't do what you intended!   
-   Explain why not. 
-   Using a Python visualizer like the one at http://netserv.ict.ru.ac.za/python3_viz 
-   may help you build a good conceptual model of what is going on.  
-   What will be the values of ``a`` and ``b`` after the call to ``swap``?

@@ -804,7 +804,7 @@ To indicate that there are no more inputs, the user enters a special value, ofte
 the value -1, or the empty string.  This needs a middle-exit loop pattern: 
 input the next number, then test whether to exit, or else process the number: 
 
-    .. admonition::  The middle-test loop flowchart
+.. admonition::  The middle-test loop flowchart
         
     .. code-block:: python
         

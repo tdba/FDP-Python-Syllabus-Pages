@@ -1,17 +1,5 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
- 
-|      
-    
 Tuples
 ======
-
-.. index:: mutable, immutable, tuple
 
 Tuples are used for grouping data
 ---------------------------------
@@ -19,7 +7,7 @@ Tuples are used for grouping data
 We saw earlier that we could group together pairs of values by
 surrounding with parentheses.  Recall this example: 
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> year_born = ("Paris Hilton", 1981) 
 
@@ -31,15 +19,9 @@ be used to group any number of items into a single compound value.
 Syntactically, a tuple is a comma-separated sequence of values.  
 Although it is not necessary, it is conventional to enclose tuples in parentheses:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> julia = ("Julia", "Roberts", 1967, "Duplicity", 2009, "Actress", "Atlanta, Georgia")
-
-.. The other thing that could be said somewhere around here, is that the
-   parentheses are there to disambiguate. For example, if we have a
-   tuple nested within another tuple and the parentheses weren't there,
-   how would we tell where the nested tuple begins/ends?
-   Also: the creation of an empty tuple requires parentheses
     
 Tuples are useful for representing what other languages often call *records* ---
 some related information that belongs together, like your student record.  There is
@@ -49,7 +31,7 @@ lets us "chunk" together related information and use it as a single thing.
 Tuples support the same sequence operations as strings. The index operator 
 selects an element from a tuple.
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> julia[2]
         1967
@@ -57,7 +39,7 @@ selects an element from a tuple.
 But if we try to use item assignment to modify one of the elements of the
 tuple, we get an error:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> julia[0] = "X"
         TypeError: 'tuple' object does not support item assignment
@@ -73,7 +55,7 @@ bits to make the new tuple.  So  if ``julia`` has a new recent film, we could
 change her variable to reference a new tuple that used some information 
 from the old one:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> julia = julia[:3] + ("Eat Pray Love", 2010) + julia[5:]
         >>> julia
@@ -84,19 +66,14 @@ To create a tuple with a single element (but you're probably not likely
 to do that too often), we have to include the final comma, because without
 the final comma, Python treats the ``(5)`` below as an integer in parentheses:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> tup = (5,)
         >>> type(tup)
         <class 'tuple'> 
         >>> x = (5)
         >>> type(x)
-        <class 'int'>     
-          
-          
-.. index::
-    single: assignment; tuple 
-    single: tuple; assignment  
+        <class 'int'>      
   
 Tuple assignment
 ----------------
@@ -105,7 +82,7 @@ Python has a very powerful **tuple assignment** feature that allows a tuple of v
 on the left of an assignment to be assigned values from a tuple
 on the right of the assignment.   (We already saw this used for pairs, but it generalizes.)
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         (name, surname, b_year, movie, m_year, profession, b_place) = julia
     
@@ -118,14 +95,14 @@ One way to think of tuple assignment is as tuple packing/unpacking.
 In tuple packing, the values on the left are 'packed' together in a
 tuple:
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> b = ("Bob", 19, "CS")    # tuple packing
 
 In tuple unpacking, the values in a tuple on the right are 'unpacked'
 into the variables/names on the right:
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
         >>> b = ("Bob", 19, "CS")
         >>> (name, age, studies) = b    # tuple unpacking
@@ -140,8 +117,7 @@ Once in a while, it is useful to swap the values of two variables.  With
 conventional assignment statements, we have to use a temporary variable. For
 example, to swap ``a`` and ``b``:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         temp = a
         a = b
@@ -149,8 +125,7 @@ example, to swap ``a`` and ``b``:
 
 Tuple assignment solves this problem neatly:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         (a, b) = (b, a)
 
@@ -162,15 +137,10 @@ tuple assignment quite versatile.
 Naturally, the number of variables on the left and the number of values on the
 right have to be the same:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> (a, b, c, d) = (1, 2, 3)
         ValueError: need more than 3 values to unpack 
-
-.. index::
-    single: tuple; return value 
-    
-.. index:: return a tuple
 
 Tuples as return values
 -----------------------
@@ -186,8 +156,7 @@ of wolves on an island at a given time.
 For example, we could write a function that returns both the area and the circumference
 of a circle of radius r:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def f(r):
             """ Return (circumference, area) of a circle of radius r """
@@ -202,7 +171,7 @@ Composability of Data Structures
 We saw in an earlier chapter that we could make a list of pairs, and we had an example 
 where one of the items in the tuple was itself a list: 
 
-    .. sourcecode:: python3
+    .. code-block:: python
     
         students = [
             ("John", ["CompSci", "Physics"]),
@@ -216,7 +185,7 @@ the information about our movie stars to hold the full date of birth rather
 than just the year, and we could have a list of some of her movies and dates that they
 were made, and so on:
 
-    .. sourcecode:: python3
+    .. code-block:: python
 
        julia_more_info = ( ("Julia", "Roberts"), (8, "October", 1967), 
                             "Actress", ("Atlanta", "Georgia"),  
@@ -235,9 +204,6 @@ be composed of elements of different types.
 
 Glossary
 --------
-
-.. glossary::
-
 
     data structure
         An organization of data for the purpose of making it easier to use.
@@ -262,15 +228,4 @@ Glossary
         in sequence, making it useful for swapping values.
 
 
-Exercises
----------
-   
-#.  We've said nothing in this chapter about whether you can pass tuples as 
-    arguments to a function. Construct a small Python example to test whether 
-    this is possible, and write up your findings.
-    
-#.  Is a pair a generalization of a tuple, or is a tuple a generalization of a pair?
 
-#.  Is a pair a kind of tuple, or is a tuple a kind of pair? 
-
-   
