@@ -1,24 +1,37 @@
-introduction:
-  title: Préface
+PART I:
+  title: Introduction
   content:
-    tools.rst:
-      title: Outils
-    introduction.rst:
-      title: Introduction
-control:
-  title: Structures de contrôle
+	MISSION 0:
+	  title: Mission 0 - APP 0
+	  content: 
+		way_of_the_program.rst:
+		  title: Introduction to programming
+	MISSION 1:
+	  title: Mission 1 - Basics
+	  content:
+		variables_expressions_statements.rst:
+		  title: Variables and expressions
+		hello_little_turtles.rst:
+		  title: Turtle
+		modules.rst:
+		  title: Modules
+	MISSION 2:
+	  title: Mission 2 - Control structures
+	  content:
+		conditionals.rst:
+		  title: Conditions
+		iteration.rst:
+		  title: Iteration
+	MISSION 3:
+	  title: Mission 3 - Functions
+	  content:
+		functions.rst:
+		  title: Functions
+		fruitful_functions.rst:
+		  title: Fruitful functions
+PART II:
+  title: Data Structures
   content:
-    if.rst:
-      title: La condition
-    loop:
-      title: Les boucles
-      content:
-        while.rst:
-          title: La boucle while
-        for.rst:
-          title: La boucle for
-meth:
-  title: Les méthodes
+PART III:
+  title: Objects
   content:
-    meth.rst:
-      title: Créer des méthodes 
