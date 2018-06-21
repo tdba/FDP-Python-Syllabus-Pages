@@ -29,9 +29,9 @@ PART I:
           title: Functions
         fruitful_functions.rst:
           title: Fruitful functions
-PART II:
-  title: Data Structures
-  content:
-PART III:
-  title: Objects
-  content:
+#PART II:
+  #title: Data Structures
+  #content:
+#PART III:
+  #title: Objects
+  #content:
