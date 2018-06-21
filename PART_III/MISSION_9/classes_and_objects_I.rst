@@ -1,30 +1,5 @@
-..  Copyright (C) Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
-
-|     
-
 Classes and Objects --- the Basics
 ==================================
-
-.. Pete thinks:  this and the next chapter are too heavily biased towards geometry, and need 
-   some other non-overwhelming examples.  
-   In particular, the objects are stateless, rather than state machines.
-   We need another good sample or exercise that emphasizes that the object has state.  (like the
-   turtle that has a position and color, and methods like forward that change the state.)
-   Perhaps a prepaid phone account object, that allows top-up deposits, and SMS charges
-   or call charges, and querying of the balance.   But at the same time, if there was also
-   interesting algorithmic computation that could be encapsulated in the object, (and was natural 
-   for the object rather than contrived) that would be even better.   Subtracing 20c from your
-   SMS balance really sounds as boring as all hell!  In the chapter on PyGame we'll try to address
-   this with some sprites that have internal state. 
-
-
-.. index:: object-oriented programming
 
 Object-oriented programming
 ---------------------------
@@ -51,8 +26,6 @@ we've already worked with objects.)
 Usually, each object definition corresponds to some object or concept in the real
 world, and the functions that operate on that object correspond to the ways
 real-world objects interact.
- 
-.. index:: compound data type
 
 User-defined compound data types
 --------------------------------
@@ -83,8 +56,7 @@ bit more effort, but it has advantages that will be apparent soon.
 We'll want our points to each have an ``x`` and a ``y`` attribute,
 so our first class definition looks like this:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class Point:
             """ Point class represents and manipulates x,y coords. """
@@ -116,8 +88,7 @@ the newly created object that needs to be initialized.
 
 So let's use our new ``Point`` class now:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         p = Point()         # Instantiate an object of type Point
         q = Point()         # Make a second point
@@ -126,7 +97,7 @@ So let's use our new ``Point`` class now:
     
 This program prints: 
 
-    .. sourcecode:: python3
+    .. block-code:: python
     
        0 0 0 0
    
@@ -136,8 +107,7 @@ attributes called ``x`` and ``y`` for each, and gave them both the value 0.
 This should look familiar --- we've used classes before to create
 more than one object:   
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
 
         from turtle import Turtle    
         
@@ -159,8 +129,6 @@ get the object properly set up with its factory default settings.
 The combined process of "make me a new object" and "get its settings initialized
 to the factory default settings" is called **instantiation**.  
 
-.. index:: attribute
-
 Attributes
 ----------
 
@@ -168,7 +136,7 @@ Like real world objects, object instances have both attributes and methods.
 
 We can modify the attributes in an instance using dot notation:
 
-    .. sourcecode:: python3
+    .. block-code:: python
         
         >>> p.x = 3
         >>> p.y = 4
@@ -178,17 +146,12 @@ their own namespaces, and the syntax for accessing names contained in each,
 called **attributes**, is the same. In this case the attribute we are selecting
 is a data item from an instance.
 
-The following state diagram shows the result of these assignments:
-
-    .. image:: illustrations/point.png
-       :alt: Point state diagram 
-
 The variable ``p`` refers to a ``Point`` object, which contains two attributes.
 Each attribute refers to a number.
 
 We can access the value of an attribute using the same syntax:
 
-    .. sourcecode:: python3
+    .. block-code:: python
         
         >>> print(p.y)
         4
@@ -206,8 +169,7 @@ unambiguously.
 We can use dot notation as part of any expression, so the following statements
 are legal:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         print("(x={0}, y={1})".format(p.x, p.y))
         distance_squared_from_origin = p.x * p.x + p.y * p.y
@@ -220,8 +182,7 @@ Improving our initializer
 
 To create a point at position (7, 6) currently needs three lines of code:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         p = Point()
         p.x = 7
@@ -230,8 +191,7 @@ To create a point at position (7, 6) currently needs three lines of code:
 We can make our class constructor more general by placing extra parameters into
 the ``__init__`` method, as shown in this example:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class Point:
             """ Point class represents and manipulates x,y coords. """
@@ -247,7 +207,7 @@ The ``x`` and ``y`` parameters here are both optional.  If the caller does not
 supply arguments, they'll get the default values of 0.  Here is our improved class 
 in action:
 
-    .. sourcecode:: python3
+    .. block-code:: python
         
         >>> p = Point(4, 2)
         >>> q = Point(6, 3)
@@ -267,9 +227,7 @@ in action:
    to guide the programmer that calls the class constructor.  
    
    So we're writing the docstring so that it makes the most sense when it pops up to 
-   help the programmer who is using our ``Point`` class:
-   
-   .. image:: illustrations/tooltip_init.png
+   help the programmer who is using our ``Point`` class.
    
        
 Adding other methods to our class
@@ -297,8 +255,7 @@ attribute, methods are accessed using dot notation.
 Let's add another method, ``distance_from_origin``, to see better how methods
 work:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class Point:
             """ Create a new Point, at coordinates x, y """
@@ -315,7 +272,7 @@ work:
 Let's create a few point instances, look at their attributes, and call our new
 method on them: (We must run our program first, to make our ``Point`` class available to the interpreter.)
 
-    .. sourcecode:: python3
+    .. block-code:: python
 
         >>> p = Point(3, 4)
         >>> p.x
@@ -361,8 +318,7 @@ now have a reference, but there is only one turtle!
 
 Here is a simple function involving our new ``Point`` objects:
  
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         
         def print_point(pt):  
@@ -383,8 +339,7 @@ is to add a new method to the class.  And we don't like chatterbox methods that 
 can produce a string representation of itself.  Let's initially 
 call it ``to_string``:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
 
         class Point:
             # ...
@@ -394,7 +349,7 @@ call it ``to_string``:
 
 Now we can say: 
 
-    .. sourcecode:: python3
+    .. block-code:: python
     
         >>> p = Point(3, 4)
         >>> print(p.to_string())
@@ -405,7 +360,7 @@ turn our object into a string?  Yes!  And doesn't ``print``
 automatically use this when printing things?  Yes again! 
 But these automatic mechanisms do not yet do exactly what we want: 
 
-    .. sourcecode:: python3
+    .. block-code:: python
     
        >>> str(p)    
        '<__main__.Point object at 0x01F9AA10>'
@@ -417,8 +372,7 @@ method ``__str__`` instead of ``to_string``, the Python interpreter
 will use our code whenever it needs to convert a ``Point`` to a string.  
 Let's re-do this again, now:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
 
             class Point:
                 # ...
@@ -428,7 +382,7 @@ Let's re-do this again, now:
                 
 and now things are looking great!  
 
-    .. sourcecode:: python3
+    .. block-code:: python
 
         >>> str(p)     # Python now uses the __str__ method that we wrote.
         (3, 4)
@@ -442,8 +396,7 @@ Instances as return values
 Functions and methods can return instances. For example, given two ``Point`` objects,
 find their midpoint.  First we'll write this as a regular function:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
 
         def midpoint(p1, p2):
             """ Return the midpoint of points p1 and p2 """        
@@ -453,7 +406,7 @@ find their midpoint.  First we'll write this as a regular function:
 
 The function creates and returns a new ``Point`` object:
 
-    .. sourcecode:: python3
+    .. block-code:: python
 
         >>> p = Point(3, 4)
         >>> q = Point(5, 12)
@@ -465,8 +418,7 @@ The function creates and returns a new ``Point`` object:
 Now let us do this as a method instead.  Suppose we have a point object,
 and wish to find the midpoint halfway between it and some other target point:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
 
         class Point:
            # ...
@@ -480,7 +432,7 @@ and wish to find the midpoint halfway between it and some other target point:
 This method is identical to the function, aside from some renaming.
 It's usage might be like this:
 
-    .. sourcecode:: python3
+    .. block-code:: python
 
         >>> p = Point(3, 4)
         >>> q = Point(5, 12)
@@ -544,9 +496,6 @@ log.
 Glossary
 --------
 
-.. glossary::
-
-
     attribute
         One of the named data items that makes up an instance.
 
@@ -591,74 +540,3 @@ Glossary
         A language that provides features, such as user-defined classes and
         inheritance, that facilitate object-oriented programming.
 
-
-
-Exercises
----------
-
-#. Rewrite the ``distance`` function from the chapter titled *Fruitful functions* so that it takes two
-   ``Point``\ s as parameters instead of four numbers.
-   
-#. Add a method ``reflect_x`` to ``Point`` which returns a new ``Point``, one which is the 
-   reflection of the point about the x-axis.  For example, 
-   ``Point(3, 5).reflect_x()`` is (3, -5)
-
-#. Add a method ``slope_from_origin`` which returns the slope of the line joining the origin
-   to the point.   For example, ::
-   
-      >>> Point(4, 10).slope_from_origin()
-      2.5     
-      
-   What cases will cause this method to fail? 
-   
-#. The equation of a straight line is  "y = ax + b", (or perhaps "y = mx + c").
-   The coefficients a and b completely describe the line.  Write a method in the 
-   ``Point`` class so that if a point instance is given another point, it will compute the equation
-   of the straight line joining the two points.  It must return the two coefficients as a tuple
-   of two values.  For example,   ::
-   
-      >>> print(Point(4, 11).get_line_to(Point(6, 15))) 
-      >>> (2, 3)
- 
-   This tells us that the equation of the line joining the two points is "y = 2x + 3".    
-   When will this method fail?
-   
-#. Given four points that fall on the circumference of a circle, find the midpoint of the circle.
-   When will this function fail?   
-   
-   *Hint:* You *must*
-   know how to solve the geometry problem *before* you think of going anywhere near programming.
-   You cannot program a solution to a problem if you don't understand what you want the computer to do! 
-   
-#. Create a new class, SMS_store.  The class will instantiate SMS_store objects,
-   similar to an inbox or outbox on a cellphone::
-   
-       my_inbox = SMS_store()
-   
-   This store can hold multiple SMS messages  (i.e. its internal state will just be a list of messages).  Each message
-   will be represented as a tuple::
-
-       (has_been_viewed, from_number, time_arrived, text_of_SMS) 
-       
-   The inbox object should provide these methods::
-       
-       my_inbox.add_new_arrival(from_number, time_arrived, text_of_SMS)    
-         # Makes new SMS tuple, inserts it after other messages 
-         # in the store. When creating this message, its 
-         # has_been_viewed status is set False.
-            
-       my_inbox.message_count()         
-         # Returns the number of sms messages in my_inbox
-          
-       my_inbox.get_unread_indexes()    
-         # Returns list of indexes of all not-yet-viewed SMS messages
-         
-       my_inbox.get_message(i)          
-         # Return (from_number, time_arrived, text_of_sms) for message[i]
-         # Also change its state to "has been viewed".
-         # If there is no message at position i, return None
-         
-       my_inbox.delete(i)     # Delete the message at index i
-       my_inbox.clear()       # Delete all messages from inbox
-   
-   Write the class, create a message store object, write tests for these methods, and implement the methods.

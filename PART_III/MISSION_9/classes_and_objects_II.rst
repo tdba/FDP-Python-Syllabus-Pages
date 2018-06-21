@@ -1,18 +1,5 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
-
- 
-| 
-    
 Classes and Objects --- Digging a little deeper
 ===============================================
-
-.. index:: rectangle
 
 Rectangles
 ----------
@@ -32,8 +19,7 @@ the size.
 Again, we'll define a new class, and provide it with an initializer and
 a string converter method:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         class Rectangle:
             """ A class to manufacture rectangle objects """
@@ -57,7 +43,7 @@ To specify the upper-left corner, we have embedded a ``Point`` object (as we use
 it in the previous chapter) within our new ``Rectangle`` object!
 We create two new ``Rectangle`` objects, and then print them producing:  
 
-    .. sourcecode:: python3
+    .. block-code:: python
 
         box: ((0, 0), 100, 200)
         bomb: ((100, 80), 5, 10)
@@ -65,10 +51,6 @@ We create two new ``Rectangle`` objects, and then print them producing:
 The dot operator composes. The expression ``box.corner.x`` means, "Go to the
 object that ``box`` refers to and select its attribute named ``corner``, then go to
 that object and select its attribute named ``x``".
-
-The figure shows the state of this object:
-
-    .. image:: illustrations/rectangle.png
 
 Objects are mutable
 -------------------
@@ -78,7 +60,7 @@ its attributes. For example, to grow the size of a rectangle without
 changing its position, we could modify the values of ``width`` and
 ``height``:
 
-    .. sourcecode:: python3
+    .. block-code:: python
         
         box.width += 50
         box.height += 100
@@ -87,8 +69,7 @@ Of course, we'd probably like to provide a method to encapsulate this
 inside the class.  We will also provide another method to move the 
 position of the rectangle elsewhere: 
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
 
         class Rectangle:
             # ...
@@ -105,7 +86,7 @@ position of the rectangle elsewhere:
 
 Let us try this: 
 
-    .. sourcecode:: python3
+    .. block-code:: python
 
         >>> r = Rectangle(Point(10,5), 100, 50)
         >>> print(r)
@@ -117,8 +98,6 @@ Let us try this:
         print(r)
         ((0, 15), 125, 40)
       
-.. index:: equality, equality; deep, equality; shallow, shallow equality, deep equality      
-
 Sameness
 --------
 
@@ -138,7 +117,7 @@ We've already seen the ``is`` operator in the chapter on lists, where we
 talked about aliases:
 it allows us to find out if two references refer to the same object: 
 
-    .. sourcecode:: python3
+    .. block-code:: python
         
         >>> p1 = Point(3, 4)
         >>> p2 = Point(3, 4)
@@ -149,7 +128,7 @@ Even though ``p1`` and ``p2`` contain the same coordinates, they are not the
 same object. If we assign ``p1`` to ``p3``, then the two variables are aliases
 of the same object:
 
-    .. sourcecode:: python3
+    .. block-code:: python
         
         >>> p3 = p1
         >>> p1 is p3
@@ -161,8 +140,7 @@ compares only the references, not the contents of the objects.
 To compare the contents of the objects --- **deep equality** ---
 we can write a function called ``same_coordinates``:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. block-code:: python
         
         def same_coordinates(p1, p2):
             return (p1.x == p2.x) and (p1.y == p2.y)
@@ -170,7 +148,7 @@ we can write a function called ``same_coordinates``:
 Now if we create two different objects that contain the same data, we can use
 ``same_point`` to find out if they represent points with the same coordinates.
 
-    .. sourcecode:: python3
+    .. block-code:: python
         
         >>> p1 = Point(3, 4)
         >>> p2 = Point(3, 4)
@@ -190,8 +168,7 @@ shallow and deep equality.
     But sometimes the implementors will attach shallow equality semantics, and 
     sometimes deep equality, as shown in this little experiment:  
     
-        .. sourcecode:: python3
-            :linenos:
+        .. block-code:: python
         
             p = Point(4, 2)
             s = Point(4, 2)
@@ -205,7 +182,7 @@ shallow and deep equality.
 
     This outputs:
     
-            .. sourcecode:: python3
+            .. block-code:: python
         
                 == on Points returns False
                 == on lists returns True  
@@ -213,8 +190,6 @@ shallow and deep equality.
     So we conclude that even though the two lists (or tuples, etc.) are distinct objects
     with different memory addresses, for lists the ``==`` operator tests for deep equality, 
     while in the case of points it makes a shallow test. 
-
-.. index:: copy, copy; deep, copy; shallow 
 
 Copying
 -------
@@ -227,7 +202,7 @@ Copying an object is often an alternative to aliasing. The ``copy``
 module contains a function called ``copy`` that can duplicate any
 object:
 
-    .. sourcecode:: python3
+    .. block-code:: python
 
         
         >>> import copy
@@ -252,11 +227,7 @@ reference to the ``Point`` object, so both the old ``Rectangle`` and the
 new one refer to a single ``Point``.
 
 If we create a box, ``b1``, in the usual way and then make a copy, ``b2``,
-using ``copy``, the resulting state diagram looks like this:
-
-    .. image:: illustrations/rectangle2.png
-
-This is almost certainly not what we want. In this case, invoking
+using ``copy``, the resultat is almost certainly not what we want. In this case, invoking
 ``grow`` on one of the ``Rectangle`` objects would not affect the other, but
 invoking ``move`` on either would affect both! This behavior is
 confusing and error-prone. The shallow copy has created an alias to the
@@ -266,7 +237,7 @@ Fortunately, the ``copy`` module contains a function named ``deepcopy`` that
 copies not only the object but also any embedded objects. It won't be
 surprising to learn that this operation is called a **deep copy**.
 
-    .. sourcecode:: python3
+    .. block-code:: python
 
         >>> b2 = copy.deepcopy(b1)
 
@@ -275,8 +246,6 @@ Now ``b1`` and ``b2`` are completely separate objects.
 
 Glossary
 --------
-
-.. glossary::
         
     deep copy
         To copy the contents of an object as well as any embedded objects, and
@@ -294,49 +263,3 @@ Glossary
     shallow equality
         Equality of references, or two references that point to the same object.
 
-
-Exercises
----------
-   
-#. Add a method ``area`` to the ``Rectangle`` class that returns the area of any instance::
-
-      r = Rectangle(Point(0, 0), 10, 5)
-      test(r.area() == 50)
-
-#. Write a ``perimeter`` method in the ``Rectangle`` class so that we can find
-   the perimeter of any rectangle instance::
-   
-      r = Rectangle(Point(0, 0), 10, 5)
-      test(r.perimeter() == 30)
-
-#. Write a ``flip`` method in the ``Rectangle`` class that swaps the width
-   and the height of any rectangle instance::
-   
-      r = Rectangle(Point(100, 50), 10, 5)
-      test(r.width == 10 and r.height == 5)
-      r.flip()
-      test(r.width == 5 and r.height == 10)
-      
-#. Write a new method in the ``Rectangle`` class to test if a ``Point`` falls within
-   the rectangle.  For this exercise, assume that a rectangle at (0,0) with
-   width 10 and height 5 has *open* upper bounds on the width and height, 
-   i.e. it stretches in the x direction from [0 to 10), where 0 is included
-   but 10 is excluded, and from [0 to 5) in the y direction.  So
-   it does not contain the point (10, 2).  These tests should pass::
-   
-      r = Rectangle(Point(0, 0), 10, 5)
-      test(r.contains(Point(0, 0)))
-      test(r.contains(Point(3, 3)))
-      test(not r.contains(Point(3, 7)))
-      test(not r.contains(Point(3, 5)))
-      test(r.contains(Point(3, 4.99999)))
-      test(not r.contains(Point(-3, -3)))
-   
-#. In games, we often put a rectangular "bounding box" around our sprites. 
-   (A sprite is an object that can move about in the game, as we will see 
-   shortly.)  We can then do *collision detection* between, say, 
-   bombs and spaceships, by comparing whether their rectangles overlap anywhere. 
-   
-   Write a function to determine whether two rectangles collide. *Hint:
-   this might be quite a tough exercise!  Think carefully about all the
-   cases before you code.* 
