@@ -32,7 +32,7 @@ As usual when writing a new class, we'll start with the initialization and
 ``__str__`` methods so that we can test the basic mechanism of creating and
 displaying the new type:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Node:
             def __init__(self, cargo=None, next=None):
@@ -51,7 +51,7 @@ value in a list.
 
 To test the implementation so far, we can create a ``Node`` and print it:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> node = Node("test")
         >>> print(node)
@@ -59,7 +59,7 @@ To test the implementation so far, we can create a ``Node`` and print it:
 
 To make it interesting, we need a list with more than one node:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> node1 = Node(1)
         >>> node2 = Node(2)
@@ -71,7 +71,7 @@ are not **linked**.
 To link the nodes, we have to make the first node refer to the second and the
 second node refer to the third:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> node1.next = node2
         >>> node2.next = node3
@@ -95,7 +95,7 @@ node. For example, the function ``print_list`` takes a single node as an
 argument. Starting with the head of the list, it prints each node until it gets
 to the end:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def print_list(node):
             while node is not None:
@@ -105,7 +105,7 @@ to the end:
 
 To invoke this method, we pass a reference to the first node:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> print_list(node1)
         1 2 3
@@ -136,7 +136,7 @@ All we need are a base case and a way of proving that for any list, we will
 eventually get to the base case. Given the recursive definition of a list, a
 natural base case is the empty list, represented by ``None``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def print_backward(list):
             if list is None: return
@@ -152,7 +152,7 @@ each node.
 
 We invoke this method as we invoked ``print_list``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> print_backward(node1)
         3 2 1
@@ -208,7 +208,7 @@ The fundamental ambiguity theorem
 
 One part of ``print_backward`` might have raised an eyebrow:
 
-    .. block-code:: python
+    .. code-block:: python
         
         head = list
         tail = list.next
@@ -230,7 +230,7 @@ disambiguate.
 We could have written ``print_backward`` without ``head`` and ``tail``, which
 makes it more concise but possibly less clear:
 
-    .. block-code:: python
+    .. code-block:: python
 
         def print_backward(list):
             if list is None: return
@@ -256,7 +256,7 @@ remove, or reorder the nodes.
 As an example, let's write a method that removes the second node in the list
 and returns a reference to the removed node:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def remove_second(list):
             if list is None: return
@@ -271,7 +271,7 @@ and returns a reference to the removed node:
 Again, we are using temporary variables to make the code more readable. Here is
 how to use this method:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> print_list(node1)
         1 2 3
@@ -296,7 +296,7 @@ the ``print_backward`` method to print ``3, 2,`` but we need a separate method
 to print the brackets and the first node. Let's call it
 ``print_backward_nicely``:
 
-    .. block-code:: python
+    .. code-block:: python
 
         def print_backward_nicely(list):
             print("[", end=" ")
@@ -324,7 +324,7 @@ integer that contains the length of the list and a reference to the first node.
 ``LinkedList`` objects serve as handles for manipulating lists of ``Node``
 objects:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class LinkedList:
             def __init__(self):
@@ -335,7 +335,7 @@ One nice thing about the ``LinkedList`` class is that it provides a natural
 place to put wrapper functions like ``print_backward_nicely``, which we can
 make a method of the ``LinkedList`` class:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class LinkedList:
             ...
@@ -363,7 +363,7 @@ or remove the first element of a list. For example, ``add_first`` is a method
 for ``LinkedList``\s; it takes an item of cargo as an argument and puts it at
 the beginning of the list:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class LinkedList:
             ...

@@ -55,7 +55,7 @@ added.
 We add the code in this chapter to our ``Cards.py`` file from the previous chapter.
 In the class definition, the name of the parent class appears in parentheses:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Hand(Deck):
             pass
@@ -69,7 +69,7 @@ the name of the player that holds it. The name is an optional parameter with
 the empty string as a default value. ``cards`` is the list of cards in the
 hand, initialized to the empty list:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Hand(Deck):
             def __init__(self, name=""):
@@ -80,7 +80,7 @@ For just about any card game, it is necessary to add and remove cards from the
 deck. Removing cards is already taken care of, since ``Hand`` inherits
 ``remove`` from ``Deck``. But we have to write ``add``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Hand(Deck):
             ...
@@ -107,7 +107,7 @@ to each hand.
 of cards to deal. If there are not enough cards in the deck, the method deals
 out all of the cards and stops:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Deck:
             ...
@@ -140,7 +140,7 @@ Printing a Hand
 To print the contents of a hand, we can take advantage of the 
 ``__str__`` method inherited from ``Deck``. For example:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> deck = Deck()
         >>> deck.shuffle()
@@ -161,7 +161,7 @@ information in a ``Hand`` object we might want to include when we print one. To
 do that, we can provide a ``__str__`` method in the ``Hand`` class that
 overrides the one in the ``Deck`` class:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Hand(Deck)
             ...
@@ -195,7 +195,7 @@ The ``CardGame`` class
 The ``CardGame`` class takes care of some basic chores common to all games,
 such as creating the deck and shuffling it:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class CardGame:
             def __init__(self):
@@ -241,7 +241,7 @@ abilities of a ``Hand``. We will define a new class, ``OldMaidHand``, that
 inherits from ``Hand`` and provides an additional method called
 ``remove_matches``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class OldMaidHand(Hand):
             def remove_matches(self):
@@ -271,7 +271,7 @@ the hand, both cards are removed.
 
 The following example demonstrates how to use ``remove_matches``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> game = CardGame()
         >>> hand = OldMaidHand("frank")
@@ -319,7 +319,7 @@ as a parameter.
 Since ``__init__`` is inherited from ``CardGame``, a new ``OldMaidGame`` object
 contains a new shuffled deck:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class OldMaidGame(CardGame):
             def play(self, names):
@@ -357,7 +357,7 @@ Some of the steps of the game have been separated into methods.
 ``remove_all_matches`` traverses the list of hands and invokes
 ``remove_matches`` on each:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class OldMaidGame(CardGame):
             ...
@@ -382,7 +382,7 @@ operator wraps it back around to 0.
 The method ``play_one_turn`` takes a parameter that indicates whose turn it is.
 The return value is the number of matches made during this turn:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class OldMaidGame(CardGame):
             ...
@@ -408,7 +408,7 @@ is random.
 The method ``find_neighbor`` starts with the player to the immediate left and
 continues around the circle until it finds a player that still has cards:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class OldMaidGame(CardGame):
             ...
@@ -430,7 +430,7 @@ The following output is from a truncated form of the game where only the top
 fifteen cards (tens and higher) were dealt to three players.  With this small
 deck, play stops after seven matches instead of twenty-five.
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> import cards
         >>> game = cards.OldMaidGame()

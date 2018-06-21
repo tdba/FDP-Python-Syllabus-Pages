@@ -43,7 +43,7 @@ into a secret code. What a computer scientist means by encode is to define a
 mapping between a sequence of numbers and the items I want to represent. For
 example:
 
-    .. block-code:: python
+    .. code-block:: python
         
         Spades   -->  3
         Hearts   -->  2
@@ -55,7 +55,7 @@ so we can compare suits by comparing integers. The mapping for ranks is fairly
 obvious; each of the numerical ranks maps to the corresponding integer, and for
 face cards:
 
-    .. block-code:: python
+    .. code-block:: python
         
         Jack   -->  11
         Queen  -->  12
@@ -66,7 +66,7 @@ are not part of the Python program. They are part of the program design, but
 they never appear explicitly in the code. The class definition for the ``Card``
 type looks like this:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Card:
             def __init__(self, suit=0, rank=0):
@@ -78,7 +78,7 @@ for each attribute.
 
 To create some objects, representing say the 3 of Clubs and the Jack of Diamonds, use these commands:
 
-    .. block-code:: python
+    .. code-block:: python
         
         three_of_clubs = Card(0, 3)
         card1 = Card(1, 11)
@@ -100,7 +100,7 @@ want to map the integer codes onto words. A natural way to do that is with
 lists of strings. We assign these lists to **class attributes** at the top of
 the class definition:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Card:
             suits = ["Clubs", "Diamonds", "Hearts", "Spades"]
@@ -131,7 +131,7 @@ rank 2 as integer 2, 3 as 3, and so on.
 
 With the methods we have so far, we can create and print cards:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> card1 = Card(1, 11)
         >>> print(card1)
@@ -141,7 +141,7 @@ Class attributes like ``suits`` are shared by all ``Card`` objects. The
 advantage of this is that we can use any ``Card`` object to access the class
 attributes:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> card2 = Card(1, 3)
         >>> print(card2)
@@ -154,7 +154,7 @@ aliasing situation.  The disadvantage is that if we modify a class attribute, it
 instance of the class. For example, if we decide that Jack of Diamonds should
 really be called Jack of Swirly Whales, we could do this:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> card1.suits[1] = "Swirly Whales"
         >>> print(card1)
@@ -162,7 +162,7 @@ really be called Jack of Swirly Whales, we could do this:
 
 The problem is that *all* of the Diamonds just became Swirly Whales:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> print(card2)
         3 of Swirly Whales
@@ -205,7 +205,7 @@ sorted with all the Clubs together, followed by all the Diamonds, and so on.
 
 With that decided, we can write ``cmp``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def cmp(self, other):
             # Check the suits
@@ -222,7 +222,7 @@ In this ordering, Aces appear lower than Deuces (2s).
 Now, we can define the six special methods that do the
 overloading of each of the relational operators for us:
 
-    .. block-code:: python
+    .. code-block:: python
         
         def __eq__(self, other):
             return self.cmp(other) == 0
@@ -244,7 +244,7 @@ overloading of each of the relational operators for us:
 
 With this machinery in place, the relational operators now work as we'd like them to:
 
-    .. block-code:: python
+    .. code-block:: python
 
        >>> card1 = Card(1, 11)
        >>> card2 = Card(1, 3)
@@ -267,7 +267,7 @@ The following is a class definition for the ``Deck`` class. The initialization
 method creates the attribute ``cards`` and generates the standard pack of
 fifty-two cards:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Deck:
             def __init__(self):
@@ -285,7 +285,7 @@ the current suit and rank, and appends that card to the ``cards`` list.
 
 With this in place, we can instantiate some decks:
 
-    .. block-code:: python
+    .. code-block:: python
         
         red_deck = Deck()
         blue_deck = Deck()
@@ -298,7 +298,7 @@ As usual, when we define a new type we want a method that prints the
 contents of an instance. To print a ``Deck``, we traverse the list and print each
 ``Card``:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Deck:
             ...
@@ -319,7 +319,7 @@ Here is a version of ``__str__`` that returns a string representation of a
 ``Deck``. To add a bit of pizzazz, it arranges the cards in a cascade where
 each card is indented one space more than the previous card:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Deck:
             ...
@@ -348,7 +348,7 @@ generated and concatenated with the old value of ``s`` to get the new value.
 When the loop ends, ``s`` contains the complete string representation of the
 ``Deck``, which looks like this:
 
-    .. block-code:: python
+    .. code-block:: python
         
         >>> red_deck = Deck()
         >>> print(red_deck)
@@ -389,7 +389,7 @@ we are guaranteed to get a legal index. For example, if ``rng`` has already
 been instantiated as a random number source, this expression chooses
 the index of a random card in a deck:
 
-    .. block-code:: python
+    .. code-block:: python
         
         rng.randrange(0, len(self.cards))
 
@@ -398,7 +398,7 @@ card with a randomly chosen one. It is possible that the card will be swapped
 with itself, but that is fine. In fact, if we precluded that possibility, the
 order of the cards would be less than entirely random:
 
-    .. block-code:: python 
+    .. code-block:: python 
         
         class Deck:
             ...
@@ -417,7 +417,7 @@ For each card in the deck, we choose a random card from among the cards that
 haven't been shuffled yet. Then we swap the current card (``i``) with the
 selected card (``j``). To swap the cards we use a tuple assignment:
 
-    .. block-code:: python
+    .. code-block:: python
         
         (self.cards[i], self.cards[j]) = (self.cards[j], self.cards[i])
     
@@ -425,7 +425,7 @@ While this is a good shuffling method, a random number generator object also
 has a ``shuffle`` method that can shuffle elements in a list, in place.
 So we could rewrite this function to use the one provided for us:     
     
-    .. block-code:: python
+    .. code-block:: python
         
         class Deck:
             ...
@@ -442,7 +442,7 @@ Another method that would be useful for the ``Deck`` class is ``remove``,
 which takes a card as a parameter, removes it, and returns ``True`` if
 the card was in the deck and ``False`` otherwise:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Deck:
             ...
@@ -463,7 +463,7 @@ Since the ``__eq__`` we provided in the ``Card`` class checks for deep equality,
 To deal cards, we want to remove and return the top card. The list method
 ``pop`` provides a convenient way to do that:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Deck:
             ...
@@ -476,7 +476,7 @@ dealing from the bottom of the deck.
 One more operation that we are likely to want is the Boolean function
 ``is_empty``, which returns ``True`` if the deck contains no cards:
 
-    .. block-code:: python
+    .. code-block:: python
         
         class Deck:
             ...
