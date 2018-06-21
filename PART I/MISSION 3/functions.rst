@@ -1,13 +1,8 @@
-.. Cette page est publiée sous la license Creative Commons BY-SA (https://creativecommons.org/licenses/by-sa/3.0/fr/)
-
-
-=================
-Créer une méthode
-=================
+Functions
+=========
 
 Functions
 ---------
-      
      
 In Python, a **function** is a named sequence of statements
 that belong together.  Their primary purpose is to help us
@@ -69,8 +64,6 @@ of this "building block":
         wn.mainloop()
 
 
-
-        
 This function is named ``draw_square``.  It has two parameters: one to tell 
 the function which turtle to move around, and the other to tell it the size
 of the square we want drawn.   Make sure you know where the body of the function
@@ -146,8 +139,6 @@ function a little, and we get tess to draw 15 squares, with some variations.
 
         wn.mainloop()
 
-
-
 Functions can call other functions
 ----------------------------------
 
@@ -216,7 +207,6 @@ As we might expect, we have to create a function before we can execute it.
 In other words, the function definition has to be executed before the
 function is called.
 
-
 Flow of execution
 -----------------
 
@@ -281,9 +271,7 @@ top to bottom. Instead, follow the flow of execution.
    Now we're ready to begin.  Put the mouse cursor on the line of the program
    where we create the turtle screen, and press the *F4* key.  This will run the Python
    program up to, but not including, the line where we have the cursor.   Our program 
-   will "break" now, and provide a highlight on the next line to be executed, something like this:
-
-
+   will "break" now, and provide a highlight on the next line to be executed.
  
    At this point we can press the *F7* key (*step into*) repeatedly to single step through
    the code.  Observe as we execute lines 10, 11, 12, ... how the turtle window gets 
@@ -301,7 +289,6 @@ top to bottom. Instead, follow the flow of execution.
    
    There are some other options, including one that allow us to *resume* execution without further stepping.
    Find them under the *Run* menu of PyScripter.
-
     
 Functions that require arguments
 --------------------------------
@@ -368,10 +355,9 @@ for their resulting value, Python always wants to return something.  So if the p
 doesn't arrange to return a value, Python will automatically return the value ``None``.
 
 How do we write our own fruitful function?  In the exercises at the end of chapter 2 we saw
-the standard formula for compound interest, which we'll now write as a fruitful function:   
+the standard formula for compound interest, which we'll now write as a fruitful function:
 
-
-    .. code-block:: python
+    .. code-block:: python 
 
        def final_amt(p, r, n, t):
            """
@@ -435,7 +421,6 @@ E = mc\ :sup:`2` would not be nearly so memorable if Einstein had
 used longer variable names!  If you do prefer short names, 
 make sure you also have some comments to enlighten the reader 
 about what the variables are used for.
-  
     
 Variables and parameters are local
 ----------------------------------
@@ -443,7 +428,7 @@ Variables and parameters are local
 When we create a **local variable** inside a function, it only exists inside
 the function, and we cannot use it outside. For example, consider again this function:
 
-    .. code-block:: python
+    .. code-block:: python 
 
        def final_amt(p, r, n, t):
            a = p * (1 + r/n) ** (n*t)
@@ -473,10 +458,51 @@ So it is not possible for a function to set some local variable to a
 value, complete its execution, and then when it is called again next
 time, recover the local variable.  Each call of the function creates
 new local variables, and their lifetimes expire when the function returns
-to the caller. 
-    
-   
+to the caller.
 
+Turtles Revisited
+-----------------
+
+Now that we have fruitful functions, we can focus our attention on 
+reorganizing our code so that it fits more nicely into our mental chunks.  
+This process of rearrangement is called **refactoring** the code.  
+ 
+Two things we're always going to want to do when working with turtles
+is to create the window for the turtle, and to create one or more turtles.
+We could write some functions to make these tasks easier in future:
+
+    .. code-block:: python 
+
+       def make_window(colr, ttle):   
+           """
+             Set up the window with the given background color and title. 
+             Returns the new window.
+           """
+           w = turtle.Screen()             
+           w.bgcolor(colr)
+           w.title(ttle)
+           return w
+           
+           
+       def make_turtle(colr, sz):      
+           """
+             Set up a turtle with the given color and pensize.
+             Returns the new turtle.
+           """
+           t = turtle.Turtle()
+           t.color(colr)
+           t.pensize(sz)
+           return t
+
+           
+       wn = make_window("lightgreen", "Tess and Alex dancing")
+       tess = make_turtle("hotpink", 5)
+       alex = make_turtle("black", 1)
+       dave = make_turtle("yellow", 2)  
+   
+The trick about refactoring code is to anticipate which things we are likely to want to change
+each time we call the function: these should become the parameters, or changeable parts,
+of the functions we write.
 
 Glossary
 --------
@@ -582,16 +608,3 @@ Glossary
     void function
         The opposite of a fruitful function: one that does not return a value.  It is
         executed for the work it does, rather than for the value it returns.
-
-Exercices:
-==========
-
-.. inginious:: Max
-
-.. inginious:: GCD    
-  
-  
-  
-  
-  
-  
