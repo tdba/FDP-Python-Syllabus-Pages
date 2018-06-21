@@ -281,6 +281,9 @@ Sometimes there are more than two possibilities and we need more than two
 branches. One way to express a computation like that is a **chained
 conditional**:
    
+
+.. admonition:: Flowchart of this chained conditional
+
     .. code-block:: python
 
         if x < y:
@@ -289,8 +292,6 @@ conditional**:
             STATEMENTS_B
         else:
             STATEMENTS_C
-
-.. admonition:: Flowchart of this chained conditional
         
 ``elif`` is an abbreviation of ``else if``. Again, exactly one branch will be
 executed. There is no limit of the number of ``elif`` statements but only a

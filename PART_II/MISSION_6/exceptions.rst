@@ -1,18 +1,5 @@
-..  Copyright (C)  Peter Wentworth, Jeffrey Elkner, Allen B. Downey and Chris Meyers.
-    Permission is granted to copy, distribute and/or modify this document
-    under the terms of the GNU Free Documentation License, Version 1.3
-    or any later version published by the Free Software Foundation;
-    with Invariant Sections being Foreword, Preface, and Contributor List, no
-    Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is
-    included in the section entitled "GNU Free Documentation License".
- 
-|      
-    
 Exceptions
 ==========
-
-
-.. index:: exception, handling an exception, exception; handling, try ... except 
 
 Catching exceptions
 -------------------
@@ -23,7 +10,7 @@ describing the exception that occurred.
 
 For example, dividing by zero creates an exception:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> print(55/0)
         Traceback (most recent call last):
@@ -32,7 +19,7 @@ For example, dividing by zero creates an exception:
 
 So does accessing a non-existent list item:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> a = []
         >>> print(a[5])
@@ -42,7 +29,7 @@ So does accessing a non-existent list item:
 
 Or trying to make an item assignment on a tuple:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> tup = ("a", "b", "d", "d")
         >>> tup[2] = "c" 
@@ -61,8 +48,7 @@ For example, we might prompt the user for the name of a file and then try to
 open it. If the file doesn't exist, we don't want the program to crash; we want
 to handle the exception:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         filename = input("Enter a file name: ")
         try:
@@ -82,8 +68,7 @@ it executes the statements in the ``except`` clause and then continues.
 We could encapsulate this capability in a function: ``exists`` which takes a filename
 and returns true if the file exists, false if it doesn't:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def exists(filename):
             try:
@@ -93,20 +78,6 @@ and returns true if the file exists, false if it doesn't:
             except:
                 return False 
 
-    .. The try statement in this function was already introduced previously
-       (the same code), so I thought it would be appropriate to add an else
-       clause here.
-       
-       pw:  HI Victor - I looked at the else: and went against it! 
-       It is just a horrible language feature in my view. 
-       Not only do we complicate things by overload the keyword else (here, in the if, 
-       and in the for loop), but it adds no new expressive power over just doing the
-       "didn't get an exception" inline.  And the allowable combinations are hard to 
-       explain.  You can omit the except clause if you have a finally clause. But
-       you cannot have the else if you omit except, ... and so on.  Too much risk for
-       too little return, in my view.
-
- 
     .. admonition:: A template to test if a file exists, without using exceptions
 
         The function we've just shown is not one we'd recommend. It opens
@@ -120,8 +91,7 @@ and returns true if the file exists, false if it doesn't:
         provides a number of useful functions to work with paths, files and directories,
         so you should check out the help.  
         
-            .. sourcecode:: python3
-                :linenos:
+            .. code-block:: python
             
                 import os
                 
@@ -148,8 +118,7 @@ If our program detects an error condition, we can **raise** an
 exception. Here is an example that gets input from the user and checks that the
 number is non-negative:
 
-    .. sourcecode:: python3
-       :linenos:
+    .. code-block:: python
         
        def get_age():
            age = int(input("Please enter your age: "))
@@ -183,7 +152,7 @@ If the function that called ``get_age`` (or its caller, or their caller, ...)
 handles the error, then the program can
 carry on running; otherwise, Python prints the traceback and exits:
 
-    .. sourcecode:: python3
+    .. code-block:: python
         
         >>> get_age()
         Please enter your age: 42
@@ -205,8 +174,7 @@ and independent things happening, so perhaps it makes sense to keep the two
 steps separate when we first learn to work with exceptions.   
 Here we show it all in a single statement:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
        
         raise ValueError("{0} is not a valid age".format(age))
  
@@ -218,8 +186,7 @@ Using exception handling, we can now modify our ``recursion_depth`` example
 from the previous chapter so that it stops when it reaches the 
 maximum recursion depth allowed:
 
-    .. sourcecode:: python3
-        :linenos:
+    .. code-block:: python
         
         def recursion_depth(number):
             print("Recursion depth number", number)
@@ -231,8 +198,6 @@ maximum recursion depth allowed:
         recursion_depth(0)
 
 Run this version and observe the results.
-
-.. index:: try ... except ... finally
 
 The ``finally`` clause of the ``try`` statement
 -----------------------------------------------
@@ -248,8 +213,7 @@ the window, disconnect our dial-up connection, or close the file.  The ``finally
 clause of the ``try`` statement is the way to do just this.  Consider
 this (somewhat contrived) example:
 
-    .. sourcecode:: python3
-       :linenos:
+    .. code-block:: python
 
        import turtle
        import time
@@ -274,44 +238,6 @@ this (somewhat contrived) example:
        show_poly()
        show_poly()
 
-.. I'm not sure I like all that is happening in the try block, we're
-   trying to handle the exception that the input might not be a number,
-   so the only thing that should be happening in the try block is
-   'convert the input to an int'. Currently it's 'create a canvas, get
-   user inut, compute angle, draw polygon, pause'. How about:
-   
-   pw: I prefer what I have. It catches at least three different problems - 
-   a) that the input dialogue is dismissed rather than answered,  
-   b) that the n might be zero, and 
-   c) that it might not be a number.    
-   I think it is nicer to keep together the statements that follow each
-   other logically when no problem has raised its head. So the very old
-   Basic programs used to have  "OnError goto line 50", then you just wrote
-   lines of code to capture the sequence and flow in the most "natural order". 
-   So I'd prefer to keep the try ... finally disentangled from the main flow. 
-      
-
-..    def show_poly():
-          win = turtle.Screen()   # Grab/create a resource, e.g. a window
-          tess = turtle.Turtle()
-          user_input = input("How many sides do you want in your polygon?")
-          try:
-              n = int(user_input)
-          except ValueError:
-              raise ValueError("some enlightening error message")
-          else:  # Since no ValueError was raised
-              angle = 360 / n
-              for i in range(n):      # Draw the polygon
-                  tess.forward(10)
-                  tess.left(angle)
-              time.sleep(3)           # Make program wait a few seconds
-          finally:
-              win.bye()               # Close the turtle's window
-
-.. Maybe there could be a different except clause if the user quits, but
-   this one still illustrates the cleaning up process. The surrounding
-   paragraphs would need to be modified.
-
 In lines 20--22, ``show_poly`` is called three times.  Each one creates a new
 window for its turtle, and draws a polygon with the number of sides
 input by the user.  But what if the user enters a string that cannot be
@@ -328,8 +254,6 @@ window will be closed before it crashes!
 Glossary
 --------
 
-.. glossary::
-
     exception
         An error that occurs at runtime.
 
@@ -340,16 +264,4 @@ Glossary
     raise
         To create a deliberate exception by using the ``raise`` statement.
 
-
-Exercises
----------
-   
-                
-#. Write a function named ``readposint`` that uses the ``input`` dialog to
-   prompt the user for a positive
-   integer and then checks the input to confirm that it meets the requirements. 
-   It should be able to handle inputs that cannot be converted to ``int``, as well
-   as negative ``int``\s, and edge cases (e.g. when the user closes the dialog, or
-   does not enter anything at all.)   
-   
 
