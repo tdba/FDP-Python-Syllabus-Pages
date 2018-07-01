@@ -1,0 +1,7 @@
+Data structures 	Linked lists
+			Stacks
+			Queues
+Useful adds 		RegExp
+			Parallel programming 
+			...
+Web 			(Django ?)

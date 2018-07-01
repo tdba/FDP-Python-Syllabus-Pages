@@ -1,0 +1,23 @@
+Introduction 	To programmming
+		To Python
+First program 	Print 
+		Comments
+If statement 	Logical operators
+		Statements
+Variables 	Types 
+		Variables
+Errors & 	Synthaxe 
+Exceptions 
+Data 		Strings Index, slices, operators
+Representation 	Lists + pattern-matching
+		Tuples
+		Dictionaries
+		Recursive data structures 
+Loops 		For loop
+		Iterators
+		List comprehensions
+		While loop
+Files 		How to open 
+		Encoding
+		Write
+		Read

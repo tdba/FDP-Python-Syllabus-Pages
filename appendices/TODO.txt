@@ -1,0 +1,9 @@
+Installation 	Python Basic
+		IDE
+Best practices 	Programming
+		Python 
+Cheat sheets
+How to use VC 	Introd
+		System 
+		Best practices
+...
