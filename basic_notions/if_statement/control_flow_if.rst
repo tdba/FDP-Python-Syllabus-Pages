@@ -24,8 +24,8 @@ La syntaxe de *if* est :
         # instruction 2
         # ...
         # instruction N
-		
-Vous remarquez que les instructions apparetenant se déclenchant dans le cas où la condition est validée sont toutes indentées d'un cran en plus par rapport à l'indentation du *if*. Ces éléments d'avantages indentés appartiennent au bloc d'instruction de la condition et ne seront exécutés que si celle-ci est validée. Cela permet notamment de faire la différence entre du code devant s'exécuter dans tous les cas et du code qui ne s'exécutera que si la condition est validée. 
+
+Vous remarquez que les instructions apparetenant se déclenchant dans le cas où la condition est validée sont toutes indentées d'un cran en plus par rapport à l'indentation du *if*. Ces éléments d'avantages indentés appartiennent au bloc d'instruction de la condition et ne seront exécutés que si celle-ci est validée. Cela permet notamment de faire la différence entre du code devant s'exécuter dans tous les cas et du code qui ne s'exécutera que si la condition est validée.
 
 Comme on apprend toujours mieux par l'exemple je vous propose d'exécuter le code suivant pour voir ce qu'il print puis de passer la condition de *True* à *False* et de relancer l'exécution pour observer le fonctionement de l'instruction.
 
@@ -34,8 +34,19 @@ Comme on apprend toujours mieux par l'exemple je vous propose d'exécuter le cod
     if True:
 		print("Je suis dans la condition.")
 	print("Ceci est un test.")
-	
-	
+
+
+A présent vous pouvez vous exercer sur une tâche réelle!
+
+.. inginious:: Min
+
+.. inginious-sandbox:: DummyScript
+
+    if True:
+		print("Je suis dans la condition.")
+	print("Ceci est un test.")
+
+
 A présent vous pouvez vous exercer sur une tâche réelle!
 
 .. inginious:: Min
@@ -65,9 +76,9 @@ Le mot-clé *elif*,est une contraction de « else if », que l'on peut traduire 
         # instruction 2
 	else:
 		# instruction 3
-		
+
 Avec toutes ces informations vous devriez pouvoir vous occuper de l'exercice suivant assez facilement:
-		
+
 .. inginious:: Median
 
 L'astuce: operateur ternaire:
@@ -78,7 +89,7 @@ Afin de gagner quelques lignes, des aménagements sont possibles:
 .. code-block:: python
 
     # instruction 1 if condition else instruction 2
-	
+
 .. inginious-sandbox:: DummyScript
 
     # Essayez vous-même !
