@@ -7,7 +7,7 @@ La fonction print permet d'afficher du texte dans la console.
 
 La syntaxe est très simple, par exemple:
 
-.. inginious-sandbox:: hello-world
+.. inginious-sandbox:: DummyScript
 
     print("Hello World!")
 
@@ -31,11 +31,13 @@ Entrainez vous en essayant d'imprimer dans la console le texte suivant
   | Monsieur\\Madame\\\\
   | Au revoir"
 
-.. inginious-sandbox:: training
+.. inginious-sandbox:: DummyScript
+
+	# Essayez vous-même !
 
 Il est possible bien sur d'en mettre plusieurs à la suite
 
-.. inginious-sandbox:: several-print
+.. inginious-sandbox:: DummyScript
 
     print("Hello")
     print("World")
@@ -47,13 +49,13 @@ D'autres possibilitées de la fonction print:
 
 On peut séparer les textes qu'on veut print par des virgules, le résultat est qu'ils seront imprimés séparément avec un espace entre chaque texte:
 
-.. inginious-sandbox:: several string
+.. inginious-sandbox:: DummyScript
 
     print("Hello", "World", "!")
 
 On peut changer ce qui est imrpimé à la fin du print. Par défaut il s'agit d'un retour à la ligne, mais on peut mettre autre chose:
 
-.. inginious-sandbox:: end
+.. inginious-sandbox:: DummyScript
 
     print("Hello", end="\t")
     print("World", end="!\n")
