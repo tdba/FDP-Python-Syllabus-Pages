@@ -40,7 +40,7 @@ basic_notions:
       title: Représentation des données
       content:
           strings.rst:
-            title: Les Strings
+            title: Les chaînes de caractères
           lists.rst:
             title: Les listes
           tuples.rst:
@@ -54,7 +54,7 @@ basic_notions:
       content:
         for_loop.rst:
           title: La boucle for
-        iterators.rst:
+        iterator.rst:
           title: Les itérateurs
         list_comprehension.rst:
           title: Les compréhensions de listes
