@@ -34,8 +34,8 @@ basic_notions:
     errors_exceptions:
       title: Les erreurs et exception
       content:
-        synthax.rst:
-          title: Synthaxe de gestion des erreurs et exceptions
+        syntax.rst:
+          title: Syntaxe de gestion des erreurs et exceptions
     data_representation:
       title: Représentation des données
       content:
