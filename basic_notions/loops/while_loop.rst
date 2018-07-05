@@ -1,42 +1,5 @@
 .. Cette page est publiée sous la license Creative Commons BY-SA (https://creativecommons.org/licenses/by-sa/3.0/fr/)
 
-
-===============
-Répéter du code
-===============
-
-Les boucles constituent un moyen de répéter un certain nombre de fois des instructions de votre programme. Prenons un exemple simple, même s'il peut sembler un peu fastidieux : écrire un programme affichant la table de multiplication par 7, de 1 * 7 à 10 * 7.
-
-.. code-block:: python
-
-    print(" 1 * 7 =", 1 * 7)
-    print(" 2 * 7 =", 2 * 7)
-    print(" 3 * 7 =", 3 * 7)
-    print(" 4 * 7 =", 4 * 7)
-    print(" 5 * 7 =", 5 * 7)
-    print(" 6 * 7 =", 6 * 7)
-    print(" 7 * 7 =", 7 * 7)
-    print(" 8 * 7 =", 8 * 7)
-    print(" 9 * 7 =", 9 * 7)
-    print("10 * 7 =", 10 * 7)
-
-Le code est long alors qu'on se cantonne à 10 éléments, on pourrait vite se retrouver avec des fichiers de plusieurs centaines de lignes qui ne feraient pourtant rien d'intéressant…
-
-Le résultat :
-
-.. code-block:: python
-
-    1 * 7 = 7
-    2 * 7 = 14
-    3 * 7 = 21
-    4 * 7 = 28
-    5 * 7 = 35
-    6 * 7 = 42
-    7 * 7 = 49
-    8 * 7 = 56
-    9 * 7 = 63
-    10 * 7 = 70
-
 La boucle while
 ===============
 
