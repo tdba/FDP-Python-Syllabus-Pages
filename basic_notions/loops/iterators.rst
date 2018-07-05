@@ -26,7 +26,7 @@ Chaque fois qu'on appelle la méthode **next**, l'itérateur nous donne l'élém
 
 La boucle **for** peut se servir des itérateurs pour donner les éléments un à un tout comme elle se sert de la méthode ``range``. Mais on peut également utiliser une boucle **while** pour parcourir tous les éléments avec l'itérateur. Vous pouvez exécuter le code suivant et le modifier pour comprendre ce qu'il se passe.
 
-.. inginious-sandbox:: while-iterator
+.. inginious-sandbox:: DummyScript
 
     x = iter([0, 1, 2, 3, 4, 5])
     a = True

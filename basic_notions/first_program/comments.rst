@@ -15,7 +15,7 @@ En python, ils commencent par le charactère #
 
 Par exemple:
 
-.. inginious-sandbox:: comment
+.. inginious-sandbox:: DummyScript
 
   #commentaire
   print("hello")  #world
@@ -24,7 +24,7 @@ comme vous pouvez le voir, tout ce qui est après le # est ignoré.
 
 Si le # se trouve entre guillemets, il ne commencera pas un commentaire, mais sera considéré comme un charactère comme un autre.
 
-.. inginious-sandbox:: print\#
+.. inginious-sandbox:: DummyScript
 
   print("dièse: #")  # Le # à l'intérieur du print est ignoré car il est entre guillemets
 
@@ -35,7 +35,7 @@ Pour faire un commentaire sur plusieurs lignes, il existe des commentaires multi
 Attention, il y a une limitation à ce type de commentaire: Il ne peuvent pas être sur la même ligne que du code.
 
 
-.. inginious-sandbox:: multiline-comment
+.. inginious-sandbox:: DummyScript
 
     """ceci est un commentaire
     sur plusieurs lignes"""
