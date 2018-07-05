@@ -1,7 +1,10 @@
-Introduction 	Objects 
-		Class 
+Introduction 	Objects
+		Class
 		Instances
-Characteristics Privacy 
-		Static 
+Characteristics Privacy
+		Static
 Advanced 	Polymorphism
 		Inheritance
+
+Note:
+- parler des itérateurs comme classe (concept introduit comme méthode "magique")

@@ -54,7 +54,7 @@ basic_notions:
       content:
         for_loop.rst:
           title: La boucle for
-        iterator.rst:
+        iterators.rst:
           title: Les itérateurs
         list_comprehension.rst:
           title: Les compréhensions de listes
