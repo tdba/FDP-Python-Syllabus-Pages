@@ -1,17 +1,73 @@
 basic_notions:
-  title: Introduction
+  title: Notions de base
   content:
+    introduction:
+        title: Introduction
+        content:
+          programming.rst:
+            title: Introduction à la programmation
+          python.rst:
+            title: Introduction au python
+    first_program:
+      title: Premier programme
+      content:
+        print.rst:
+          title: La fonction print
+        comments.rst:
+          title: Les commentaires
     if_statement:
       title: La condition
       content:
+        logical_operators.rst:
+          title: Les opérateurs logique
+        statements.rst:
+          title: Les statements
         control_flow_if.rst:
           title: L'instruction conditionnelle "if"
+    variables:
+      title: Les variables
+      content:
+          types.rst:
+            title: Les types de données
+          variables.rst:
+            title: Les variables
+    errors_exceptions:
+      title: Les erreurs et exception
+      content:
+        synthax.rst:
+          title: Synthaxe de gestion des erreurs et exceptions
+    data_representation:
+      title: Représentation des données
+      content:
+          strings.rst:
+            title: Les Strings
+          lists.rst:
+            title: Les listes
+          tuples.rst:
+            title: Les tuples
+          dictionnary.rst:
+            title: Les dictionnaires
+          recursive.rst:
+            title: Les structures de données récursives
     loops:
       title: Les boucles
       content:
         for_loop.rst:
           title: La boucle for
-        iterators.rst:
+        iterator.rst:
           title: Les itérateurs
+        list_comprehension.rst:
+          title: Les compréhensions de listes
         while_loop.rst:
           title: La boucle while
+    files:
+      title: Les fichiers
+      content:
+        opening_file.rst:
+          title: Ouvrir un fichier
+        encoding.rst:
+          title: L'encoding
+        write.rst:
+          title: Écrire dans un fichier
+        read.rst:
+          title: Lire un fichier
