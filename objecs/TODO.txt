@@ -8,3 +8,4 @@ Advanced 	Polymorphism
 
 Note:
 - parler des itérateurs comme classe (concept introduit comme méthode "magique")
+- méthode join pour concaténer 2 strings
