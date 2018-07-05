@@ -11,5 +11,7 @@ basic_notions:
       content:
         for_loop.rst:
           title: La boucle for
+        iterators.rst:
+          title: Les itérateurs
         while_loop.rst:
           title: La boucle while
