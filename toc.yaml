@@ -34,13 +34,13 @@ basic_notions:
     errors_exceptions:
       title: Les erreurs et exception
       content:
-        synthax.rst:
-          title: Synthaxe de gestion des erreurs et exceptions
+        syntax.rst:
+          title: Syntaxe de gestion des erreurs et exceptions
     data_representation:
       title: Représentation des données
       content:
           strings.rst:
-            title: Les Strings
+            title: Les chaînes de caractères
           lists.rst:
             title: Les listes
           tuples.rst:
@@ -54,7 +54,7 @@ basic_notions:
       content:
         for_loop.rst:
           title: La boucle for
-        iterators.rst:
+        iterator.rst:
           title: Les itérateurs
         list_comprehension.rst:
           title: Les compréhensions de listes
