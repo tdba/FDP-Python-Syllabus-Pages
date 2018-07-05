@@ -40,7 +40,7 @@ basic_notions:
       title: Représentation des données
       content:
           strings.rst:
-            title: Les Strings
+            title: Les strings
           lists.rst:
             title: Les listes
           tuples.rst:
