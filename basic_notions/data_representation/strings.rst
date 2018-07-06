@@ -22,7 +22,7 @@ Les indices:
 
 On les appelles chaînes de caractères en français car on peut accéder à chacune des lettres individuellement. Grâce au '[]' on peut accéder à des lettres de la string, comme dans l'exemple qui suit:
 
-.. inginious-sandbox:: test-strings1
+.. inginious-sandbox:: DummyScript
 
     x = "Je préfère Charles à Kim."
     print(x[1])
@@ -35,7 +35,7 @@ Les slices:
 
 On peut également sélectionner des parties de string toujours avec les crochets.
 
-.. inginious-sandbox:: test-strings2
+.. inginious-sandbox:: DummyScript
 
     x = "Je préfère Kim à Charles."
     print(x[11:14])
@@ -56,7 +56,7 @@ Les opérations:
 
 On peut effectuer des opérations sur les strings. On peut les concaténer (mettre bout à bout) deux strings pour en avoir une nouvelle. On fait cela grâce à l'opération '+'.
 
-.. inginious-sandbox:: test-strings3
+.. inginious-sandbox:: DummyScript
 
     print("Coucou" + " " + "Tanguy!")
 
