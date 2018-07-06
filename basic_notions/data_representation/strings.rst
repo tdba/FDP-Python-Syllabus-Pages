@@ -48,6 +48,9 @@ Ici, vous pouvez remarquer que la borne inférieure est comprise mais pas la bor
   * *D'un nombre négatif à un nombre négatif* (0 non inclu), on prend alors de la lettre correspondante inclue (comme vu précédemment) à la lettre correspondante non inclue.  ``print("OpenWeek"[-8:-4])`` va afficher "Open".
   * *D'un nombre négatif à un nombre positif* (0 inclu), on ne prend en compte que les nombres positif et on fait comme si on commençait à 0. ``print("OpenWeek"[-8:4])`` va afficher "Open".
 
+* On peut une **copie** du string en ne mettant que ':' dans les crochets. ``print("OpenWeek"[:])`` va afficher "OpenWeek".
+* On peut combiner les cas suivant en ne donnant qu'une seule des deux bornes pour la tranche. Comme ``"OpenWeek"[2:]`` qui va de e compris à k compris et ``"OpenWeek"[:4]`` qui va de O compris à W non compris.
+
 Les opérations:
 ---------------
 
@@ -56,3 +59,19 @@ On peut effectuer des opérations sur les strings. On peut les concaténer (mett
 .. inginious-sandbox:: test-strings3
 
     print("Coucou" + " " + "Tanguy!")
+
+On peut également comparer deux strings pour savoir si elles sont identique avec l'opérateur ``==`` (égal) ou ``!=`` (différent).
+
+.. inginious-sandbox:: test-strings4
+
+    print("Coucou" == "Cou" + "cou")
+
+On peut aussi multiplier une string avec l'opérateur de multiplication:
+
+.. inginious-sandbox:: test-strings5
+
+    print(5*"ha")
+
+Voici un exercice pratique pour tester vos connaissance sur ce chapitre:
+
+.. inginious:: Hello
