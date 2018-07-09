@@ -5,3 +5,4 @@ Syllabus pages for the new introductory Python course
 - Simon Gustin
 - Luis Tascon Gutierrez
 - Damien Gonze
+- Jacob Eliat-Eliat
