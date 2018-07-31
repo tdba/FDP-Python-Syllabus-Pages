@@ -8,5 +8,6 @@ Syllabus pages for the new introductory Python course
 - Eliat-Eliat Jacob 
 - Gonze Damien 
 - Gustin Simon 
+- Legat Jonathan
 - Mawait Maxime 
 - Tascon Gutierrez Luis 
